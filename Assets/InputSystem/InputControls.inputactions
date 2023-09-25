@@ -16,9 +16,9 @@
                 },
                 {
                     "name": "Look",
-                    "type": "Value",
+                    "type": "Button",
                     "id": "dd6c7e67-2d15-4af3-a970-83d562bf547f",
-                    "expectedControlType": "Vector2",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
@@ -127,17 +127,6 @@
                 },
                 {
                     "name": "",
-                    "id": "1350e473-f3a2-47f1-8eb8-fa9f87c1a0ec",
-                    "path": "<Mouse>/position",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Look",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "9821cb69-cc3d-47fb-a766-76a56361f7df",
                     "path": "<Keyboard>/space",
                     "interactions": "",
@@ -190,6 +179,39 @@
                     "action": "Inventory",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "2D Vector",
+                    "id": "60a46f39-ffab-4737-8d80-9df35b922b2e",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Look",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "left",
+                    "id": "4dae3d36-763f-4f6a-a48a-d448ba4f60eb",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Look",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "7c6edc97-ccc8-4d33-b190-8b266e5db1c5",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Look",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 }
             ]
         }
