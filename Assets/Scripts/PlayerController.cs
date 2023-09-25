@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static UnityEditor.Timeline.TimelinePlaybackControls;
+
+//아이템 레이 쏴서 먹으면 아웃으로 아이템 스크립트정보를 받아오기
 
 public class PlayerController : MonoBehaviour
 {
@@ -21,9 +24,10 @@ public class PlayerController : MonoBehaviour
 
     [HideInInspector]
     public bool canLook = true;
-
+    
     private Rigidbody _rigidbody;
-
+    public float delayTime = 0;
+    public bool IsAttackDelay = true;
     public static PlayerController instance;
 
     private void Awake()
@@ -40,7 +44,20 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Move();
+        if(delayTime >= 0.55f)
+        {
+            IsAttackDelay = true;
+            delayTime = 0;
+        }
+        else if (!IsAttackDelay)
+        {
+            delayTime += Time.fixedDeltaTime;
+        }
+        if (IsAttackDelay)
+        {
+            Move();
+        }
+
     }
 
     private void LateUpdate()
@@ -56,6 +73,7 @@ public class PlayerController : MonoBehaviour
         Vector3 dir = transform.forward * curMovementInput.y + transform.right * curMovementInput.x;
         dir *= moveSpeed;
         dir.y = _rigidbody.velocity.y;
+        cameraContainer.position = transform.position;
 
         _rigidbody.velocity = dir;
 
@@ -69,7 +87,6 @@ public class PlayerController : MonoBehaviour
     {
         camCurYRot += lookPhase.x * camRotSpeed * Time.deltaTime;  
         cameraContainer.localEulerAngles = new Vector3(0, -camCurYRot, 0);
-        cameraContainer.position = transform.position;
         //transform.eulerAngles += new Vector3(0, mouseDelta.x * lookSensitiveity, 0);
     }
 
@@ -78,7 +95,6 @@ public class PlayerController : MonoBehaviour
         if( context.phase == InputActionPhase.Performed)
         {
             lookPhase = context.ReadValue<Vector2>();
-
         }
         else if (context.phase == InputActionPhase.Canceled)
         {
@@ -106,7 +122,7 @@ public class PlayerController : MonoBehaviour
                 _rigidbody.AddForce(Vector2.up * jumpForce, ForceMode.Impulse);
         }
     }
-
+    
     private bool IsGrounded()
     {
         Ray[] rays = new Ray[4]        //앞 뒤 왼 오 에다가 ray만들어서 그라운드와 만나고있는지 확인
@@ -125,5 +141,41 @@ public class PlayerController : MonoBehaviour
         }
 
         return false;
+    }
+
+    public void OnAttackInput(InputAction.CallbackContext context)
+    {
+        if (IsAttackDelay)
+        {
+            if (context.phase == InputActionPhase.Started)
+            {
+                Debug.Log("Attack");
+                IsAttackDelay = false;
+            }
+        }
+    }
+
+    public void OnInteractionInput(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Started)
+        {
+
+        }
+    }
+
+    public void OnRunInput(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Started)
+        {
+
+        }
+    }
+
+    public void OnInventoryInput(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Started)
+        {
+
+        }
     }
 }
