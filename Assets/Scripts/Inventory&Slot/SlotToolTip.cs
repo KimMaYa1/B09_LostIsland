@@ -32,12 +32,10 @@ public class SlotToolTip : MonoBehaviour
         go_Base.SetActive(true);
         _pos += new Vector2(-go_Base.GetComponent<RectTransform>().rect.width * 5f, go_Base.GetComponent<RectTransform>().rect.height * 4f);
         go_Base.transform.position = _pos;
-        string CostTxt = _item.itemCost.ToString(); //아이템 가격 문자열 형변환
 
-        //Item 스크립트에 따른 제목/설명/판매가 TXT 변경
+        //Item 스크립트에 따른 제목/설명 TXT 변경
         itemName_Txt.text = _item.itemName;
         itemDesc_Txt.text = _item.itemDesc;
-        itemCost_Txt.text = "판매가" + CostTxt +"G";
         //itemType_Txt.text = _item.itemName;
 
 

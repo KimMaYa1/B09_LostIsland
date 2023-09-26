@@ -6,6 +6,6 @@ public class StartScene : MonoBehaviour
 {
     public void StartBtn() 
     {
-        LoadingSceneController.LoadScene("MinHyuk");
+        LoadingSceneController.LoadScene("PrologScene");
     }
 }

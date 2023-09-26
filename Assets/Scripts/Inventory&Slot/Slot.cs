@@ -20,13 +20,13 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
     private float minClickTime = 1; // 최소 클릭시간
     private bool isClick; // 클릭 중인지 판단 
 
-
+    /*
     //쿨타임 계산용 변수 (퀵슬롯 상속)
     [SerializeField]
     protected float coolTime;
     protected float currentCoolTime;
     protected bool isCooltTime;
-
+    */
 
     //퀵슬롯용 변수
     [SerializeField]
@@ -51,8 +51,8 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
     //인벤토리와 퀵슬롯
     [SerializeField]
     private RectTransform baseRect; // 인벤토리 UI의 범위
-    [SerializeField]
-    private RectTransform quickSlotBaseRect; // 퀵슬롯 UI 의 범위
+    //[SerializeField]
+    //private RectTransform quickSlotBaseRect; // 퀵슬롯 UI 의 범위
 
     //private PlayerController PlayerPos; // 드래그 종료 시 드랍 될 위치용
     private InputNumber theInputNumber; // 아이템 판매 시 나타날 UI 연동
@@ -79,8 +79,10 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
             clickTime = 0;
         }
 
+        /*
         if (isCooltTime && !Inventory.inventoryActivated) // && !EventContoroller.randomEvent)
             CoolTimeCalc(); // 쿨타임 계산
+        */
     }
 
 
@@ -135,24 +137,24 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
         go_CountImage.SetActive(false);
     }
 
-    //슬롯 클릭 & 아이템 사용
+    //슬롯 클릭 & 아이템 사용★
     public virtual void OnPointerClick(PointerEventData eventData)
     {
         if (eventData.button == PointerEventData.InputButton.Left)
         {
                 if (item != null)
                 {
-                    if (item.itemType == Item.ItemType.Used && !isCooltTime)
+                    if (item.itemType == Item.ItemType.Used) // && !isCooltTime)
                     {
                         //PlayerPos.DecreaseWT(item.itemWeight); //소모품 사용시 무게감소
                                                                    //쿨타임 적용
-                        currentCoolTime = coolTime;
-                        isCooltTime = true;
+                        //currentCoolTime = coolTime;
+                        //isCooltTime = true;
 
                         //아이템 획득 가능 여부
                         //PlayerController.canPickUp = true;
 
-                        theItemEffectDatabase.UseItem(item);
+                        //theItemEffectDatabase.UseItem(item);
                         SetSlotCount(-1);
                     }
                 }           
@@ -177,24 +179,25 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
         {
             DragSlot.instance.transform.position = eventData.position;
         }
-        theItemEffectDatabase.HideToolTip();
+        //theItemEffectDatabase.HideToolTip();
     }
 
     //슬롯 드래그 종료
     public void OnEndDrag(PointerEventData eventData) //다른곳이나 자기 자신에서 드래그 끝난경우 오출
     {
-        theItemEffectDatabase.HideToolTip();
+        //theItemEffectDatabase.HideToolTip();
         //!(안쪽 내용true인 경우) == false 됨 
         // 드래그가 끝난곳이 인벤토리or퀵슬롯 영역이 아니라면
 
 
         //인벤토리 영역
         if (!((DragSlot.instance.transform.localPosition.x > baseRect.rect.xMin && DragSlot.instance.transform.localPosition.x < baseRect.rect.xMax
-            && DragSlot.instance.transform.localPosition.y > baseRect.rect.yMin && DragSlot.instance.transform.localPosition.y < baseRect.rect.yMax)
-            || 
+            && DragSlot.instance.transform.localPosition.y > baseRect.rect.yMin && DragSlot.instance.transform.localPosition.y < baseRect.rect.yMax)))
+            /*|| 
             //퀵슬롯 영역(수정 목표값  xm -280 / xM -140 / ym -30 / yM 6)
             (DragSlot.instance.transform.localPosition.x > quickSlotBaseRect.rect.xMin * 4 && DragSlot.instance.transform.localPosition.x < quickSlotBaseRect.rect.xMax * -1.5f
             && DragSlot.instance.transform.localPosition.y > quickSlotBaseRect.transform.localPosition.y - (quickSlotBaseRect.rect.yMax * 5) && DragSlot.instance.transform.localPosition.y < quickSlotBaseRect.transform.localPosition.y - (quickSlotBaseRect.rect.yMin - 24))))
+            */
         {
             //버리기 함수 실행
             //아이템 판매 코드 혹은 함수 추가 //아래 코드 추후 수정######
@@ -216,7 +219,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
     {
         if (DragSlot.instance.dragSlot != null) //빈슬롯 간의 ChangeSlot 호출 방지
         {
-            theItemEffectDatabase.HideToolTip();
+            //theItemEffectDatabase.HideToolTip();
             ChangeSlot();
         }
 
@@ -269,12 +272,11 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
         if (clickTime >= minClickTime && item != null)
         {
             //툴팁 호출
-            theItemEffectDatabase.ShowToolTip(item, transform.position);
+            //theItemEffectDatabase.ShowToolTip(item, transform.position);
         }
     }
 
-
-
+    /*
     //퀵슬롯 쿨타임용
     private void CoolTimeCalc()
     {
@@ -287,4 +289,5 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
         if (currentCoolTime <= 0)
             isCooltTime = false;
     }
+    */
 }
