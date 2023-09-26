@@ -8,7 +8,7 @@ public class NonItemInteraction : MonoBehaviour, IInteractable
 
     public string GetInteractPrompt(string str)
     {
-        return "상호작용 문";
+        return "상호작용";
         //return string.Format("{0} {1}",  ,item.itemName);
     }
 
