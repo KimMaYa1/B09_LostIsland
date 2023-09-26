@@ -27,6 +27,27 @@ public class RunState : IState
         {
             _Animals.States = AnimalAI.State.Death;
         }
-        throw new System.NotImplementedException();
+
+        switch (_AnimalStats.animal)
+        {
+            case Animal.Bear:
+            case Animal.Fox:
+                _Animals.States = AnimalAI.State.GetHit;
+                break;
+            case Animal.Elephant:
+            case Animal.Rhino:
+
+            case Animal.Rabbit:
+                _Animals.States = AnimalAI.State.Run;
+                break;
+        }
     }
+
+    public void RunAway(Transform direction)
+    {
+        Vector3 dir = direction.position;
+        dir.Normalize();
+        _Animals.animalRigidbody.velocity = dir * _AnimalStats.animalSO.speed;
+    }
+
 }

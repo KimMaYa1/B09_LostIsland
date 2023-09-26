@@ -25,8 +25,11 @@ public class AnimalAI : MonoBehaviour
     public Animator animator;
     // 동물 정보
     public AnimalStats animalStats;
+    // 유한 상태 머신
     public IState[] _IStates;
     private State _state;
+    //동물 리지드 바디
+    public Rigidbody animalRigidbody;
 
     void Awake()
     {

@@ -39,8 +39,6 @@ public class WalkState : IState
                     break;
                 case Animal.Elephant:
                 case Animal.Rhino:
-                    _Animals.States = AnimalAI.State.Attack;
-                    break;
                 case Animal.Rabbit:
                     _Animals.States = AnimalAI.State.Run;
                     break;
