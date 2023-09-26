@@ -11,8 +11,8 @@ public class PlayerController : MonoBehaviour
 {
     public PlayerStat playerStat;
 
-    [Header("Movemet")]
-    private Vector2 curMovementInput;
+    /*[Header("Movemet")]
+    private Vector2 curMovementInput;*/
     public LayerMask groundLayerMask;
 
     [Header("Look")]
@@ -21,26 +21,19 @@ public class PlayerController : MonoBehaviour
     public float camRotSpeed;
     private float camCurYRot;
 
+
     private Vector2 lookPhase;
 
     [HideInInspector]
-    public PlayerController instance;
+    public static PlayerController instance;
     public bool canLook = true;
-    
-    private Rigidbody _rigidbody;
+
     public float delayTime = 0;
     public bool IsAttackDelay = true;
 
     private void Awake()
     {
         instance = this;
-        _rigidbody = GetComponent<Rigidbody>();
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        Cursor.lockState = CursorLockMode.Locked;
     }
 
     private void FixedUpdate()
@@ -56,7 +49,7 @@ public class PlayerController : MonoBehaviour
         }
         if (IsAttackDelay)
         {
-            Move();
+            //Move();
         }
     }
 
@@ -65,15 +58,15 @@ public class PlayerController : MonoBehaviour
         if (canLook)
         {
             CameraLook();
+            cameraContainer.position = transform.position;
         }
     }
 
-    private void Move()
+    /*private void Move()
     {
         Vector3 dir = transform.forward * curMovementInput.y + transform.right * curMovementInput.x;
         dir *= playerStat.MoveSpeed;
         dir.y = _rigidbody.velocity.y;
-        cameraContainer.position = transform.position;
 
         _rigidbody.velocity = dir;
 
@@ -81,7 +74,7 @@ public class PlayerController : MonoBehaviour
         {
             transform.LookAt(target);
         }
-    }
+    }*/
 
     void CameraLook()
     {
@@ -102,46 +95,18 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void OnMoveInput(InputAction.CallbackContext context)
+    /*public void OnMoveInput(InputAction.CallbackContext context)
     {
         if (context.phase == InputActionPhase.Performed)
         {
+            isClickMove = false;
             curMovementInput = context.ReadValue<Vector2>();
         }
         else if (context.phase == InputActionPhase.Canceled)
         {
             curMovementInput = Vector2.zero;
         }
-    }
-
-    public void OnJumpInput(InputAction.CallbackContext context)
-    {
-        if (context.phase == InputActionPhase.Started)
-        {
-            if (IsGrounded())
-                _rigidbody.AddForce(Vector2.up * playerStat.JumpForce, ForceMode.Impulse);
-        }
-    }
-    
-    private bool IsGrounded()
-    {
-        Ray[] rays = new Ray[4]        //앞 뒤 왼 오 에다가 ray만들어서 그라운드와 만나고있는지 확인
-        {
-            new Ray(transform.position + (transform.forward * 0.2f) + (Vector3.up * 0.01f), Vector3.down),
-            new Ray(transform.position + (-transform.forward * 0.2f) + (Vector3.up * 0.01f), Vector3.down),
-            new Ray(transform.position + (transform.right * 0.2f) + (Vector3.up * 0.01f), Vector3.down),
-            new Ray(transform.position + (-transform.right * 0.2f) + (Vector3.up * 0.01f), Vector3.down),
-        };
-        for (int i = 0; i < rays.Length; i++)
-        {
-            if (Physics.Raycast(rays[i], 1f, groundLayerMask))
-            {
-                return true;
-            }
-        }
-
-        return false;
-    }
+    }*/
 
     public void OnAttackInput(InputAction.CallbackContext context)
     {
@@ -149,17 +114,10 @@ public class PlayerController : MonoBehaviour
         {
             if (context.phase == InputActionPhase.Started)
             {
+                GetComponent<Rigidbody>().velocity = Vector3.zero;
                 Debug.Log("a");
                 IsAttackDelay = false;
             }
-        }
-    }
-
-    public void OnInteractionInput(InputAction.CallbackContext context)
-    {
-        if (context.phase == InputActionPhase.Started)
-        {
-
         }
     }
 
