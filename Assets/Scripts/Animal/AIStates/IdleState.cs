@@ -6,6 +6,8 @@ public class IdleState : IState
 {
     private AnimalAI _Animals;
     private AnimalStats _AnimalStats;
+
+    float delaysecond = 0f;
     public IdleState(AnimalAI animalAI, AnimalStats animalStats)
     {
         _Animals = animalAI;
@@ -22,9 +24,10 @@ public class IdleState : IState
 
     public void Stay()
     {
+        delaysecond += Time.deltaTime;
         if (_Animals.IsDeadCheck(_AnimalStats))
         {
-            _Animals.States = AnimalAI.State.Death;
+            _Animals.States = AnimalAI.State.Dead;
         }
         // 공격 받았을 때
         if (_AnimalStats.animalSO.currentHealth < _AnimalStats.animalSO.health)
@@ -45,10 +48,16 @@ public class IdleState : IState
                     break;
             }
         }
-        int rand = Random.Range(1, 5);
-        if(rand >= 5)
+        if(delaysecond >= 5)
         {
-            _Animals.States = AnimalAI.State.Walk;
+            int rand = Random.Range(1, 5);
+            Debug.Log("Idle : " + rand);
+            if (rand >= 3)
+            {
+                _Animals.States = AnimalAI.State.Walk;
+            }
+            delaysecond = 0;
         }
+
     }
 }

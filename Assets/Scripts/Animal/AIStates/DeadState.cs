@@ -14,7 +14,7 @@ public class DeadState : IState
     }
     public void Enter()
     {
-        _Animals.PlayAnimation(AnimalAI.State.Death);
+        _Animals.PlayAnimation(AnimalAI.State.Dead);
     }
 
     public void Exit()

@@ -25,7 +25,7 @@ public class GetHitState : IState
     {
         if (_Animals.IsDeadCheck(_AnimalStats))
         {
-            _Animals.States = AnimalAI.State.Death;
+            _Animals.States = AnimalAI.State.Dead;
         }
         _Animals.States = AnimalAI.State.Attack;
     }

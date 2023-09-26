@@ -25,7 +25,7 @@ public class AttackState : IState
     {
         if (_Animals.IsDeadCheck(_AnimalStats))
         {
-            _Animals.States = AnimalAI.State.Death;
+            _Animals.States = AnimalAI.State.Dead;
         }
         throw new System.NotImplementedException();
     }
