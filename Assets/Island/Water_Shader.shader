@@ -418,5 +418,4 @@ Shader "Shader Forge/Water_Shader" {
         }
     }
     FallBack "Diffuse"
-    CustomEditor "ShaderForgeMaterialInspector"
 }
