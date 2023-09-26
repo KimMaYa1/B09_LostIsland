@@ -175,7 +175,7 @@ public class PlayerController : MonoBehaviour
     {
         if (context.phase == InputActionPhase.Started)
         {
-
+            UIManager.instance.TabInventory();
         }
     }
 }
