@@ -137,7 +137,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
         go_CountImage.SetActive(false);
     }
 
-    //슬롯 클릭 & 아이템 사용
+    //슬롯 클릭 & 아이템 사용★
     public virtual void OnPointerClick(PointerEventData eventData)
     {
         if (eventData.button == PointerEventData.InputButton.Left)
