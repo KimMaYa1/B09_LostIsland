@@ -1,11 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 [CreateAssetMenu(fileName = "New Item", menuName = "New Item/item")]
 public class Item : ScriptableObject // 게임 오브젝트에 붙일 필요없는 스크립트
 {
 
+    IInteractable item;
+
+    public string Interactable()
+    {
+        item = new ItemInteraction();
+        return item.GetInteractPrompt(itemName);
+    }
 
     public string itemName; // 아이템 이름
     [TextArea] // 인스펙터 창에서 여러줄로 적는것이 가능해짐-메모장처럼 됨
