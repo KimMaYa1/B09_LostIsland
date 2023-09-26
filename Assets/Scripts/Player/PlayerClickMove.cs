@@ -32,12 +32,16 @@ public class PlayerClickMove : MonoBehaviour
         {
             Move();
         }
+        else if (_rigidbody.velocity.y == 0)
+        {
+            _rigidbody.velocity = Vector3.zero;
+        }
         transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(direction), 0.25f);
     }
 
     private void Move()
     {
-        if (Vector3.Distance(destination, transform.position) <= 0.5f)
+        if (Vector3.Distance(destination, transform.position) <= 0.1f)
         {
             isMove = false;
             return;
@@ -51,12 +55,13 @@ public class PlayerClickMove : MonoBehaviour
 
         _rigidbody.velocity = dir;
 
-        isMove = (transform.position - destination).magnitude > 1f;
+        destination.y = transform.position.y;
+        isMove = (transform.position - destination).magnitude > 0.05f ;
     }
 
     public void OnClickMoveInput(InputAction.CallbackContext context)
     {
-        if (_rigidbody.velocity.y == 0)
+        if (IsGrounded())
         {
             if (context.phase == InputActionPhase.Started)
             {
