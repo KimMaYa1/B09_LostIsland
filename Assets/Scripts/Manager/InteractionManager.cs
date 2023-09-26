@@ -13,13 +13,20 @@ public class InteractionManager : MonoBehaviour
     public float checkRate = 0.05f;
     private float lastCheckTime;
     public float maxCheckDistance;
-    public LayerMask interactLayerMask;
-    public LayerMask itemLayerMask;
+    public LayerMask layerMask;
 
     private GameObject curInteractGameObject;
     private IInteractable curInteractable;
 
     public TextMeshProUGUI promptText;
+    private Camera camera;
+
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        camera = Camera.main;
+    }
 
     // Update is called once per frame
     void Update()
@@ -28,13 +35,10 @@ public class InteractionManager : MonoBehaviour
         {
             lastCheckTime = Time.time;
 
-
-            Vector3 rayOrigin = transform.position;
-            Vector3 rayDirection = transform.forward;
-
+            Ray ray = camera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2));
             RaycastHit hit;
 
-            if (Physics.Raycast(rayOrigin, rayDirection, out hit, maxCheckDistance, itemLayerMask))
+            if (Physics.Raycast(ray, out hit, maxCheckDistance, layerMask))
             {
                 if (hit.collider.gameObject != curInteractGameObject)
                 {
