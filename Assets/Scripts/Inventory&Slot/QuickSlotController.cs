@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class QuickSlotController : Slot
 {
+    /*
     [SerializeField]
     private Slot[] quickSlots; //Äü½½·ÔÀÇ ½½·Ô
     [SerializeField]
@@ -39,5 +40,5 @@ public class QuickSlotController : Slot
     }
 
 
-   
+   */
 }
