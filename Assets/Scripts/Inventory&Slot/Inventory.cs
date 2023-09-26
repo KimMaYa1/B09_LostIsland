@@ -21,28 +21,24 @@ public class Inventory : MonoBehaviour
     //[SerializeField]
     //private PlayerController player;
 
-    //상점
-    [SerializeField]
-    private GameObject go_shopBase;
-    [SerializeField]
-    private GameObject go_shopSlotParent;
-    private Animator anim;
+    //private Animator anim;
     //슬롯
     private Slot[] slots;
     void Start()
     {
         //슬롯 배열내에 모든 실제 슬롯 입력
         slots = go_SlotsParent.GetComponentsInChildren<Slot>();
-        anim = GetComponent<Animator>();
+        //anim = GetComponent<Animator>();
     }
 
 
 
 
+    //★★★인풋 액션 inventory 여기다 연결하세요★★★
     public void TryOpenIventory()
     {
         inventoryActivated = !inventoryActivated; //누르면 활성화 인벤 비활성화 스위칭
-        anim.SetBool("Appear", inventoryActivated); //인벤 활성/비활성 애니 
+        //anim.SetBool("Appear", inventoryActivated); //인벤 활성/비활성 애니 
 
 
         //인벤토리가 열린 경우는 상태변수로 여러 조작/흐름 을 막아놓음(메모)

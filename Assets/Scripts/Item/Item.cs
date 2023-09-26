@@ -15,8 +15,6 @@ public class Item : ScriptableObject // 게임 오브젝트에 붙일 필요없는 스크립트
     public ItemType itemType; // 아이템 유형
     public Sprite itemImage; // 아이템 이미지 = 인벤토리 이미지용 
     public GameObject itemPrefab; // 아이템 프리팹(월드의 아이템 드랍 실체용)
-    public float itemCost; // 아이템 판매가격
-    public float itemBuyCost; //아이템 구매가격
 
 
     public string weaponType; // "GUN" , PICKAXE" 등의 무기유형 
