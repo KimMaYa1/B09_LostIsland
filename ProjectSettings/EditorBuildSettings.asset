@@ -4,5 +4,14 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/DevScenes/MinHyuk/LoadingScene.unity
+    guid: 9f63edaddbd104c4f9694a78bf089c04
+  - enabled: 1
+    path: Assets/Scenes/DevScenes/MinHyuk/MinHyuk.unity
+    guid: 3e1c772f1dc5b1d42b3d8b625537e6a6
+  - enabled: 1
+    path: Assets/Scenes/DevScenes/MinHyuk/StartScene.unity
+    guid: 45471009faece9345aefd3832845027b
   m_configObjects: {}
