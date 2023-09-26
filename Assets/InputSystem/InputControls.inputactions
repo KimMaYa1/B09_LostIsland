@@ -6,15 +6,6 @@
             "id": "9974beff-3d4d-43bb-95d7-e24e64ac862b",
             "actions": [
                 {
-                    "name": "Move",
-                    "type": "Value",
-                    "id": "9a23523d-9a70-4b11-9755-c8024950853c",
-                    "expectedControlType": "Vector2",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-                },
-                {
                     "name": "Look",
                     "type": "Button",
                     "id": "dd6c7e67-2d15-4af3-a970-83d562bf547f",
@@ -67,64 +58,18 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "CilckMove",
+                    "type": "Button",
+                    "id": "55b06ba8-533d-4f47-8050-4e33ac0119f0",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
-                {
-                    "name": "2D Vector",
-                    "id": "f6084663-94b1-48f4-8961-066855b150e6",
-                    "path": "2DVector",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "up",
-                    "id": "40de814f-3533-4f0d-8d9d-3902bfb69a30",
-                    "path": "<Keyboard>/w",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "down",
-                    "id": "79762abe-4d29-486d-9203-f0fdcc48582c",
-                    "path": "<Keyboard>/s",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "left",
-                    "id": "99d813c8-f257-4df6-95c2-b27366472b5e",
-                    "path": "<Keyboard>/a",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "right",
-                    "id": "b58e696f-deab-4258-b8bd-df1203e0055f",
-                    "path": "<Keyboard>/d",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
                 {
                     "name": "",
                     "id": "9821cb69-cc3d-47fb-a766-76a56361f7df",
@@ -212,6 +157,17 @@
                     "action": "Look",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "4b464e04-45d0-46d9-a3e3-dd66987b2c8c",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CilckMove",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }
