@@ -2,16 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Playables;
 using static UnityEditor.Timeline.TimelinePlaybackControls;
 
 //아이템 레이 쏴서 먹으면 아웃으로 아이템 스크립트정보를 받아오기
 
 public class PlayerController : MonoBehaviour
 {
+    public PlayerStat playerStat;
+
     [Header("Movemet")]
-    public float moveSpeed;
     private Vector2 curMovementInput;
-    public float jumpForce;
     public LayerMask groundLayerMask;
 
     [Header("Look")]
@@ -23,12 +24,12 @@ public class PlayerController : MonoBehaviour
     private Vector2 lookPhase;
 
     [HideInInspector]
+    public PlayerController instance;
     public bool canLook = true;
     
     private Rigidbody _rigidbody;
     public float delayTime = 0;
     public bool IsAttackDelay = true;
-    public static PlayerController instance;
 
     private void Awake()
     {
@@ -57,7 +58,6 @@ public class PlayerController : MonoBehaviour
         {
             Move();
         }
-
     }
 
     private void LateUpdate()
@@ -71,7 +71,7 @@ public class PlayerController : MonoBehaviour
     private void Move()
     {
         Vector3 dir = transform.forward * curMovementInput.y + transform.right * curMovementInput.x;
-        dir *= moveSpeed;
+        dir *= playerStat.MoveSpeed;
         dir.y = _rigidbody.velocity.y;
         cameraContainer.position = transform.position;
 
@@ -119,7 +119,7 @@ public class PlayerController : MonoBehaviour
         if (context.phase == InputActionPhase.Started)
         {
             if (IsGrounded())
-                _rigidbody.AddForce(Vector2.up * jumpForce, ForceMode.Impulse);
+                _rigidbody.AddForce(Vector2.up * playerStat.JumpForce, ForceMode.Impulse);
         }
     }
     
@@ -149,7 +149,7 @@ public class PlayerController : MonoBehaviour
         {
             if (context.phase == InputActionPhase.Started)
             {
-                Debug.Log("Attack");
+                Debug.Log("a");
                 IsAttackDelay = false;
             }
         }
