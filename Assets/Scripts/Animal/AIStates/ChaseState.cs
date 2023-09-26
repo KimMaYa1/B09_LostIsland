@@ -3,16 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class RunState : IState
+public class ChaseState : IState
 {
     private AnimalAI _Animals;
     private AnimalStats _AnimalStats;
-    private bool _isRun = false;
+    private bool _isChase = false;
 
-    Vector3 _randomPoint;
 
     float delaysecond = 0f;
-    public RunState(AnimalAI animalAI, AnimalStats animalStats)
+    public ChaseState(AnimalAI animalAI, AnimalStats animalStats)
     {
         _Animals = animalAI;
         _AnimalStats = animalStats;
@@ -25,42 +24,45 @@ public class RunState : IState
 
     public void Exit()
     {
-        throw new System.NotImplementedException();
+        _isChase = false;
     }
 
     public void Stay()
     {
+        delaysecond += Time.deltaTime;
         if (_Animals.IsDeadCheck(_AnimalStats))
         {
             _Animals.States = AnimalAI.State.Dead;
         }
-
-        if (!_isRun)
+        //30초 동안 쫓다가 안되면 Idle로 변경
+        if(delaysecond >= 30f)
         {
-            RunAway();
-        }   
+            _Animals.States = AnimalAI.State.Idle;
+        }
+        //쫓는 것 구현  플레이어 위치 받아와야 함
+
         CheckArrival();
     }
-
-    public void RunAway()
+    
+    public void ChaseTarget(Transform transform)
     {
         
-        Debug.Log(_randomPoint);
-        _Animals.nav.SetDestination(_randomPoint);
-        _isRun = true;
+        _Animals.nav.SetDestination(transform.position);
+        _isChase = true;
     }
+
 
     private void CheckArrival()
     {
         if (!_Animals.nav.pathPending && _Animals.nav.remainingDistance < 0.1f)
         {
-            _isRun = false;
+            _isChase = false;
         }
-        if (delaysecond >= 5 && !_isRun)
+        if (delaysecond >= 5 && !_isChase)
         {
             int rand = Random.Range(1, 5);
             Debug.Log("Run : " + rand);
-            if (rand >= 2)
+            if (rand >= 3)
             {
                 _Animals.States = AnimalAI.State.Idle;
             }

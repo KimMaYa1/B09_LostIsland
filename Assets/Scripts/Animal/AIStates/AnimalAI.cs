@@ -42,6 +42,7 @@ public class AnimalAI : MonoBehaviour
         _IStates[(int)State.Attack] = new AttackState(this, animalStats);
         _IStates[(int)State.Dead] = new DeadState(this, animalStats);
         _IStates[(int)State.GetHit] = new GetHitState(this, animalStats);
+        _IStates[(int)State.Chase] = new ChaseState(this, animalStats);
         States = State.Idle;
     }
 
@@ -57,7 +58,8 @@ public class AnimalAI : MonoBehaviour
         Run,
         Attack,
         GetHit,
-        Dead
+        Dead,
+        Chase
     }
 
     public State States
@@ -118,7 +120,14 @@ public class AnimalAI : MonoBehaviour
                 animator.Play("GetHit");
                 break;
             case State.Attack:
-                animator.Play("Attack");
+                if(animalStats.animal == Animal.Bear)
+                {
+                    animator.Play("Attack" + Random.Range(1, 5));
+                }
+                else
+                {
+                    animator.Play("Attack");
+                }
                 break;
             case State.Run:
                 animator.Play("Run");
