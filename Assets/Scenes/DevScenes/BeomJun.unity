@@ -165,10 +165,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 628505307}
+  - component: {fileID: 628505309}
   - component: {fileID: 628505306}
   - component: {fileID: 628505304}
   - component: {fileID: 628505308}
-  - component: {fileID: 628505309}
+  - component: {fileID: 628505310}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -373,14 +374,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d74e0949522c0946abf66c9ba240007, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
-  jumpForce: 80
+  playerStat:
+    Atk: 10
+    Def: 5
+    MoveSpeed: 5
+    JumpForce: 80
   groundLayerMask:
     serializedVersion: 2
     m_Bits: 55
   cameraContainer: {fileID: 6640775}
   target: {fileID: 1809492544}
   camRotSpeed: 120
+  instance: {fileID: 0}
   canLook: 1
   delayTime: 0
   IsAttackDelay: 1
@@ -405,6 +410,57 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.6, y: 1.9, z: 0.3}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &628505310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 628505303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19e6be85c1dd6374db31a92854736c4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health:
+    curValue: 0
+    maxValue: 0
+    startValue: 0
+    regenRate: 0
+    decayRate: 0
+    uiBar: {fileID: 0}
+  hunger:
+    curValue: 0
+    maxValue: 0
+    startValue: 0
+    regenRate: 0
+    decayRate: 0
+    uiBar: {fileID: 0}
+  thirst:
+    curValue: 0
+    maxValue: 0
+    startValue: 0
+    regenRate: 0
+    decayRate: 0
+    uiBar: {fileID: 0}
+  stamina:
+    curValue: 0
+    maxValue: 0
+    startValue: 0
+    regenRate: 0
+    decayRate: 0
+    uiBar: {fileID: 0}
+  weight:
+    curValue: 0
+    maxValue: 0
+    startValue: 0
+    regenRate: 0
+    decayRate: 0
+    uiBar: {fileID: 0}
+  noHungerHealthDecay: 0
+  onTakeDamage:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &821629941
 GameObject:
   m_ObjectHideFlags: 0
