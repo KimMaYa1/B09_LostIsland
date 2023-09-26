@@ -31,13 +31,32 @@ public class InteractionManager : MonoBehaviour
         {
             lastCheckTime = Time.time;
 
-            Collider[] colls = Physics.OverlapSphere(transform.position, maxCheckDistance, interactLayerMask);
-
+            Collider[] colls = Physics.OverlapSphere(transform.position, maxCheckDistance, itemLayerMask);
+            float min = maxCheckDistance;
             for(int i = 0; i < colls.Length; i++)
             {
-                Debug.Log(transform.position - colls[i].gameObject.transform.position);
+                if ((colls[i].gameObject.transform.position - transform.position).magnitude < maxCheckDistance)
+                {
+                    float dis = Vector3.Distance(colls[i].gameObject.transform.position, transform.position);
+                    min = Mathf.Min(min, dis);
+                    if (colls[i].gameObject != curInteractGameObject)
+                    {
+                        if (dis <= min)
+                        {
+                            curInteractGameObject = colls[i].gameObject;
+                            curInteractable = colls[i].GetComponent<ItemPickUp>().item;
+                            SetPromptText();
+                        }
+                    }
+                }
+                else
+                {
+                    curInteractGameObject = null;
+                    curInteractable = null;
+                    promptText.gameObject.SetActive(false);
+                }
             }
-
+            /*
             Vector3 rayOrigin = transform.position;
             Vector3 rayDirection = transform.forward;
 
@@ -57,7 +76,8 @@ public class InteractionManager : MonoBehaviour
                 curInteractGameObject = null;
                 curInteractable = null;
                 promptText.gameObject.SetActive(false);
-            }
+            }*/
+
         }
     }
 

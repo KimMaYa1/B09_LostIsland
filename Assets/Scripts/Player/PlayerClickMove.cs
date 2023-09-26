@@ -63,22 +63,25 @@ public class PlayerClickMove : MonoBehaviour
     {
         if (IsGrounded())
         {
-            if (context.phase == InputActionPhase.Started)
+            if (context.phase == InputActionPhase.Canceled)
             {
-                if (_rigidbody.velocity.y != 0 && _rigidbody.velocity.x == 0 && _rigidbody.velocity.z == 0)
+                /*if (_rigidbody.velocity.y != 0 && _rigidbody.velocity.x == 0 && _rigidbody.velocity.z == 0)
                 {
                     isMove = false;
                     return;
-                }
+                }*/
 
                 Ray ray = camera.ScreenPointToRay(Input.mousePosition);
                 RaycastHit hit;
 
                 if (Physics.Raycast(ray, out hit, 100f))
                 {
-                    isMove = true;
-                    destination = new Vector3(hit.point.x, transform.position.y, hit.point.z);
-                    direction = destination - transform.position;
+                    if (hit.collider.gameObject.layer != gameObject.layer)
+                    {
+                        isMove = true;
+                        destination = new Vector3(hit.point.x, transform.position.y, hit.point.z);
+                        direction = destination - transform.position;
+                    }
                 }
             }
         }
