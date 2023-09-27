@@ -10,7 +10,7 @@ public class DragSlot : MonoBehaviour
     static public DragSlot instance; //드래그 슬롯 인스턴스
 
     public Slot dragSlot; // 드래그가 시작되면 instance에 들어갈 변수
-
+    public RectTransform slotRect;
 
     // 아이템 이미지
     [SerializeField]
@@ -19,6 +19,7 @@ public class DragSlot : MonoBehaviour
     private void Start()
     {
         instance = this; //인스턴스에 자기자신 넣어주기
+        slotRect = GetComponent<RectTransform>();
     }
 
     public void DragSetImage(Image _itemImage)
