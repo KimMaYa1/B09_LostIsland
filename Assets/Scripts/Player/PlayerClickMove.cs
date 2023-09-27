@@ -76,6 +76,7 @@ public class PlayerClickMove : MonoBehaviour
 
                 if (Physics.Raycast(ray, out hit, 100f))
                 {
+                    Debug.Log(gameObject.layer);
                     if (hit.collider.gameObject.layer != gameObject.layer)
                     {
                         isMove = true;
