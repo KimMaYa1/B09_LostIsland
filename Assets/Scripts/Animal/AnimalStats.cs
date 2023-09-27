@@ -14,4 +14,6 @@ public class AnimalStats : MonoBehaviour
     public AnimalSO animalSO;
     [SerializeField]
     public Animal animal;
+    public float health;
+    public float currentHealth;     
 }

@@ -13,7 +13,6 @@ public class AnimalSO : ScriptableObject
 
     public float power;             // 파워
     public float health;            // 최대 체력
-    public float currentHealth;     // 체력
 
     public float range;             // 어그로 거리
     public float attackRange;       // 어택 거리

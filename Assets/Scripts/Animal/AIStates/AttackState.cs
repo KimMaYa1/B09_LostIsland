@@ -27,9 +27,5 @@ public class AttackState : IState
         {
             _Animals.States = AnimalAI.State.Chase;
         }
-        else
-        {
-            _Animals.States = AnimalAI.State.Attack;
-        }
     }
 }

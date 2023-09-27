@@ -26,9 +26,9 @@ public class IdleState : IState
     {
         delaysecond += Time.deltaTime;
         // 공격 받았을 때
-        if (_AnimalStats.animalSO.currentHealth < _AnimalStats.animalSO.health)
+        if (_AnimalStats.currentHealth < _AnimalStats.health)
         {
-            _AnimalStats.animalSO.health = _AnimalStats.animalSO.currentHealth;
+            _AnimalStats.health = _AnimalStats.currentHealth;
             switch (_AnimalStats.animal)
             {
                 case Animal.Bear:
@@ -47,7 +47,6 @@ public class IdleState : IState
         if(delaysecond >= 5)
         {
             int rand = Random.Range(1, 5);
-            Debug.Log("Idle : " + rand);
             if (rand >= 3)
             {
                 _Animals.States = AnimalAI.State.Walk;

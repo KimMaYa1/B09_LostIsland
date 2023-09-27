@@ -25,12 +25,13 @@ public class RunState : IState
 
     public void Exit()
     {
-        throw new System.NotImplementedException();
+        
     }
 
     public void Stay()
     {
-
+        delaysecond += Time.deltaTime;
+        
         if (!_isRun)
         {
             RunAway();
@@ -40,7 +41,7 @@ public class RunState : IState
 
     public void RunAway()
     {
-        Vector3 directionVector = _Animals.transform.position - GameManager.Instance.PlayerObj.transform.position;
+        Vector3 directionVector = _Animals.transform.position + new Vector3(5, 0, 5) - GameManager.Instance.PlayerObj.transform.position;
 
         // 방향 벡터를 정규화(normalize)
         directionVector.Normalize();
@@ -61,6 +62,7 @@ public class RunState : IState
         if (delaysecond >= 5 && !_isRun)
         {
             int rand = Random.Range(1, 5);
+            Debug.Log("Run : "+rand);
             if (rand >= 2)
             {
                 _Animals.States = AnimalAI.State.Idle;

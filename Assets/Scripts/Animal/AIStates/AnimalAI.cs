@@ -49,7 +49,9 @@ public class AnimalAI : MonoBehaviour
     private void Update()
     {
         _IStates[(int)_state].Stay();
-        IsDeadCheck();
+        if (IsDeadCheck()) {
+            _state = State.Dead;
+        }
     }
 
     public enum State
@@ -100,7 +102,7 @@ public class AnimalAI : MonoBehaviour
     //Á×Àº Áö Ã¼Å©
     public bool IsDeadCheck()
     {
-        if(animalStats.animalSO.currentHealth <= 0)
+        if(animalStats.currentHealth <= 0)
         {
             return true;
         }

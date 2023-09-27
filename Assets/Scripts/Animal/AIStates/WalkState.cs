@@ -30,9 +30,9 @@ public class WalkState : IState
     {
         delaysecond += Time.deltaTime;
         // 공격 받았을 때
-        if (_AnimalStats.animalSO.currentHealth < _AnimalStats.animalSO.health)
+        if (_AnimalStats.currentHealth < _AnimalStats.health)
         {
-            _AnimalStats.animalSO.health = _AnimalStats.animalSO.currentHealth;
+            _AnimalStats.health = _AnimalStats.currentHealth;
             switch (_AnimalStats.animal)
             {
                 case Animal.Bear:
@@ -62,7 +62,6 @@ public class WalkState : IState
     private void StartWalking()
     {
         _randomPoint = _Animals.GetRandomPositionOnNavMesh();
-        Debug.Log(_randomPoint);
         _Animals.nav.SetDestination(_randomPoint);
         _isWalk = true;
     }
@@ -77,7 +76,6 @@ public class WalkState : IState
         if (delaysecond >= 5 && !_isWalk)
         {
             int rand = Random.Range(1, 5);
-            Debug.Log("Walk : " + rand);
             if (rand >= 3)
             {
                 _Animals.States = AnimalAI.State.Idle;

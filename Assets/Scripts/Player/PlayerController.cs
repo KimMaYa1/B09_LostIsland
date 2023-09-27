@@ -11,6 +11,9 @@ public class PlayerController : MonoBehaviour
 {
     public PlayerStat playerStat;
 
+    [Header("Test")]
+    public Collider attackCollider;
+
     /*[Header("Movemet")]
     private Vector2 curMovementInput;*/
 
@@ -32,6 +35,7 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
+        attackCollider.enabled = false;
         instance = this;
     }
 
@@ -107,6 +111,11 @@ public class PlayerController : MonoBehaviour
         }
     }*/
 
+    public void AttackInvoke()
+    {
+        attackCollider.enabled = false;
+    }
+
     public void OnAttackInput(InputAction.CallbackContext context)
     {
         if (IsAttackDelay)
@@ -115,6 +124,8 @@ public class PlayerController : MonoBehaviour
             {
                 GetComponent<Rigidbody>().velocity = Vector3.zero;
                 IsAttackDelay = false;
+                attackCollider.enabled = true;
+                Invoke("AttackInvoke", 0.5f);
             }
         }
     }

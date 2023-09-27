@@ -30,8 +30,15 @@ public class GetHitState : IState
             {
                 _Animals.States = AnimalAI.State.Run;
             }
+            else
+            {
+                _Animals.States = AnimalAI.State.Chase;
+            }
         }
-        _Animals.States = AnimalAI.State.Chase;
+        else
+        {
+            _Animals.States = AnimalAI.State.Chase;
+        }
     }
 
 }

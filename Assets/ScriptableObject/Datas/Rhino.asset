@@ -14,9 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isAttack: 1
   moveSpeed: 4
-  runSpeed: 6
+  runSpeed: 5
   power: 0
   health: 20
-  currentHealth: 20
   range: 20
   attackRange: 3
