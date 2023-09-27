@@ -9,9 +9,13 @@ public class Item : ScriptableObject // 게임 오브젝트에 붙일 필요없는 스크립트
 
     IInteractable item;
 
+
     public string Interactable()
     {
-        item = new ItemInteraction();
+        if(item == null) 
+        {
+            item = new ItemInteraction();
+        }
         return item.GetInteractPrompt(itemName);
     }
 
