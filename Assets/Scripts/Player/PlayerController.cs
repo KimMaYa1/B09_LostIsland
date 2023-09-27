@@ -13,7 +13,6 @@ public class PlayerController : MonoBehaviour
 
     /*[Header("Movemet")]
     private Vector2 curMovementInput;*/
-    public LayerMask groundLayerMask;
 
     [Header("Look")]
     public Transform cameraContainer;

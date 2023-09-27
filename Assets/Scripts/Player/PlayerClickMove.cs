@@ -12,6 +12,7 @@ public class PlayerClickMove : MonoBehaviour
     private PlayerController playerController;
     private Rigidbody _rigidbody;
     private bool isMove;
+    public LayerMask groundLayerMask;
 
     private void Awake()
     {
@@ -76,12 +77,15 @@ public class PlayerClickMove : MonoBehaviour
 
                 if (Physics.Raycast(ray, out hit, 100f))
                 {
-                    Debug.Log(gameObject.layer);
                     if (hit.collider.gameObject.layer != gameObject.layer)
                     {
                         isMove = true;
                         destination = new Vector3(hit.point.x, transform.position.y, hit.point.z);
                         direction = destination - transform.position;
+                    }
+                    if (hit.collider.gameObject.layer == 8)
+                    {
+
                     }
                 }
             }
@@ -108,7 +112,7 @@ public class PlayerClickMove : MonoBehaviour
         };
         for (int i = 0; i < rays.Length; i++)
         {
-            if (Physics.Raycast(rays[i], 1f, playerController.groundLayerMask))
+            if (Physics.Raycast(rays[i], 1f, groundLayerMask))
             {
                 return true;
             }
