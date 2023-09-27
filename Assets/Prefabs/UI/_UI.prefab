@@ -475,19 +475,7 @@ MonoBehaviour:
     m_ActionId: 55b06ba8-533d-4f47-8050-4e33ac0119f0
     m_ActionName: Player/CilckMove[/Mouse/rightButton]
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 8677944023508873940}
-        m_TargetAssemblyTypeName: PlaceItemControll, Assembly-CSharp
-        m_MethodName: OnMoveItem
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: ab2dcb4e-032d-458e-8f59-5f1c01349a65
     m_ActionName: CraftCamera/MoveItem[/Keyboard/leftCtrl,/Keyboard/leftShift,/Keyboard/a,/Keyboard/d,/Keyboard/w,/Keyboard/s]
   - m_PersistentCalls:

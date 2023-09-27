@@ -57,8 +57,8 @@ public class PlayerClickMove : MonoBehaviour
                 }
             }
 
-            Debug.Log(isItem);
-            Debug.Log(isInteraction);
+            //Debug.Log(isItem);
+            //Debug.Log(isInteraction);
 
             transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(direction), 0.25f);
         }

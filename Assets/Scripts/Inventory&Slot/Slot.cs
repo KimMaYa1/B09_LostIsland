@@ -189,18 +189,24 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
         //!(안쪽 내용true인 경우) == false 됨 
         // 드래그가 끝난곳이 인벤토리or퀵슬롯 영역이 아니라면
 
+        //Debug.Log($"앵커 x : {DragSlot.instance.slotRect.anchoredPosition.x}");
+        //Debug.Log($"앵커 y : {DragSlot.instance.slotRect.anchoredPosition.y}");
+        //Debug.Log($"베이스 xMin : {baseRect.rect.xMin}");
+        //Debug.Log($"베이스 xMax : {baseRect.rect.xMax}");
+        //Debug.Log($"베이스 yMin : {baseRect.rect.yMin}");
+        //Debug.Log($"베이스 yMax : {baseRect.rect.yMax}");
 
         //인벤토리 영역
         if (!((DragSlot.instance.slotRect.anchoredPosition.x > baseRect.rect.xMin
             && DragSlot.instance.slotRect.anchoredPosition.x < baseRect.rect.xMax
-            && DragSlot.instance.slotRect.anchoredPosition.y > baseRect.rect.yMin
-            && DragSlot.instance.slotRect.anchoredPosition.y < baseRect.rect.yMax)
+            && DragSlot.instance.slotRect.anchoredPosition.y > baseRect.rect.yMin + 130f
+            && DragSlot.instance.slotRect.anchoredPosition.y < baseRect.rect.yMax + 130f)
             ||
             //퀵슬롯 영역
             (DragSlot.instance.slotRect.anchoredPosition.x > quickSlotBaseRect.rect.xMin
             && DragSlot.instance.slotRect.anchoredPosition.x < quickSlotBaseRect.rect.xMax
-            && DragSlot.instance.slotRect.anchoredPosition.y > quickSlotBaseRect.rect.yMin
-            && DragSlot.instance.slotRect.anchoredPosition.y < quickSlotBaseRect.rect.yMax)))
+            && DragSlot.instance.slotRect.anchoredPosition.y > quickSlotBaseRect.rect.yMin - 400f
+            && DragSlot.instance.slotRect.anchoredPosition.y < quickSlotBaseRect.rect.yMax - 400f)))
             
         {
             //버리기 함수 실행
