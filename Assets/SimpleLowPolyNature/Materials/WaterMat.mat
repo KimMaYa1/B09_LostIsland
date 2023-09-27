@@ -2,20 +2,24 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!21 &2100000
 Material:
-  serializedVersion: 6
+  serializedVersion: 8
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: WaterMat
-  m_Shader: {fileID: 4800000, guid: 5da8b0368ef6e224f81430e29e23cd96, type: 3}
-  m_ShaderKeywords: 
+  m_Shader: {fileID: 4800000, guid: 3d586de771cf7fa449b9775aa341daac, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
   m_LightmapFlags: 5
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
+  m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -43,11 +47,17 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 2, y: 2}
         m_Offset: {x: 0, y: 0}
+    - _node_661:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _texcoord:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    m_Ints: []
     m_Floats:
+    - _Cutoff: 0.5
     - _Depth: 0.98
     - _DepthFalloff: -13
     - _Distortion: 0.2
@@ -75,10 +85,16 @@ Material:
     - _WavesAmount: 8
     - _WavesAmplitude: 0.01
     - __dirty: 0
+    - _node_6671: 0
+    - _node_6759: 0
+    - _node_7331: 1.5
+    - _node_9030: 0.95
     m_Colors:
     - _Color: {r: 0.4292453, g: 0.7559531, b: 1, a: 1}
     - _Color0: {r: 0, g: 0.6749488, b: 0.8088235, a: 0}
     - _Color1: {r: 0, g: 0.048731543, b: 0.22794023, a: 0}
+    - _Color2: {r: 0.3972499, g: 0.5891142, b: 0.745283, a: 1}
     - _DeepColor: {r: 0.2511125, g: 0.7187613, b: 0.9339623, a: 1}
     - _ShalowColor: {r: 1, g: 1, b: 1, a: 1}
     - _SpecColor: {r: 1, g: 1, b: 1, a: 1}
+  m_BuildTextureStacks: []

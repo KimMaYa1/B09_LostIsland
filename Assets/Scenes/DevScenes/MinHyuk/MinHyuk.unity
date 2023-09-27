@@ -216,7 +216,7 @@ GameObject:
   m_Component:
   - component: {fileID: 10912523}
   - component: {fileID: 10912524}
-  m_Layer: 3
+  m_Layer: 4
   m_Name: Lake
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6696,7 +6696,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 422112225}
-  m_Layer: 3
+  m_Layer: 4
   m_Name: WaterGroup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34656,7 +34656,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4547749836553188802, guid: 59171b07a0f5e094ba501eedda3c65c7, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6091181364679380761, guid: 59171b07a0f5e094ba501eedda3c65c7, type: 3}
       propertyPath: m_IsActive
