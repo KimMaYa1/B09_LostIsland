@@ -13,7 +13,7 @@ public class InteractionManager : MonoBehaviour
     private GameObject curInteractGameObject;
     private Item curInteractable;
 
-    public TextMeshProUGUI promptText;
+    //public TextMeshProUGUI promptText;
    /* [Header("ItemInfo")]
     public GameObject itemInfoObject;
     public TextMeshProUGUI itemNameText;
@@ -51,7 +51,7 @@ public class InteractionManager : MonoBehaviour
             }
             if (((1 << hit.collider.gameObject.layer)| monsterLayerMask) == monsterLayerMask)
             {
-                //¸ó½ºÅÍ Á¤º¸ Ãâ·Â
+                //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 
                 Cursor.SetCursor(attackCurSor, Vector2.left + Vector2.up, CursorMode.Auto);
                 return;
@@ -60,17 +60,18 @@ public class InteractionManager : MonoBehaviour
         Cursor.SetCursor(defaultCurSor, Vector2.left + Vector2.up, CursorMode.Auto);
         curInteractGameObject = null;
         curInteractable = null;
-        promptText.gameObject.SetActive(false);
+        //promptText.gameObject.SetActive(false);
+        UIManager.instance.ClearInteractItem();
     }
 
     private void SetPromptText()
     {
-        promptText.gameObject.SetActive(true);
-        promptText.text = string.Format("<b>[F]</b> {0}", curInteractable.Interactable());
+        //promptText.gameObject.SetActive(true);
+        //promptText.text = string.Format("<b>[F]</b> {0}", curInteractable.Interactable());
         /*itemInfoObject.SetActive(true);
         itemNameText.text = string.Format(curInteractable.Interactable());
         itemInfoText.text = string.Format(curInteractable.itemDesc);*/
-
+        UIManager.instance.InteractItem(curInteractable);
     }
 
     public void OnInteractInput(InputAction.CallbackContext callbackContext)
@@ -80,7 +81,8 @@ public class InteractionManager : MonoBehaviour
             //curInteractable.OnInteract();
             curInteractGameObject = null;
             curInteractable = null;
-            promptText.gameObject.SetActive(false);
+            UIManager.instance.ClearInteractItem();
+            //promptText.gameObject.SetActive(false);
         }
     }
     
