@@ -29,15 +29,18 @@ public class PlayerClickMove : MonoBehaviour
 
     private void Update()
     {
-        if (isMove)
+        if (playerController.IsAttackDelay)
         {
-            Move();
+            if (isMove)
+            {
+                Move();
+            }
+            else if (_rigidbody.velocity.y == 0)
+            {
+                _rigidbody.velocity = Vector3.zero;
+            }
+            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(direction), 0.25f);
         }
-        else if (_rigidbody.velocity.y == 0)
-        {
-            _rigidbody.velocity = Vector3.zero;
-        }
-        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(direction), 0.25f);
     }
 
     private void Move()
@@ -55,7 +58,7 @@ public class PlayerClickMove : MonoBehaviour
         _rigidbody.velocity = dir;
 
         destination.y = transform.position.y;
-        isMove = (transform.position - destination).magnitude > 0.05f ;
+        isMove = (transform.position - destination).magnitude > 0.05f;
     }
 
     public void OnClickMoveInput(InputAction.CallbackContext context)
@@ -74,8 +77,9 @@ public class PlayerClickMove : MonoBehaviour
                         isMove = true;
                         destination = new Vector3(hit.point.x, transform.position.y, hit.point.z);
                         direction = destination - transform.position;
+
                     }
-                    if (hit.collider.gameObject.layer == 8)
+                    if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Item"))
                     {
 
                     }

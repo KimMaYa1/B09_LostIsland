@@ -14,10 +14,10 @@ public class InteractionManager : MonoBehaviour
     private Item curInteractable;
 
     public TextMeshProUGUI promptText;
-    [Header("ItemInfo")]
+   /* [Header("ItemInfo")]
     public GameObject itemInfoObject;
     public TextMeshProUGUI itemNameText;
-    public TextMeshProUGUI itemInfoText;
+    public TextMeshProUGUI itemInfoText;*/
 
     [Header("CurSor")]
     public Texture2D defaultCurSor;
