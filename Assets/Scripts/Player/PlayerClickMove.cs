@@ -13,6 +13,9 @@ public class PlayerClickMove : MonoBehaviour
     private Rigidbody _rigidbody;
     private bool isMove;
     public LayerMask groundLayerMask;
+    private bool isItem;
+    private bool isInteraction;
+    private bool isJump;
 
     private void Awake()
     {
@@ -35,10 +38,18 @@ public class PlayerClickMove : MonoBehaviour
             {
                 Move();
             }
-            else if (_rigidbody.velocity.y == 0)
+            Debug.Log(isJump);
+            Debug.Log(isMove);
+            if (_rigidbody.velocity.y == 0)
             {
-                _rigidbody.velocity = Vector3.zero;
+                if (isJump)
+                {
+                    isMove = false;
+                    isJump = false;
+                }
             }
+            
+
             transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(direction), 0.25f);
         }
     }
@@ -58,6 +69,11 @@ public class PlayerClickMove : MonoBehaviour
         _rigidbody.velocity = dir;
 
         destination.y = transform.position.y;
+        if (isItem || isInteraction)
+        {
+            isMove = (transform.position - destination).magnitude > 0.2f;
+        }
+
         isMove = (transform.position - destination).magnitude > 0.05f;
     }
 
@@ -77,12 +93,18 @@ public class PlayerClickMove : MonoBehaviour
                         isMove = true;
                         destination = new Vector3(hit.point.x, transform.position.y, hit.point.z);
                         direction = destination - transform.position;
-
+                        if(hit.collider.gameObject.layer == LayerMask.NameToLayer("Item"))
+                        {
+                            isItem = true;
+                            isInteraction = false;
+                        }
+                        else if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Interaction"))
+                        {
+                            isInteraction = true;
+                            isItem = false;
+                        }
                     }
-                    if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Item"))
-                    {
-
-                    }
+                    
                 }
             }
         }
@@ -93,7 +115,10 @@ public class PlayerClickMove : MonoBehaviour
         if (context.phase == InputActionPhase.Started)
         {
             if (IsGrounded())
+            {
                 _rigidbody.AddForce(Vector2.up * playerController.playerStat.JumpForce, ForceMode.Impulse);
+                isJump = true;
+            }
         }
     }
 
