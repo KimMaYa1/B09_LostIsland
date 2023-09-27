@@ -71,38 +71,38 @@ public class PlaceItemControll : MonoBehaviour
         }
     }
 
-    public void OnMoveItem(InputAction.CallbackContext context)
-    {
-        if (context.phase == InputActionPhase.Performed)
-        {
-            Debug.Log("Performed 己傍");
-            isItemMoving = true;
-            if (_coroutine != null)
-                StopCoroutine(_coroutine);
-            _coroutine = StartCoroutine(MoveItemCo());
-            curMovementInput = context.ReadValue<Vector2>();
+    //public void OnMoveItem(InputAction.CallbackContext context)
+    //{
+    //    if (context.phase == InputActionPhase.Performed)
+    //    {
+    //        Debug.Log("Performed 己傍");
+    //        isItemMoving = true;
+    //        if (_coroutine != null)
+    //            StopCoroutine(_coroutine);
+    //        _coroutine = StartCoroutine(MoveItemCo());
+    //        curMovementInput = context.ReadValue<Vector2>();
 
-        }
-        else if (context.phase == InputActionPhase.Canceled)
-        {
-            isItemMoving = false;
-            StopCoroutine(_coroutine);
-            curMovementInput = Vector2.zero;
-        }
-    }
+    //    }
+    //    else if (context.phase == InputActionPhase.Canceled)
+    //    {
+    //        isItemMoving = false;
+    //        StopCoroutine(_coroutine);
+    //        curMovementInput = Vector2.zero;
+    //    }
+    //}
 
-    IEnumerator MoveItemCo()
-    {
-        Transform itemTransform = _craftedItemPrefab.transform;
-        while (isItemMoving)
-        {
-            Debug.Log("内风凭 己傍");
+    //IEnumerator MoveItemCo()
+    //{
+    //    Transform itemTransform = _craftedItemPrefab.transform;
+    //    while (isItemMoving)
+    //    {
+    //        Debug.Log("内风凭 己傍");
 
-            Vector3 dir = itemTransform.forward * curMovementInput.y + itemTransform.right * curMovementInput.x + itemTransform.up * curMovementInput.z;
-            dir *= _moveSpeed;
+    //        Vector3 dir = itemTransform.forward * curMovementInput.y + itemTransform.right * curMovementInput.x + itemTransform.up * curMovementInput.z;
+    //        dir *= _moveSpeed;
 
-            _rigidbody.velocity = dir;
-        }
-        yield return null;
-    }
+    //        _rigidbody.velocity = dir;
+    //    }
+    //    yield return null;
+    //}
 }

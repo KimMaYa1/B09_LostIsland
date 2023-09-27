@@ -67,6 +67,24 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "MoveItem",
+                    "type": "Value",
+                    "id": "23f8b231-0fcb-4815-ad79-4a3f94f81285",
+                    "expectedControlType": "Vector3",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "PlaceItem",
+                    "type": "Button",
+                    "id": "890ddfd6-f223-4ab7-8d79-1c0a0b9de9cd",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -166,6 +184,94 @@
                     "processors": "",
                     "groups": "",
                     "action": "CilckMove",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "WASD/Ctrl/Shift",
+                    "id": "8243ada4-99f6-4129-9cc2-a1b8f492087c",
+                    "path": "3DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MoveItem",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "Up",
+                    "id": "f30735ab-8e7a-4868-ba1b-e2363d3d6ed3",
+                    "path": "<Keyboard>/leftCtrl",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MoveItem",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Down",
+                    "id": "16f58566-9b78-449a-955f-74f5f7a97a05",
+                    "path": "<Keyboard>/leftShift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MoveItem",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Left",
+                    "id": "282f606e-2334-4094-910f-29eea833d197",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MoveItem",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Right",
+                    "id": "d52825c8-07d7-4506-9985-886a0850a614",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MoveItem",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Forward",
+                    "id": "c03fa8e7-ab00-451a-96d9-5dd6ba50d5d5",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MoveItem",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Backward",
+                    "id": "abc3945c-0ea0-4fd9-a794-88dd4f4e2649",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MoveItem",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "c7b6819b-ce9c-420d-8822-c64ad2d2e63c",
+                    "path": "<Keyboard>/enter",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PlaceItem",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
