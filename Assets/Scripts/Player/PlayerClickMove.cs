@@ -10,17 +10,20 @@ public class PlayerClickMove : MonoBehaviour
     private Vector3 destination;
     private Vector3 direction;
     private PlayerController playerController;
+    private InteractionManager interactionManager;
     private Rigidbody _rigidbody;
     private bool isMove;
     public LayerMask groundLayerMask;
     private bool isItem;
     private bool isInteraction;
-    private bool isJump;
+    private bool isMonster;
+    private bool isJump = false;
 
     private void Awake()
     {
 
         _rigidbody = GetComponent<Rigidbody>();
+        interactionManager = GetComponent<InteractionManager>();
     }
 
     // Start is called before the first frame update
@@ -38,9 +41,11 @@ public class PlayerClickMove : MonoBehaviour
             {
                 Move();
             }
-            else
+            else if (!isJump)
             {
                 _rigidbody.velocity = Vector3.zero;
+                isItem = false;
+                isInteraction = false;
             }
 
             if (IsGrounded())
@@ -51,7 +56,9 @@ public class PlayerClickMove : MonoBehaviour
                     isJump = false;
                 }
             }
-            
+
+            Debug.Log(isItem);
+            Debug.Log(isInteraction);
 
             transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(direction), 0.25f);
         }
@@ -74,10 +81,12 @@ public class PlayerClickMove : MonoBehaviour
         destination.y = transform.position.y;
         if (isItem || isInteraction)
         {
-            isMove = (transform.position - destination).magnitude > 0.2f;
+            isMove = (transform.position - destination).magnitude > 0.5f;
         }
-
-        isMove = (transform.position - destination).magnitude > 0.05f;
+        else
+        {
+            isMove = (transform.position - destination).magnitude > 0.05f;
+        }
     }
 
     public void OnClickMoveInput(InputAction.CallbackContext context)
@@ -96,12 +105,13 @@ public class PlayerClickMove : MonoBehaviour
                         isMove = true;
                         destination = new Vector3(hit.point.x, transform.position.y, hit.point.z);
                         direction = destination - transform.position;
-                        if(hit.collider.gameObject.layer == LayerMask.NameToLayer("Item"))
+
+                        if(((1<<hit.collider.gameObject.layer)| interactionManager.itemLayerMask) == interactionManager.itemLayerMask)
                         {
                             isItem = true;
                             isInteraction = false;
                         }
-                        else if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Interaction"))
+                        else if (((1 << hit.collider.gameObject.layer) | interactionManager.interactLayerMask) == interactionManager.interactLayerMask)
                         {
                             isInteraction = true;
                             isItem = false;
