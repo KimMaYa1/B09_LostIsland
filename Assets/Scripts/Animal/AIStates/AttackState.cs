@@ -18,15 +18,18 @@ public class AttackState : IState
 
     public void Exit()
     {
-        throw new System.NotImplementedException();
+
     }
 
     public void Stay()
     {
-        if (_Animals.IsDeadCheck(_AnimalStats))
+        if(Vector3.Distance(_Animals.transform.position, GameManager.Instance.PlayerObj.transform.position) >= _AnimalStats.animalSO.attackRange)
         {
-            _Animals.States = AnimalAI.State.Dead;
+            _Animals.States = AnimalAI.State.Chase;
         }
-        throw new System.NotImplementedException();
+        else
+        {
+            _Animals.States = AnimalAI.State.Attack;
+        }
     }
 }

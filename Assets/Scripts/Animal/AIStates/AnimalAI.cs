@@ -49,6 +49,7 @@ public class AnimalAI : MonoBehaviour
     private void Update()
     {
         _IStates[(int)_state].Stay();
+        IsDeadCheck();
     }
 
     public enum State
@@ -97,7 +98,7 @@ public class AnimalAI : MonoBehaviour
     }
 
     //Á×Àº Áö Ã¼Å©
-    public bool IsDeadCheck(AnimalStats animalStats)
+    public bool IsDeadCheck()
     {
         if(animalStats.animalSO.currentHealth <= 0)
         {
@@ -123,6 +124,10 @@ public class AnimalAI : MonoBehaviour
                 if(animalStats.animal == Animal.Bear)
                 {
                     animator.Play("Attack" + Random.Range(1, 5));
+                }
+                else if(animalStats.animal == Animal.Fox)
+                {
+                    animator.Play("Attack" + Random.Range(1, 2));
                 }
                 else
                 {

@@ -30,10 +30,6 @@ public class RunState : IState
 
     public void Stay()
     {
-        if (_Animals.IsDeadCheck(_AnimalStats))
-        {
-            _Animals.States = AnimalAI.State.Dead;
-        }
 
         if (!_isRun)
         {
@@ -44,9 +40,15 @@ public class RunState : IState
 
     public void RunAway()
     {
-        
-        Debug.Log(_randomPoint);
-        _Animals.nav.SetDestination(_randomPoint);
+        Vector3 directionVector = _Animals.transform.position - GameManager.Instance.PlayerObj.transform.position;
+
+        // 방향 벡터를 정규화(normalize)
+        directionVector.Normalize();
+
+        // Rabbit을 움직일 방향 벡터 계산 (-90도에서 90도 사이)
+        Vector3 moveDirection = Quaternion.Euler(0, Random.Range(-90f, 90f), 0) * directionVector;
+        Vector3 runPoint = _Animals.transform.position + moveDirection * _Animals.animalStats.animalSO.range;
+        _Animals.nav.SetDestination(runPoint);
         _isRun = true;
     }
 
@@ -59,7 +61,6 @@ public class RunState : IState
         if (delaysecond >= 5 && !_isRun)
         {
             int rand = Random.Range(1, 5);
-            Debug.Log("Run : " + rand);
             if (rand >= 2)
             {
                 _Animals.States = AnimalAI.State.Idle;

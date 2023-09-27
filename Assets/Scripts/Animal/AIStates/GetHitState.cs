@@ -23,9 +23,13 @@ public class GetHitState : IState
 
     public void Stay()
     {
-        if (_Animals.IsDeadCheck(_AnimalStats))
+        if(_AnimalStats.animal == Animal.Fox)
         {
-            _Animals.States = AnimalAI.State.Dead;
+            int rand = Random.Range(1, 5);
+            if (rand >= 3)
+            {
+                _Animals.States = AnimalAI.State.Run;
+            }
         }
         _Animals.States = AnimalAI.State.Chase;
     }

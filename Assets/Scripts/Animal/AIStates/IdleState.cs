@@ -25,10 +25,6 @@ public class IdleState : IState
     public void Stay()
     {
         delaysecond += Time.deltaTime;
-        if (_Animals.IsDeadCheck(_AnimalStats))
-        {
-            _Animals.States = AnimalAI.State.Dead;
-        }
         // 공격 받았을 때
         if (_AnimalStats.animalSO.currentHealth < _AnimalStats.animalSO.health)
         {
