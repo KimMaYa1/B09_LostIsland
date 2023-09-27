@@ -41,7 +41,7 @@ public class InteractionManager : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit, 100f))
         {
-            if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Item"))
+            if (((1<<hit.collider.gameObject.layer)|itemLayerMask) == itemLayerMask)
             {
                 curInteractGameObject = hit.collider.gameObject;
                 curInteractable = hit.collider.GetComponent<ItemPickUp>().item;
@@ -49,7 +49,7 @@ public class InteractionManager : MonoBehaviour
                 Cursor.SetCursor(interactionCurSor, Vector2.left + Vector2.up, CursorMode.Auto);
                 return;
             }
-            if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Monster"))
+            if (((1 << hit.collider.gameObject.layer)| monsterLayerMask) == monsterLayerMask)
             {
                 //몬스터 정보 출력
 

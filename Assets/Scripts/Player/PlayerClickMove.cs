@@ -38,9 +38,12 @@ public class PlayerClickMove : MonoBehaviour
             {
                 Move();
             }
-            Debug.Log(isJump);
-            Debug.Log(isMove);
-            if (_rigidbody.velocity.y == 0)
+            else
+            {
+                _rigidbody.velocity = Vector3.zero;
+            }
+
+            if (IsGrounded())
             {
                 if (isJump)
                 {
