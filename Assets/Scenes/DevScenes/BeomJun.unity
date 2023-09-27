@@ -316,6 +316,18 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 55b06ba8-533d-4f47-8050-4e33ac0119f0
     m_ActionName: Player/CilckMove[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: ab2dcb4e-032d-458e-8f59-5f1c01349a65
+    m_ActionName: CraftCamera/MoveItem[/Keyboard/leftCtrl,/Keyboard/leftShift,/Keyboard/a,/Keyboard/d,/Keyboard/w,/Keyboard/s]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 2a8cfb44-3ecf-498a-90cc-e611bdd850df
+    m_ActionName: CraftCamera/PlaceItem[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: ed56af09-cc78-4f0e-b243-f1bed6329a87
+    m_ActionName: CraftCamera/RotateItem[/Keyboard/q,/Keyboard/e]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -383,7 +395,7 @@ MonoBehaviour:
     JumpForce: 80
   groundLayerMask:
     serializedVersion: 2
-    m_Bits: 55
+    m_Bits: 447
   cameraContainer: {fileID: 6640775}
   target: {fileID: 1809492544}
   camRotSpeed: 120
@@ -1523,7 +1535,7 @@ GameObject:
   - component: {fileID: 1457022620}
   - component: {fileID: 1457022619}
   - component: {fileID: 1457022618}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}

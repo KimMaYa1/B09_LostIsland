@@ -115,7 +115,6 @@ public class PlayerController : MonoBehaviour
             if (context.phase == InputActionPhase.Started)
             {
                 GetComponent<Rigidbody>().velocity = Vector3.zero;
-                Debug.Log("a");
                 IsAttackDelay = false;
             }
         }
