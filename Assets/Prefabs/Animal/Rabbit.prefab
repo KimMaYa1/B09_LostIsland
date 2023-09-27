@@ -727,7 +727,7 @@ GameObject:
   - component: {fileID: 3786985614116817086}
   - component: {fileID: 435088871357949095}
   m_Layer: 0
-  m_Name: Rabbit 1
+  m_Name: Rabbit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -749,7 +749,7 @@ Transform:
   - {fileID: 4280294624668182}
   - {fileID: 4709169015965626}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &95674028643950644
 Animator:
