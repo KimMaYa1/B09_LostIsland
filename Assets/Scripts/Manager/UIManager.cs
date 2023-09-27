@@ -20,12 +20,12 @@ public class UIManager : MonoBehaviour
     {
         if (_uiInventory.activeSelf)
         {
-            Cursor.lockState = CursorLockMode.Locked;
+            //Cursor.lockState = CursorLockMode.Locked;
             _uiInventory.SetActive(false);
         }
         else
         {
-            Cursor.lockState = CursorLockMode.Confined;
+            //Cursor.lockState = CursorLockMode.Confined;
             _uiInventory.SetActive(true);
         }
     }
@@ -34,12 +34,12 @@ public class UIManager : MonoBehaviour
     {
         if (_uiCrafting.activeSelf)
         {
-            Cursor.lockState = CursorLockMode.Locked;
+            //Cursor.lockState = CursorLockMode.Locked;
             _uiCrafting.SetActive(false);
         }
         else
         {
-            Cursor.lockState = CursorLockMode.Confined;
+            //Cursor.lockState = CursorLockMode.Confined;
             _uiCrafting.SetActive(true);
         }
     }

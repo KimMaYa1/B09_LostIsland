@@ -29,6 +29,11 @@ public class PreviewObject : MonoBehaviour
             SetColor(green);
     }
 
+    private void SetPreviewObject()
+    {
+
+    }
+
     private void SetColor(Material mat)
     {
         foreach (Transform tf_Child in this.transform)

@@ -172,7 +172,7 @@
             ]
         },
         {
-            "name": "CraftCamera",
+            "name": "PlaceItem",
             "id": "cab50560-9e37-4864-80d1-0bfd0b7deb66",
             "actions": [
                 {
@@ -284,7 +284,7 @@
                 {
                     "name": "",
                     "id": "0290d330-7182-4b9a-b1f8-288a793aa837",
-                    "path": "<Mouse>/leftButton",
+                    "path": "<Keyboard>/enter",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -295,18 +295,7 @@
                 {
                     "name": "",
                     "id": "9cf26ed5-193c-4191-9e2c-6955fa84bf57",
-                    "path": "<Keyboard>/q",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "RotateItem",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "d2c015b1-45ff-4708-9dd3-aaf52af9cdaf",
-                    "path": "<Keyboard>/e",
+                    "path": "<Keyboard>/r",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
