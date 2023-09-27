@@ -10,13 +10,20 @@ public class PlayerClickMove : MonoBehaviour
     private Vector3 destination;
     private Vector3 direction;
     private PlayerController playerController;
+    private InteractionManager interactionManager;
     private Rigidbody _rigidbody;
     private bool isMove;
+    public LayerMask groundLayerMask;
+    private bool isItem;
+    private bool isInteraction;
+    private bool isMonster;
+    private bool isJump = false;
 
     private void Awake()
     {
 
         _rigidbody = GetComponent<Rigidbody>();
+        interactionManager = GetComponent<InteractionManager>();
     }
 
     // Start is called before the first frame update
@@ -28,15 +35,33 @@ public class PlayerClickMove : MonoBehaviour
 
     private void Update()
     {
-        if (isMove)
+        if (playerController.IsAttackDelay)
         {
-            Move();
+            if (isMove)
+            {
+                Move();
+            }
+            else if (!isJump)
+            {
+                _rigidbody.velocity = Vector3.zero;
+                isItem = false;
+                isInteraction = false;
+            }
+
+            if (IsGrounded())
+            {
+                if (isJump)
+                {
+                    isMove = false;
+                    isJump = false;
+                }
+            }
+
+            Debug.Log(isItem);
+            Debug.Log(isInteraction);
+
+            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(direction), 0.25f);
         }
-        else if (_rigidbody.velocity.y == 0)
-        {
-            _rigidbody.velocity = Vector3.zero;
-        }
-        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(direction), 0.25f);
     }
 
     private void Move()
@@ -46,8 +71,6 @@ public class PlayerClickMove : MonoBehaviour
             isMove = false;
             return;
         }
-        /*Vector3 dir = transform.forward * curMovementInput.y + transform.right * curMovementInput.x;
-        dir *= playerStat.MoveSpeed;*/
 
         Vector3 dir = direction.normalized;
         dir *= playerController.playerStat.MoveSpeed;
@@ -56,7 +79,14 @@ public class PlayerClickMove : MonoBehaviour
         _rigidbody.velocity = dir;
 
         destination.y = transform.position.y;
-        isMove = (transform.position - destination).magnitude > 0.05f ;
+        if (isItem || isInteraction)
+        {
+            isMove = (transform.position - destination).magnitude > 0.5f;
+        }
+        else
+        {
+            isMove = (transform.position - destination).magnitude > 0.05f;
+        }
     }
 
     public void OnClickMoveInput(InputAction.CallbackContext context)
@@ -65,24 +95,29 @@ public class PlayerClickMove : MonoBehaviour
         {
             if (context.phase == InputActionPhase.Canceled)
             {
-                /*if (_rigidbody.velocity.y != 0 && _rigidbody.velocity.x == 0 && _rigidbody.velocity.z == 0)
-                {
-                    isMove = false;
-                    return;
-                }*/
-
                 Ray ray = camera.ScreenPointToRay(Input.mousePosition);
                 RaycastHit hit;
 
                 if (Physics.Raycast(ray, out hit, 100f))
                 {
-                    Debug.Log(gameObject.layer);
                     if (hit.collider.gameObject.layer != gameObject.layer)
                     {
                         isMove = true;
                         destination = new Vector3(hit.point.x, transform.position.y, hit.point.z);
                         direction = destination - transform.position;
+
+                        if(((1<<hit.collider.gameObject.layer)| interactionManager.itemLayerMask) == interactionManager.itemLayerMask)
+                        {
+                            isItem = true;
+                            isInteraction = false;
+                        }
+                        else if (((1 << hit.collider.gameObject.layer) | interactionManager.interactLayerMask) == interactionManager.interactLayerMask)
+                        {
+                            isInteraction = true;
+                            isItem = false;
+                        }
                     }
+                    
                 }
             }
         }
@@ -93,7 +128,10 @@ public class PlayerClickMove : MonoBehaviour
         if (context.phase == InputActionPhase.Started)
         {
             if (IsGrounded())
+            {
                 _rigidbody.AddForce(Vector2.up * playerController.playerStat.JumpForce, ForceMode.Impulse);
+                isJump = true;
+            }
         }
     }
 
@@ -108,7 +146,7 @@ public class PlayerClickMove : MonoBehaviour
         };
         for (int i = 0; i < rays.Length; i++)
         {
-            if (Physics.Raycast(rays[i], 1f, playerController.groundLayerMask))
+            if (Physics.Raycast(rays[i], 1f, groundLayerMask))
             {
                 return true;
             }

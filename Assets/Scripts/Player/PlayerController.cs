@@ -13,7 +13,6 @@ public class PlayerController : MonoBehaviour
 
     /*[Header("Movemet")]
     private Vector2 curMovementInput;*/
-    public LayerMask groundLayerMask;
 
     [Header("Look")]
     public Transform cameraContainer;
@@ -62,20 +61,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    /*private void Move()
-    {
-        Vector3 dir = transform.forward * curMovementInput.y + transform.right * curMovementInput.x;
-        dir *= playerStat.MoveSpeed;
-        dir.y = _rigidbody.velocity.y;
-
-        _rigidbody.velocity = dir;
-
-        if (_rigidbody.velocity.x != 0 || _rigidbody.velocity.z != 0)
-        {
-            transform.LookAt(target);
-        }
-    }*/
-
     void CameraLook()
     {
         camCurYRot += lookPhase.x * camRotSpeed * Time.deltaTime;  
@@ -94,20 +79,6 @@ public class PlayerController : MonoBehaviour
             lookPhase = Vector2.zero;
         }
     }
-
-    /*public void OnMoveInput(InputAction.CallbackContext context)
-    {
-        if (context.phase == InputActionPhase.Performed)
-        {
-            isClickMove = false;
-            curMovementInput = context.ReadValue<Vector2>();
-        }
-        else if (context.phase == InputActionPhase.Canceled)
-        {
-            curMovementInput = Vector2.zero;
-        }
-    }*/
-
     public void OnAttackInput(InputAction.CallbackContext context)
     {
         if (IsAttackDelay)
