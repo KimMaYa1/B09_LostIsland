@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 
 public class InteractionManager : MonoBehaviour
@@ -15,6 +16,11 @@ public class InteractionManager : MonoBehaviour
     private Item curInteractable;
 
     public TextMeshProUGUI promptText;
+    [Header("ItemInfo")]
+    public GameObject itemInfoObject;
+    public TextMeshProUGUI itemNameText;
+    public TextMeshProUGUI itemInfoText;
+
     private Camera camera;
 
 
@@ -27,64 +33,30 @@ public class InteractionManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Time.time - lastCheckTime > checkRate)
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit, 100f, itemLayerMask))
         {
-            lastCheckTime = Time.time;
-
-            Collider[] colls = Physics.OverlapSphere(transform.position, maxCheckDistance, itemLayerMask);
-            float min = maxCheckDistance;
-            for(int i = 0; i < colls.Length; i++)
-            {
-                if ((colls[i].gameObject.transform.position - transform.position).magnitude < maxCheckDistance)
-                {
-                    float dis = Vector3.Distance(colls[i].gameObject.transform.position, transform.position);
-                    min = Mathf.Min(min, dis);
-                    if (colls[i].gameObject != curInteractGameObject)
-                    {
-                        if (dis <= min)
-                        {
-                            curInteractGameObject = colls[i].gameObject;
-                            curInteractable = colls[i].GetComponent<ItemPickUp>().item;
-                            SetPromptText();
-                        }
-                    }
-                }
-                else
-                {
-                    curInteractGameObject = null;
-                    curInteractable = null;
-                    promptText.gameObject.SetActive(false);
-                }
-            }
-            /*
-            Vector3 rayOrigin = transform.position;
-            Vector3 rayDirection = transform.forward;
-
-            RaycastHit hit;
-
-            if (Physics.Raycast (rayOrigin, rayDirection, out hit, maxCheckDistance, itemLayerMask))
-            {
-                if (hit.collider.gameObject != curInteractGameObject)
-                {
-                    curInteractGameObject = hit.collider.gameObject;
-                    curInteractable = hit.collider.GetComponent<ItemPickUp>().item;
-                    SetPromptText();
-                }
-            }
-            else
-            {
-                curInteractGameObject = null;
-                curInteractable = null;
-                promptText.gameObject.SetActive(false);
-            }*/
-
+            curInteractGameObject = hit.collider.gameObject;
+            curInteractable = hit.collider.GetComponent<ItemPickUp>().item;
+            SetPromptText();
+            return;
         }
+
+        curInteractGameObject = null;
+        curInteractable = null;
+        promptText.gameObject.SetActive(false);
     }
 
     private void SetPromptText()
     {
         promptText.gameObject.SetActive(true);
         promptText.text = string.Format("<b>[F]</b> {0}", curInteractable.Interactable());
+        /*itemInfoObject.SetActive(true);
+        itemNameText.text = string.Format(curInteractable.Interactable());
+        itemInfoText.text = string.Format(curInteractable.itemDesc);*/
+
     }
 
     public void OnInteractInput(InputAction.CallbackContext callbackContext)
@@ -97,4 +69,5 @@ public class InteractionManager : MonoBehaviour
             promptText.gameObject.SetActive(false);
         }
     }
+    
 }
