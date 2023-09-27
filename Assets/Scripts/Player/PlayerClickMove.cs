@@ -47,8 +47,6 @@ public class PlayerClickMove : MonoBehaviour
             isMove = false;
             return;
         }
-        /*Vector3 dir = transform.forward * curMovementInput.y + transform.right * curMovementInput.x;
-        dir *= playerStat.MoveSpeed;*/
 
         Vector3 dir = direction.normalized;
         dir *= playerController.playerStat.MoveSpeed;
@@ -66,12 +64,6 @@ public class PlayerClickMove : MonoBehaviour
         {
             if (context.phase == InputActionPhase.Canceled)
             {
-                /*if (_rigidbody.velocity.y != 0 && _rigidbody.velocity.x == 0 && _rigidbody.velocity.z == 0)
-                {
-                    isMove = false;
-                    return;
-                }*/
-
                 Ray ray = camera.ScreenPointToRay(Input.mousePosition);
                 RaycastHit hit;
 

@@ -6,11 +6,9 @@ using UnityEngine.UI;
 
 public class InteractionManager : MonoBehaviour
 {
-    public float checkRate = 0.05f;
-    private float lastCheckTime;
-    public float maxCheckDistance;
     public LayerMask interactLayerMask;
     public LayerMask itemLayerMask;
+    public LayerMask monsterLayerMask;
 
     private GameObject curInteractGameObject;
     private Item curInteractable;
@@ -20,6 +18,11 @@ public class InteractionManager : MonoBehaviour
     public GameObject itemInfoObject;
     public TextMeshProUGUI itemNameText;
     public TextMeshProUGUI itemInfoText;
+
+    [Header("CurSor")]
+    public Texture2D defaultCurSor;
+    public Texture2D interactionCurSor;
+    public Texture2D attackCurSor;
 
     private Camera camera;
 
@@ -36,14 +39,25 @@ public class InteractionManager : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
 
-        if (Physics.Raycast(ray, out hit, 100f, itemLayerMask))
+        if (Physics.Raycast(ray, out hit, 100f))
         {
-            curInteractGameObject = hit.collider.gameObject;
-            curInteractable = hit.collider.GetComponent<ItemPickUp>().item;
-            SetPromptText();
-            return;
-        }
+            if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Item"))
+            {
+                curInteractGameObject = hit.collider.gameObject;
+                curInteractable = hit.collider.GetComponent<ItemPickUp>().item;
+                SetPromptText();
+                Cursor.SetCursor(interactionCurSor, Vector2.left + Vector2.up, CursorMode.Auto);
+                return;
+            }
+            if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Monster"))
+            {
+                //몬스터 정보 출력
 
+                Cursor.SetCursor(attackCurSor, Vector2.left + Vector2.up, CursorMode.Auto);
+                return;
+            }
+        }
+        Cursor.SetCursor(defaultCurSor, Vector2.left + Vector2.up, CursorMode.Auto);
         curInteractGameObject = null;
         curInteractable = null;
         promptText.gameObject.SetActive(false);
