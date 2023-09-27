@@ -29,15 +29,18 @@ public class PlayerClickMove : MonoBehaviour
 
     private void Update()
     {
-        if (isMove)
+        if (playerController.IsAttackDelay)
         {
-            Move();
+            if (isMove)
+            {
+                Move();
+            }
+            else if (_rigidbody.velocity.y == 0)
+            {
+                _rigidbody.velocity = Vector3.zero;
+            }
+            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(direction), 0.25f);
         }
-        else if (_rigidbody.velocity.y == 0)
-        {
-            _rigidbody.velocity = Vector3.zero;
-        }
-        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(direction), 0.25f);
     }
 
     private void Move()
