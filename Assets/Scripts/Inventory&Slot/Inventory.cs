@@ -24,11 +24,19 @@ public class Inventory : MonoBehaviour
     //private Animator anim;
     //슬롯
     private Slot[] slots;
+
+    //시작 시 테스트용 아이템 추가
+    public Item[] startItems;
     void Start()
     {
         //슬롯 배열내에 모든 실제 슬롯 입력
         slots = go_SlotsParent.GetComponentsInChildren<Slot>();
         //anim = GetComponent<Animator>();
+
+        AcquireItem(startItems[0]);
+        AcquireItem(startItems[1]);
+        AcquireItem(startItems[2]);
+        AcquireItem(startItems[3]);
     }
 
 
@@ -103,6 +111,7 @@ public class Inventory : MonoBehaviour
 
     }
 
+    //아이템 제거
     public void DeAcquireItem(Item _item, int _count = -1)
     {
         //player.DecreaseWT(_item.itemWeight);
