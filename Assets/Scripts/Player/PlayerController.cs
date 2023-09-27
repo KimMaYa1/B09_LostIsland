@@ -13,7 +13,6 @@ public class PlayerController : MonoBehaviour
 
     /*[Header("Movemet")]
     private Vector2 curMovementInput;*/
-    public LayerMask groundLayerMask;
 
     [Header("Look")]
     public Transform cameraContainer;
@@ -115,7 +114,6 @@ public class PlayerController : MonoBehaviour
             if (context.phase == InputActionPhase.Started)
             {
                 GetComponent<Rigidbody>().velocity = Vector3.zero;
-                Debug.Log("a");
                 IsAttackDelay = false;
             }
         }

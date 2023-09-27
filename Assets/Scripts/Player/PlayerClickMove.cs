@@ -12,6 +12,7 @@ public class PlayerClickMove : MonoBehaviour
     private PlayerController playerController;
     private Rigidbody _rigidbody;
     private bool isMove;
+    public LayerMask groundLayerMask;
 
     private void Awake()
     {
@@ -28,15 +29,18 @@ public class PlayerClickMove : MonoBehaviour
 
     private void Update()
     {
-        if (isMove)
+        if (playerController.IsAttackDelay)
         {
-            Move();
+            if (isMove)
+            {
+                Move();
+            }
+            else if (_rigidbody.velocity.y == 0)
+            {
+                _rigidbody.velocity = Vector3.zero;
+            }
+            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(direction), 0.25f);
         }
-        else if (_rigidbody.velocity.y == 0)
-        {
-            _rigidbody.velocity = Vector3.zero;
-        }
-        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(direction), 0.25f);
     }
 
     private void Move()
@@ -46,8 +50,6 @@ public class PlayerClickMove : MonoBehaviour
             isMove = false;
             return;
         }
-        /*Vector3 dir = transform.forward * curMovementInput.y + transform.right * curMovementInput.x;
-        dir *= playerStat.MoveSpeed;*/
 
         Vector3 dir = direction.normalized;
         dir *= playerController.playerStat.MoveSpeed;
@@ -65,12 +67,6 @@ public class PlayerClickMove : MonoBehaviour
         {
             if (context.phase == InputActionPhase.Canceled)
             {
-                /*if (_rigidbody.velocity.y != 0 && _rigidbody.velocity.x == 0 && _rigidbody.velocity.z == 0)
-                {
-                    isMove = false;
-                    return;
-                }*/
-
                 Ray ray = camera.ScreenPointToRay(Input.mousePosition);
                 RaycastHit hit;
 
@@ -81,6 +77,10 @@ public class PlayerClickMove : MonoBehaviour
                         isMove = true;
                         destination = new Vector3(hit.point.x, transform.position.y, hit.point.z);
                         direction = destination - transform.position;
+                    }
+                    if (hit.collider.gameObject.layer == 8)
+                    {
+
                     }
                 }
             }
@@ -107,7 +107,7 @@ public class PlayerClickMove : MonoBehaviour
         };
         for (int i = 0; i < rays.Length; i++)
         {
-            if (Physics.Raycast(rays[i], 1f, playerController.groundLayerMask))
+            if (Physics.Raycast(rays[i], 1f, groundLayerMask))
             {
                 return true;
             }
