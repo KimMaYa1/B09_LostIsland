@@ -32,12 +32,16 @@ public class PlayerClickMove : MonoBehaviour
         {
             Move();
         }
+        else if (_rigidbody.velocity.y == 0)
+        {
+            _rigidbody.velocity = Vector3.zero;
+        }
         transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(direction), 0.25f);
     }
 
     private void Move()
     {
-        if (Vector3.Distance(destination, transform.position) <= 0.5f)
+        if (Vector3.Distance(destination, transform.position) <= 0.1f)
         {
             isMove = false;
             return;
@@ -51,29 +55,33 @@ public class PlayerClickMove : MonoBehaviour
 
         _rigidbody.velocity = dir;
 
-        isMove = (transform.position - destination).magnitude > 1f;
+        destination.y = transform.position.y;
+        isMove = (transform.position - destination).magnitude > 0.05f ;
     }
 
     public void OnClickMoveInput(InputAction.CallbackContext context)
     {
-        if (_rigidbody.velocity.y == 0)
+        if (IsGrounded())
         {
-            if (context.phase == InputActionPhase.Started)
+            if (context.phase == InputActionPhase.Canceled)
             {
-                if (_rigidbody.velocity.y != 0 && _rigidbody.velocity.x == 0 && _rigidbody.velocity.z == 0)
+                /*if (_rigidbody.velocity.y != 0 && _rigidbody.velocity.x == 0 && _rigidbody.velocity.z == 0)
                 {
                     isMove = false;
                     return;
-                }
+                }*/
 
                 Ray ray = camera.ScreenPointToRay(Input.mousePosition);
                 RaycastHit hit;
 
                 if (Physics.Raycast(ray, out hit, 100f))
                 {
-                    isMove = true;
-                    destination = new Vector3(hit.point.x, transform.position.y, hit.point.z);
-                    direction = destination - transform.position;
+                    if (hit.collider.gameObject.layer != gameObject.layer)
+                    {
+                        isMove = true;
+                        destination = new Vector3(hit.point.x, transform.position.y, hit.point.z);
+                        direction = destination - transform.position;
+                    }
                 }
             }
         }

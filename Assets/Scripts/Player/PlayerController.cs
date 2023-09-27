@@ -47,10 +47,10 @@ public class PlayerController : MonoBehaviour
         {
             delayTime += Time.fixedDeltaTime;
         }
-        if (IsAttackDelay)
+        /*if (IsAttackDelay)
         {
-            //Move();
-        }
+            Move();
+        }*/
     }
 
     private void LateUpdate()

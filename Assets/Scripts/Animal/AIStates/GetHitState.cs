@@ -27,7 +27,7 @@ public class GetHitState : IState
         {
             _Animals.States = AnimalAI.State.Dead;
         }
-        _Animals.States = AnimalAI.State.Attack;
+        _Animals.States = AnimalAI.State.Chase;
     }
 
 }
