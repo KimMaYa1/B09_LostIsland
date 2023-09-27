@@ -40,7 +40,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
     //필요한 컴포넌트
     private ItemEffectDatabase theItemEffectDatabase;
 
-    //슬롯 아이템 개수와 개수를 감싸는 이미지
+    //슬롯 아이템 개수
     [SerializeField]
     private TextMeshProUGUI text_Count;
     [SerializeField]
@@ -51,17 +51,17 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
     //인벤토리와 퀵슬롯
     [SerializeField]
     private RectTransform baseRect; // 인벤토리 UI의 범위
-    //[SerializeField]
-    //private RectTransform quickSlotBaseRect; // 퀵슬롯 UI 의 범위
+    [SerializeField]
+    private RectTransform quickSlotBaseRect; // 퀵슬롯 UI 의 범위
 
     //private PlayerController PlayerPos; // 드래그 종료 시 드랍 될 위치용
+    [SerializeField]
     private InputNumber theInputNumber; // 아이템 판매 시 나타날 UI 연동
     void Start()
     {
         theItemEffectDatabase = FindObjectOfType<ItemEffectDatabase>();
         originPos = transform.position; // 슬롯 원래 위치 저장
-        //PlayerPos = FindObjectOfType<PlayerController>();
-        theInputNumber = FindObjectOfType<InputNumber>();      
+        //PlayerPos = FindObjectOfType<PlayerController>();   
     }
 
     void Update()
@@ -168,7 +168,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
         {
             DragSlot.instance.dragSlot = this; // 드래그 슬롯이 슬롯이 됨
             DragSlot.instance.DragSetImage(itemImage); // 드래그 중인 이미지도 넣어줌
-            DragSlot.instance.transform.position = eventData.position;
+            DragSlot.instance.slotRect.anchoredPosition = eventData.position;
         }
     }
 
@@ -191,19 +191,24 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
 
 
         //인벤토리 영역
-        if (!((DragSlot.instance.transform.localPosition.x > baseRect.rect.xMin && DragSlot.instance.transform.localPosition.x < baseRect.rect.xMax
-            && DragSlot.instance.transform.localPosition.y > baseRect.rect.yMin && DragSlot.instance.transform.localPosition.y < baseRect.rect.yMax)))
-            /*|| 
-            //퀵슬롯 영역(수정 목표값  xm -280 / xM -140 / ym -30 / yM 6)
-            (DragSlot.instance.transform.localPosition.x > quickSlotBaseRect.rect.xMin * 4 && DragSlot.instance.transform.localPosition.x < quickSlotBaseRect.rect.xMax * -1.5f
-            && DragSlot.instance.transform.localPosition.y > quickSlotBaseRect.transform.localPosition.y - (quickSlotBaseRect.rect.yMax * 5) && DragSlot.instance.transform.localPosition.y < quickSlotBaseRect.transform.localPosition.y - (quickSlotBaseRect.rect.yMin - 24))))
-            */
+        if (!((DragSlot.instance.slotRect.anchoredPosition.x > baseRect.rect.xMin
+            && DragSlot.instance.slotRect.anchoredPosition.x < baseRect.rect.xMax
+            && DragSlot.instance.slotRect.anchoredPosition.y > baseRect.rect.yMin
+            && DragSlot.instance.slotRect.anchoredPosition.y < baseRect.rect.yMax)
+            ||
+            //퀵슬롯 영역
+            (DragSlot.instance.slotRect.anchoredPosition.x > quickSlotBaseRect.rect.xMin
+            && DragSlot.instance.slotRect.anchoredPosition.x < quickSlotBaseRect.rect.xMax
+            && DragSlot.instance.slotRect.anchoredPosition.y > quickSlotBaseRect.rect.yMin
+            && DragSlot.instance.slotRect.anchoredPosition.y < quickSlotBaseRect.rect.yMax)))
+            
         {
             //버리기 함수 실행
             //아이템 판매 코드 혹은 함수 추가 //아래 코드 추후 수정######
             if (DragSlot.instance.dragSlot != null) // 드래그슬롯에 아이템이 있는경우만 실행
             {
-                theInputNumber.Call();
+                Debug.Log("영역 밖 드롭-드래그 슬롯 위치 : " + DragSlot.instance.slotRect.anchoredPosition);
+                //theInputNumber.Call();
             }
         }
         else //인벤토리 영역 내부인 경우 == 드래그 슬롯값만 비워줌
