@@ -1,7 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem.HID;
 using UnityEngine.InputSystem;
 
 public class PlaceItemControll : MonoBehaviour
@@ -9,7 +7,7 @@ public class PlaceItemControll : MonoBehaviour
 
     [SerializeField] private Camera _camera;
     [SerializeField] private Camera _mainCamera;
-    
+
     [SerializeField] private Transform _placeTransform;
     [SerializeField] private Transform _playerTransform;
 
@@ -20,24 +18,22 @@ public class PlaceItemControll : MonoBehaviour
     private float range = 10f;
 
     private Vector3 _originPlace;
-    private bool isPrefabActivated = false;
-    private bool isItemMoving = false;
-    private Vector3 curMovementInput;
-    private Coroutine _coroutine;
+    private Vector3 _curMovementInput;
+    private Vector3 _prefabForword;
+    private Vector3 _prefabRight;
+    private Vector3 _prefabUp;
+    private bool _isPrefabActivated = false;
+    private bool _isItemMoving = false;
     private float _moveSpeed = 2f;
+    private Coroutine _coroutine;
     private Rigidbody _rigidbody;
+    private MeshRenderer _meshRenderer;
+    private Material[] _materials;
+    private Material[] _originMaterials;
 
     private void Start()
     {
         _originPlace = _camera.transform.position;
-    }
-
-    void Update()
-    {
-        CraftedCameraUpdate();
-
-        if (isPrefabActivated)
-            PrefabPositionUpdate();
     }
 
     private void CraftedCameraUpdate()
@@ -52,9 +48,16 @@ public class PlaceItemControll : MonoBehaviour
 
     public void PreviewItemView(GameObject itemPrefab)
     {
-        _craftedItemPrefab = Instantiate(itemPrefab, _playerTransform.position + _playerTransform.forward, Quaternion.identity);
+        CraftedCameraUpdate();
+        if (_craftedItemPrefab == null)
+            _craftedItemPrefab = Instantiate(itemPrefab, _playerTransform.position + _playerTransform.forward, Quaternion.identity);
+        _meshRenderer = _craftedItemPrefab.GetComponent<MeshRenderer>();
+        _materials = _meshRenderer.materials;
+        _originMaterials = (Material[])_materials.Clone();
+        SetColor(Color.green);
         _rigidbody = _craftedItemPrefab.GetComponent<Rigidbody>();
-        isPrefabActivated = true;
+        _isPrefabActivated = true;
+        PrefabPositionUpdate();
     }
 
     private void PrefabPositionUpdate()
@@ -67,42 +70,68 @@ public class PlaceItemControll : MonoBehaviour
             {
                 Vector3 _location = hit.point;
                 _craftedItemPrefab.transform.position = _location;
+                _prefabForword = _playerTransform.forward;
+                _prefabRight = _playerTransform.right;
+                _prefabUp = _playerTransform.up;
             }
         }
     }
+    private void SetColor(Color color)
+    {
+        foreach (Material mat in _materials)
+        {
+            mat.SetColor("Color", color);
+        }
+    }
 
-    //public void OnMoveItem(InputAction.CallbackContext context)
-    //{
-    //    if (context.phase == InputActionPhase.Performed)
-    //    {
-    //        Debug.Log("Performed 己傍");
-    //        isItemMoving = true;
-    //        if (_coroutine != null)
-    //            StopCoroutine(_coroutine);
-    //        _coroutine = StartCoroutine(MoveItemCo());
-    //        curMovementInput = context.ReadValue<Vector2>();
+    public void OnMoveItem(InputAction.CallbackContext context)
+    {
+        if (_isPrefabActivated)
+            if (context.phase == InputActionPhase.Performed)
+            {
+                _isItemMoving = true;
+                _curMovementInput = context.ReadValue<Vector3>();
+                if (_coroutine != null)
+                    StopCoroutine(_coroutine);
+                _coroutine = StartCoroutine(MoveItemCo());
+            }
+            else
+            {
+                _isItemMoving = false;
+            }
+    }
 
-    //    }
-    //    else if (context.phase == InputActionPhase.Canceled)
-    //    {
-    //        isItemMoving = false;
-    //        StopCoroutine(_coroutine);
-    //        curMovementInput = Vector2.zero;
-    //    }
-    //}
+    IEnumerator MoveItemCo()
+    {
+        while (_isItemMoving)
+        {
+            Debug.Log("公宏 内风凭");
+            Vector3 dir = _prefabForword * _curMovementInput.z + _prefabRight * _curMovementInput.x + _prefabUp * _curMovementInput.y;
+            dir *= _moveSpeed;
 
-    //IEnumerator MoveItemCo()
-    //{
-    //    Transform itemTransform = _craftedItemPrefab.transform;
-    //    while (isItemMoving)
-    //    {
-    //        Debug.Log("内风凭 己傍");
+            _rigidbody.velocity = dir;
+            yield return new WaitForFixedUpdate();
+        }
+    }
 
-    //        Vector3 dir = itemTransform.forward * curMovementInput.y + itemTransform.right * curMovementInput.x + itemTransform.up * curMovementInput.z;
-    //        dir *= _moveSpeed;
+    public void PlacePrefab()
+    {
+        for(int i = 0; i < _materials.Length; i++)
+        {
+            _materials[i].color = _originMaterials[i].color;
+        }
+        _craftedItemPrefab.GetComponent<Rigidbody>().velocity = Vector3.zero;
+        _craftedItemPrefab = null;
+        _isPrefabActivated = false;
+        _isItemMoving = false;
+        StopCoroutine(_coroutine);
+    }
 
-    //        _rigidbody.velocity = dir;
-    //    }
-    //    yield return null;
-    //}
+    public void ClearPreview()
+    {
+        if (_craftedItemPrefab != null)
+            Destroy(_craftedItemPrefab);
+    }
+
+    
 }

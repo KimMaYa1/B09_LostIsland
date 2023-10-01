@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static UnityEditor.Timeline.TimelinePlaybackControls;
 
 public class CraftingUI : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class CraftingUI : MonoBehaviour
 
     private CraftSlot _craftSlot;
     private PlaceItemControll _placeItemControl;
+    private bool _isPreviewOn = false;
 
     private void Start()
     {
@@ -21,7 +23,7 @@ public class CraftingUI : MonoBehaviour
 
     public void UpdateCraftingUI()
     {
-        for(int i = 0; i <  _craftItemSlots.Length; i++)
+        for (int i = 0; i < _craftItemSlots.Length; i++)
         {
             _craftSlot = _craftItemSlots[i].GetComponent<CraftSlot>();
             if (i < _craftedItems.Length)
@@ -42,13 +44,20 @@ public class CraftingUI : MonoBehaviour
         _craftingCanvas.SetActive(false);
         _craftingCamera.SetActive(true);
         _placeItemControl.PreviewItemView(_craftedItems[slotNumber].itemPrefab);
+        _isPreviewOn = true;
+
     }
 
-    
-
-    private void Build()
+    public void OnBuild(InputAction.CallbackContext context)
     {
-        
+        if (_isPreviewOn == true)
+            if (context.phase == InputActionPhase.Started)
+            {
+                _placeItemControl.PlacePrefab();
+                _craftingCanvas.SetActive(true);
+                _craftingCamera.SetActive(false);
+                _isPreviewOn = false;
+            }
     }
 
 }
