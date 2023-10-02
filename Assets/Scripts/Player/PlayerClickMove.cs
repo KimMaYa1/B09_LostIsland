@@ -41,25 +41,26 @@ public class PlayerClickMove : MonoBehaviour
             {
                 Move();
             }
+            else if (!isJump)
+            {
+                _rigidbody.velocity = Vector3.zero;
+                isItem = false;
+                isInteraction = false;
+            }
 
-            if (_rigidbody.velocity.y == 0)
+            if (IsGrounded())
             {
                 if (isJump)
                 {
-                    _rigidbody.velocity = Vector3.zero;
                     isMove = false;
                     isJump = false;
-                    isItem = false;
-                    isInteraction = false;
-                    isMonster = false;
                 }
             }
-            if (_rigidbody.velocity.y > 0)
-            {
-                isJump = true;
-            }
 
+            Debug.Log(isItem);
+            Debug.Log(isInteraction);
 
+            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(direction), 0.25f);
         }
     }
 
@@ -71,12 +72,6 @@ public class PlayerClickMove : MonoBehaviour
             return;
         }
 
-        if (transform.forward != direction.normalized)
-        {
-            Debug.Log("a");
-            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(direction), 0.25f);
-        }
-
         Vector3 dir = direction.normalized;
         dir *= playerController.playerStat.MoveSpeed;
         dir.y = _rigidbody.velocity.y;
@@ -84,20 +79,13 @@ public class PlayerClickMove : MonoBehaviour
         _rigidbody.velocity = dir;
 
         destination.y = transform.position.y;
-        if (isItem || isInteraction || isMonster)
+        if (isItem || isInteraction)
         {
-            isMove = (transform.position - destination).magnitude > 0.8f;
+            isMove = (transform.position - destination).magnitude > 0.5f;
         }
         else
         {
-            isMove = (transform.position - destination).magnitude > 0.2f;
-        }
-        if (!isMove && !isJump)
-        {
-            _rigidbody.velocity = Vector3.zero;
-            isItem = false;
-            isInteraction = false;
-            isMonster = false;
+            isMove = (transform.position - destination).magnitude > 0.05f;
         }
     }
 
@@ -118,26 +106,18 @@ public class PlayerClickMove : MonoBehaviour
                         destination = new Vector3(hit.point.x, transform.position.y, hit.point.z);
                         direction = destination - transform.position;
 
-                        if (((1 << hit.collider.gameObject.layer) | interactionManager.itemLayerMask) == interactionManager.itemLayerMask)
+                        if(((1<<hit.collider.gameObject.layer)| interactionManager.itemLayerMask) == interactionManager.itemLayerMask)
                         {
                             isItem = true;
                             isInteraction = false;
-                            isMonster = false;
                         }
                         else if (((1 << hit.collider.gameObject.layer) | interactionManager.interactLayerMask) == interactionManager.interactLayerMask)
                         {
                             isInteraction = true;
                             isItem = false;
-                            isMonster = false;
-                        }
-                        else if (((1 << hit.collider.gameObject.layer) | interactionManager.monsterLayerMask) == interactionManager.monsterLayerMask)
-                        {
-                            isMonster = true;
-                            isItem = false;
-                            isInteraction = false;
                         }
                     }
-
+                    
                 }
             }
         }
@@ -150,6 +130,7 @@ public class PlayerClickMove : MonoBehaviour
             if (IsGrounded())
             {
                 _rigidbody.AddForce(Vector2.up * playerController.playerStat.JumpForce, ForceMode.Impulse);
+                isJump = true;
             }
         }
     }

@@ -12,7 +12,6 @@ public class InteractionManager : MonoBehaviour
 
     private GameObject curInteractGameObject;
     private Item curInteractable;
-    private UIManager uiManager;
 
     //public TextMeshProUGUI promptText;
    /* [Header("ItemInfo")]
@@ -31,7 +30,6 @@ public class InteractionManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        uiManager = UIManager.instance;
         camera = Camera.main;
     }
 
@@ -63,7 +61,7 @@ public class InteractionManager : MonoBehaviour
         curInteractGameObject = null;
         curInteractable = null;
         //promptText.gameObject.SetActive(false);
-        uiManager.ClearInteractItem();
+        UIManager.instance.ClearInteractItem();
     }
 
     private void SetPromptText()
@@ -73,7 +71,7 @@ public class InteractionManager : MonoBehaviour
         /*itemInfoObject.SetActive(true);
         itemNameText.text = string.Format(curInteractable.Interactable());
         itemInfoText.text = string.Format(curInteractable.itemDesc);*/
-        uiManager.InteractItem(curInteractable);
+        UIManager.instance.InteractItem(curInteractable);
     }
 
     public void OnInteractInput(InputAction.CallbackContext callbackContext)
@@ -83,7 +81,7 @@ public class InteractionManager : MonoBehaviour
             //curInteractable.OnInteract();
             curInteractGameObject = null;
             curInteractable = null;
-            uiManager.ClearInteractItem();
+            UIManager.instance.ClearInteractItem();
             //promptText.gameObject.SetActive(false);
         }
     }
