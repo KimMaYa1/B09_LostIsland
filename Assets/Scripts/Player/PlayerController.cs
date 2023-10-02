@@ -16,19 +16,11 @@ public class PlayerController : MonoBehaviour
 
     /*[Header("Movemet")]
     private Vector2 curMovementInput;*/
-
-    [Header("Look")]
-    public Transform cameraContainer;
-    public Transform target;
-    public float camRotSpeed;
-    private float camCurYRot;
-
-
-    private Vector2 lookPhase;
+    [Header("Jump")]
+    public float maxJumpRange;
 
     [HideInInspector]
     public static PlayerController instance;
-    public bool canLook = true;
 
     public float delayTime = 0;
     public bool IsAttackDelay = true;
@@ -56,14 +48,7 @@ public class PlayerController : MonoBehaviour
         }*/
     }
 
-    private void LateUpdate()
-    {
-        if (canLook)
-        {
-            CameraLook();
-            cameraContainer.position = transform.position;
-        }
-    }
+    
 
     /*private void Move()
     {
@@ -79,24 +64,7 @@ public class PlayerController : MonoBehaviour
         }
     }*/
 
-    void CameraLook()
-    {
-        camCurYRot += lookPhase.x * camRotSpeed * Time.deltaTime;  
-        cameraContainer.localEulerAngles = new Vector3(0, -camCurYRot, 0);
-        //transform.eulerAngles += new Vector3(0, mouseDelta.x * lookSensitiveity, 0);
-    }
-
-    public void OnLookInput(InputAction.CallbackContext context)
-    {
-        if( context.phase == InputActionPhase.Performed)
-        {
-            lookPhase = context.ReadValue<Vector2>();
-        }
-        else if (context.phase == InputActionPhase.Canceled)
-        {
-            lookPhase = Vector2.zero;
-        }
-    }
+    
 
     /*public void OnMoveInput(InputAction.CallbackContext context)
     {

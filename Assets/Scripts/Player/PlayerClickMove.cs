@@ -59,6 +59,14 @@ public class PlayerClickMove : MonoBehaviour
                         startPos = startPos - center;
                         endPos = endPos - center;
 
+                        destination = new Vector3(hit.point.x, transform.position.y, hit.point.z);
+                        direction = destination - transform.position;
+
+                        if (transform.forward != direction.normalized)
+                        {
+                            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(direction), 0.25f);
+                        }
+
                         for (int i = 0; i < lr.positionCount; i++)
                         {
                             Vector3 point = Vector3.Slerp(startPos, endPos, i / (float)(lr.positionCount - 1));
@@ -145,8 +153,9 @@ public class PlayerClickMove : MonoBehaviour
         {
             Vector3 a = lr.GetPosition(i);
             transform.position = new Vector3(a.x, a.y + 0.95f, a.z);
-            yield return new WaitForSeconds(Time.deltaTime*2.5f);
+            yield return new WaitForSeconds(Time.deltaTime);
         }
+        yield break;
     }
 
     public void OnClickMoveInput(InputAction.CallbackContext context)
@@ -167,9 +176,8 @@ public class PlayerClickMove : MonoBehaviour
 
                         if (isJump)
                         {
-                            transform.rotation = Quaternion.LookRotation(direction);
-                            StartCoroutine(Jump());
                             isJump = false;
+                            StartCoroutine(Jump());
                             return;
                         }
                         isMove = true;
@@ -211,23 +219,38 @@ public class PlayerClickMove : MonoBehaviour
         }
     }
 
-    private bool IsGrounded()
+    public bool IsGrounded()
     {
-        Ray[] rays = new Ray[4]        //앞 뒤 왼 오 에다가 ray만들어서 그라운드와 만나고있는지 확인
+        Ray[] rays = new Ray[8]        //앞 뒤 왼 오 에다가 ray만들어서 그라운드와 만나고있는지 확인
         {
-            new Ray(transform.position + (transform.forward * 0.2f) + (Vector3.up * 0.01f), Vector3.down),
-            new Ray(transform.position + (-transform.forward * 0.2f) + (Vector3.up * 0.01f), Vector3.down),
-            new Ray(transform.position + (transform.right * 0.2f) + (Vector3.up * 0.01f), Vector3.down),
-            new Ray(transform.position + (-transform.right * 0.2f) + (Vector3.up * 0.01f), Vector3.down),
+            new Ray(transform.position + (transform.forward * 0.15f), Vector3.down),
+            new Ray(transform.position + (-transform.forward * 0.15f), Vector3.down),
+            new Ray(transform.position + (transform.right * 0.3f), Vector3.down),
+            new Ray(transform.position + (-transform.right * 0.3f), Vector3.down),
+            new Ray(transform.position + (transform.right * 0.3f) + (transform.forward * 0.15f), Vector3.down),
+            new Ray(transform.position + (transform.right * 0.3f) + (-transform.forward * 0.15f), Vector3.down),
+            new Ray(transform.position + (-transform.right * 0.3f) + (transform.forward * 0.15f), Vector3.down),
+            new Ray(transform.position + (-transform.right * 0.3f) + (-transform.forward * 0.15f), Vector3.down),
         };
+
+        Drw(rays);
+
         for (int i = 0; i < rays.Length; i++)
         {
-            if (Physics.Raycast(rays[i], 1.5f, groundLayerMask))
+            if (Physics.Raycast(rays[i], 1f, groundLayerMask))
             {
                 return true;
             }
         }
 
         return false;
+    }
+
+    private void Drw(Ray[] rays)
+    {
+        for(int i = 0; i < rays.Length; i++)
+        {
+            Debug.DrawRay(rays[i].origin, Vector3.down, Color.red, 1f);
+        }
     }
 }
