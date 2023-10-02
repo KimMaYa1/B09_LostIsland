@@ -73,10 +73,6 @@ public class UIManager : MonoBehaviour
 
         _interactX = Input.mousePosition.x;
         _interactY = Input.mousePosition.y;
-        //_interactX = _interactX > Screen.width / 2 ? _interactX - _interactWidth / 2 : _interactX - _interactWidth / 2;
-        //_interactY = _interactY > Screen.height / 2 ? _interactY - _interactHeight / 2 : _interactY - _interactHeight / 2;
-        //_interactX = _interactX > Screen.width / 2 ? _interactX - 50f : _interactX + 50f;
-        //_interactY = _interactY > Screen.height / 2 ? _interactY - 10f : _interactY + 10f;
         _interactX = _interactX > Screen.width / 2 ? _interactX - x / 2 : _interactX + x / 2;
         _interactY = _interactY > Screen.height / 2 ? _interactY - y / 2 : _interactY + y / 2;
         _uiItemInteract.transform.position = new Vector2(_interactX, _interactY);

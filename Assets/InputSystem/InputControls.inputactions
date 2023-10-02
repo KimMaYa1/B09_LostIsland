@@ -311,7 +311,7 @@
             ],
             "bindings": [
                 {
-                    "name": "WASD/Ctrl/Shift",
+                    "name": "8456/Ctrl/Shift",
                     "id": "f85f23c0-1ae4-4c5b-9496-90bbc96cee48",
                     "path": "3DVector",
                     "interactions": "",
@@ -346,7 +346,7 @@
                 {
                     "name": "Left",
                     "id": "d2e2b146-fdc3-459e-9660-a87ab40c15cc",
-                    "path": "<Keyboard>/a",
+                    "path": "<Keyboard>/numpad4",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -357,7 +357,7 @@
                 {
                     "name": "Right",
                     "id": "8f6e4db2-3e6a-4687-979b-aa8423c107fa",
-                    "path": "<Keyboard>/d",
+                    "path": "<Keyboard>/numpad6",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -368,7 +368,7 @@
                 {
                     "name": "Forward",
                     "id": "f3fee11b-8cb5-48f5-80b5-5416e7b6d0b0",
-                    "path": "<Keyboard>/w",
+                    "path": "<Keyboard>/numpad8",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -379,7 +379,7 @@
                 {
                     "name": "Backward",
                     "id": "676583de-bf2d-4721-9fd1-319231067a02",
-                    "path": "<Keyboard>/s",
+                    "path": "<Keyboard>/numpad5",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -390,7 +390,7 @@
                 {
                     "name": "",
                     "id": "0290d330-7182-4b9a-b1f8-288a793aa837",
-                    "path": "<Keyboard>/enter",
+                    "path": "<Keyboard>/numpadEnter",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -401,7 +401,18 @@
                 {
                     "name": "",
                     "id": "9cf26ed5-193c-4191-9e2c-6955fa84bf57",
-                    "path": "<Keyboard>/r",
+                    "path": "<Keyboard>/numpad7",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RotateItem",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9b76bcc5-646d-4488-b16a-f7fce6e16e04",
+                    "path": "<Keyboard>/numpad9",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
