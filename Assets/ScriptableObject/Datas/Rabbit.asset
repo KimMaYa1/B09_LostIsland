@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Rabbit
   m_EditorClassIdentifier: 
   isAttack: 0
-  moveSpeed: 3
+  moveSpeed: 2
   runSpeed: 3
   power: 0
   health: 30
