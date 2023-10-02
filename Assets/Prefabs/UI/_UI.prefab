@@ -3430,7 +3430,6 @@ GameObject:
   - component: {fileID: 3872412056414909221}
   - component: {fileID: 2788438341480402037}
   - component: {fileID: 2697504841181352213}
-  - component: {fileID: 6252854931866902671}
   m_Layer: 5
   m_Name: Inventory_Canvas
   m_TagString: Untagged
@@ -3524,25 +3523,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &6252854931866902671
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8218287664290083714}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fba3e0ffc6bdd2041802d4eb2321b509, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  go_InventoryBase: {fileID: 7990205403216754838}
-  go_SlotsParent: {fileID: 8708120702621401849}
-  startItems:
-  - {fileID: 11400000, guid: 2577707984cf40a4c9d41ae889982b00, type: 2}
-  - {fileID: 11400000, guid: 2577707984cf40a4c9d41ae889982b00, type: 2}
-  - {fileID: 11400000, guid: 2577707984cf40a4c9d41ae889982b00, type: 2}
-  - {fileID: 11400000, guid: 2577707984cf40a4c9d41ae889982b00, type: 2}
 --- !u!1 &8249698652618782696
 GameObject:
   m_ObjectHideFlags: 0
@@ -4141,10 +4121,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5234557386676267504}
     - target: {fileID: 2323724925897909293, guid: fe5d5cd5778141041bc1d02df1081d51, type: 3}
-      propertyPath: inventory
-      value: 
-      objectReference: {fileID: 6252854931866902671}
-    - target: {fileID: 2323724925897909293, guid: fe5d5cd5778141041bc1d02df1081d51, type: 3}
       propertyPath: quickSlotBaseRect
       value: 
       objectReference: {fileID: 5661513848919912593}
@@ -4287,10 +4263,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5234557386676267504}
     - target: {fileID: 2323724925897909293, guid: fe5d5cd5778141041bc1d02df1081d51, type: 3}
-      propertyPath: inventory
-      value: 
-      objectReference: {fileID: 6252854931866902671}
-    - target: {fileID: 2323724925897909293, guid: fe5d5cd5778141041bc1d02df1081d51, type: 3}
       propertyPath: quickSlotBaseRect
       value: 
       objectReference: {fileID: 5661513848919912593}
@@ -4432,10 +4404,6 @@ PrefabInstance:
       propertyPath: baseRect
       value: 
       objectReference: {fileID: 5234557386676267504}
-    - target: {fileID: 2323724925897909293, guid: fe5d5cd5778141041bc1d02df1081d51, type: 3}
-      propertyPath: inventory
-      value: 
-      objectReference: {fileID: 6252854931866902671}
     - target: {fileID: 2323724925897909293, guid: fe5d5cd5778141041bc1d02df1081d51, type: 3}
       propertyPath: quickSlotBaseRect
       value: 
@@ -4694,10 +4662,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5234557386676267504}
     - target: {fileID: 2323724925897909293, guid: fe5d5cd5778141041bc1d02df1081d51, type: 3}
-      propertyPath: inventory
-      value: 
-      objectReference: {fileID: 6252854931866902671}
-    - target: {fileID: 2323724925897909293, guid: fe5d5cd5778141041bc1d02df1081d51, type: 3}
       propertyPath: quickSlotBaseRect
       value: 
       objectReference: {fileID: 5661513848919912593}
@@ -4839,10 +4803,6 @@ PrefabInstance:
       propertyPath: baseRect
       value: 
       objectReference: {fileID: 5234557386676267504}
-    - target: {fileID: 2323724925897909293, guid: fe5d5cd5778141041bc1d02df1081d51, type: 3}
-      propertyPath: inventory
-      value: 
-      objectReference: {fileID: 6252854931866902671}
     - target: {fileID: 2323724925897909293, guid: fe5d5cd5778141041bc1d02df1081d51, type: 3}
       propertyPath: quickSlotBaseRect
       value: 
@@ -4986,10 +4946,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5234557386676267504}
     - target: {fileID: 2323724925897909293, guid: fe5d5cd5778141041bc1d02df1081d51, type: 3}
-      propertyPath: inventory
-      value: 
-      objectReference: {fileID: 6252854931866902671}
-    - target: {fileID: 2323724925897909293, guid: fe5d5cd5778141041bc1d02df1081d51, type: 3}
       propertyPath: quickSlotBaseRect
       value: 
       objectReference: {fileID: 5661513848919912593}
@@ -5131,10 +5087,6 @@ PrefabInstance:
       propertyPath: baseRect
       value: 
       objectReference: {fileID: 5234557386676267504}
-    - target: {fileID: 2323724925897909293, guid: fe5d5cd5778141041bc1d02df1081d51, type: 3}
-      propertyPath: inventory
-      value: 
-      objectReference: {fileID: 6252854931866902671}
     - target: {fileID: 2323724925897909293, guid: fe5d5cd5778141041bc1d02df1081d51, type: 3}
       propertyPath: quickSlotBaseRect
       value: 
@@ -5397,10 +5349,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5234557386676267504}
     - target: {fileID: 2323724925897909293, guid: fe5d5cd5778141041bc1d02df1081d51, type: 3}
-      propertyPath: inventory
-      value: 
-      objectReference: {fileID: 6252854931866902671}
-    - target: {fileID: 2323724925897909293, guid: fe5d5cd5778141041bc1d02df1081d51, type: 3}
       propertyPath: quickSlotBaseRect
       value: 
       objectReference: {fileID: 5661513848919912593}
@@ -5542,10 +5490,6 @@ PrefabInstance:
       propertyPath: baseRect
       value: 
       objectReference: {fileID: 5234557386676267504}
-    - target: {fileID: 2323724925897909293, guid: fe5d5cd5778141041bc1d02df1081d51, type: 3}
-      propertyPath: inventory
-      value: 
-      objectReference: {fileID: 6252854931866902671}
     - target: {fileID: 2323724925897909293, guid: fe5d5cd5778141041bc1d02df1081d51, type: 3}
       propertyPath: quickSlotBaseRect
       value: 
@@ -5692,10 +5636,6 @@ PrefabInstance:
       propertyPath: baseRect
       value: 
       objectReference: {fileID: 5234557386676267504}
-    - target: {fileID: 2323724925897909293, guid: fe5d5cd5778141041bc1d02df1081d51, type: 3}
-      propertyPath: inventory
-      value: 
-      objectReference: {fileID: 6252854931866902671}
     - target: {fileID: 2323724925897909293, guid: fe5d5cd5778141041bc1d02df1081d51, type: 3}
       propertyPath: quickSlotBaseRect
       value: 
@@ -5958,10 +5898,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5234557386676267504}
     - target: {fileID: 2323724925897909293, guid: fe5d5cd5778141041bc1d02df1081d51, type: 3}
-      propertyPath: inventory
-      value: 
-      objectReference: {fileID: 6252854931866902671}
-    - target: {fileID: 2323724925897909293, guid: fe5d5cd5778141041bc1d02df1081d51, type: 3}
       propertyPath: quickSlotBaseRect
       value: 
       objectReference: {fileID: 5661513848919912593}
@@ -6103,10 +6039,6 @@ PrefabInstance:
       propertyPath: baseRect
       value: 
       objectReference: {fileID: 5234557386676267504}
-    - target: {fileID: 2323724925897909293, guid: fe5d5cd5778141041bc1d02df1081d51, type: 3}
-      propertyPath: inventory
-      value: 
-      objectReference: {fileID: 6252854931866902671}
     - target: {fileID: 2323724925897909293, guid: fe5d5cd5778141041bc1d02df1081d51, type: 3}
       propertyPath: quickSlotBaseRect
       value: 
@@ -6250,10 +6182,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5234557386676267504}
     - target: {fileID: 2323724925897909293, guid: fe5d5cd5778141041bc1d02df1081d51, type: 3}
-      propertyPath: inventory
-      value: 
-      objectReference: {fileID: 6252854931866902671}
-    - target: {fileID: 2323724925897909293, guid: fe5d5cd5778141041bc1d02df1081d51, type: 3}
       propertyPath: quickSlotBaseRect
       value: 
       objectReference: {fileID: 5661513848919912593}
@@ -6395,10 +6323,6 @@ PrefabInstance:
       propertyPath: baseRect
       value: 
       objectReference: {fileID: 5234557386676267504}
-    - target: {fileID: 2323724925897909293, guid: fe5d5cd5778141041bc1d02df1081d51, type: 3}
-      propertyPath: inventory
-      value: 
-      objectReference: {fileID: 6252854931866902671}
     - target: {fileID: 2323724925897909293, guid: fe5d5cd5778141041bc1d02df1081d51, type: 3}
       propertyPath: quickSlotBaseRect
       value: 
@@ -6660,10 +6584,6 @@ PrefabInstance:
       propertyPath: baseRect
       value: 
       objectReference: {fileID: 5234557386676267504}
-    - target: {fileID: 2323724925897909293, guid: fe5d5cd5778141041bc1d02df1081d51, type: 3}
-      propertyPath: inventory
-      value: 
-      objectReference: {fileID: 6252854931866902671}
     - target: {fileID: 2323724925897909293, guid: fe5d5cd5778141041bc1d02df1081d51, type: 3}
       propertyPath: quickSlotBaseRect
       value: 
@@ -7163,10 +7083,6 @@ PrefabInstance:
       propertyPath: baseRect
       value: 
       objectReference: {fileID: 5234557386676267504}
-    - target: {fileID: 2323724925897909293, guid: fe5d5cd5778141041bc1d02df1081d51, type: 3}
-      propertyPath: inventory
-      value: 
-      objectReference: {fileID: 6252854931866902671}
     - target: {fileID: 2323724925897909293, guid: fe5d5cd5778141041bc1d02df1081d51, type: 3}
       propertyPath: quickSlotBaseRect
       value: 
@@ -7671,10 +7587,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5234557386676267504}
     - target: {fileID: 2323724925897909293, guid: fe5d5cd5778141041bc1d02df1081d51, type: 3}
-      propertyPath: inventory
-      value: 
-      objectReference: {fileID: 6252854931866902671}
-    - target: {fileID: 2323724925897909293, guid: fe5d5cd5778141041bc1d02df1081d51, type: 3}
       propertyPath: quickSlotBaseRect
       value: 
       objectReference: {fileID: 5661513848919912593}
@@ -7817,10 +7729,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5234557386676267504}
     - target: {fileID: 2323724925897909293, guid: fe5d5cd5778141041bc1d02df1081d51, type: 3}
-      propertyPath: inventory
-      value: 
-      objectReference: {fileID: 6252854931866902671}
-    - target: {fileID: 2323724925897909293, guid: fe5d5cd5778141041bc1d02df1081d51, type: 3}
       propertyPath: quickSlotBaseRect
       value: 
       objectReference: {fileID: 5661513848919912593}
@@ -7962,10 +7870,6 @@ PrefabInstance:
       propertyPath: baseRect
       value: 
       objectReference: {fileID: 5234557386676267504}
-    - target: {fileID: 2323724925897909293, guid: fe5d5cd5778141041bc1d02df1081d51, type: 3}
-      propertyPath: inventory
-      value: 
-      objectReference: {fileID: 6252854931866902671}
     - target: {fileID: 2323724925897909293, guid: fe5d5cd5778141041bc1d02df1081d51, type: 3}
       propertyPath: quickSlotBaseRect
       value: 
