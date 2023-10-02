@@ -82,6 +82,11 @@ public class PlayerClickMove : MonoBehaviour
                 lr.enabled = false;
             }
 
+            if (isMonster)
+            {
+                Attack();
+            }
+
             if (isMove)
             {
                 Move();
@@ -113,6 +118,17 @@ public class PlayerClickMove : MonoBehaviour
         }
     }
 
+    private void Attack()
+    {
+        Ray ray = new Ray(transform.position + (transform.forward * 0.15f) + (-transform.up * 0.5f), Vector3.forward);
+        RaycastHit hit;
+
+        if(Physics.Raycast(ray, out hit, 0.8f))
+        {
+
+        }
+    }
+
     private void Move()
     {
         if (Vector3.Distance(destination, transform.position) <= 0.1f)
@@ -135,7 +151,7 @@ public class PlayerClickMove : MonoBehaviour
         destination.y = transform.position.y;
 
         float a = 0;
-        if (isItem || isInteraction || isMonster)
+        if (isItem || isInteraction)
         {
             a = 0.8f;
         }
@@ -185,20 +201,14 @@ public class PlayerClickMove : MonoBehaviour
                         if (((1 << hit.collider.gameObject.layer) | interactionManager.itemLayerMask) == interactionManager.itemLayerMask)
                         {
                             isItem = true;
-                            isInteraction = false;
-                            isMonster = false;
                         }
                         else if (((1 << hit.collider.gameObject.layer) | interactionManager.interactLayerMask) == interactionManager.interactLayerMask)
                         {
                             isInteraction = true;
-                            isItem = false;
-                            isMonster = false;
                         }
                         else if (((1 << hit.collider.gameObject.layer) | interactionManager.monsterLayerMask) == interactionManager.monsterLayerMask)
                         {
                             isMonster = true;
-                            isItem = false;
-                            isInteraction = false;
                         }
                     }
 
@@ -233,8 +243,6 @@ public class PlayerClickMove : MonoBehaviour
             new Ray(transform.position + (-transform.right * 0.3f) + (-transform.forward * 0.15f), Vector3.down),
         };
 
-        Drw(rays);
-
         for (int i = 0; i < rays.Length; i++)
         {
             if (Physics.Raycast(rays[i], 1f, groundLayerMask))
@@ -244,13 +252,5 @@ public class PlayerClickMove : MonoBehaviour
         }
 
         return false;
-    }
-
-    private void Drw(Ray[] rays)
-    {
-        for(int i = 0; i < rays.Length; i++)
-        {
-            Debug.DrawRay(rays[i].origin, Vector3.down, Color.red, 1f);
-        }
     }
 }
