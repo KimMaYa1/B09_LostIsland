@@ -2,11 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Hand : MonoBehaviour
+public class CloseWeapon : MonoBehaviour
 {
-    public string handName; // 맨손or맨손장비(같은 모션)
-    public float range; // 맨손류 공격범위
-    public float damage; // 맨손류 공격력
+    public string closeWeaponName; // 근접 무기 이름
+
+    //근접 무기 종류 bool
+    public bool isHand;
+    public bool isOneHanded_Sword;
+    public bool isTwoHanded_Sword;
+
+
+    public float range; // 공격범위
+    public float damage; // 공격력
     public float attackDelay; // 공격 딜레이(공격 속도)
 
     //무기를 다 휘두르면 공격 판정
