@@ -18,10 +18,11 @@ public class PlayerClickMove : MonoBehaviour
     private bool isInteraction;
     private bool isMonster;
     private bool isJump = false;
-
+    Vector3 startPos, endPos;
+    LineRenderer lr;
     private void Awake()
     {
-
+        lr = GetComponent<LineRenderer>();
         _rigidbody = GetComponent<Rigidbody>();
         interactionManager = GetComponent<InteractionManager>();
     }
@@ -37,12 +38,55 @@ public class PlayerClickMove : MonoBehaviour
     {
         if (playerController.IsAttackDelay)
         {
+            if (isJump)
+            {
+                isMove = false;
+                lr.enabled = true;
+                Ray ray = camera.ScreenPointToRay(Input.mousePosition);
+                RaycastHit hit;
+
+                if (Physics.Raycast(ray, out hit, 100f))
+                {
+                    if (hit.collider.gameObject.layer != gameObject.layer)
+                    {
+                        startPos = new Vector3(transform.position.x, transform.position.y - 0.95f, transform.position.z);
+                        endPos = hit.point;
+
+                        Vector3 center = (startPos + endPos) * 0.5f;
+
+                        center.y -= 3;
+
+                        startPos = startPos - center;
+                        endPos = endPos - center;
+
+                        for (int i = 0; i < lr.positionCount; i++)
+                        {
+                            Vector3 point = Vector3.Slerp(startPos, endPos, i / (float)(lr.positionCount - 1));
+                            point += center;
+
+                            lr.SetPosition(i, point);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                lr.enabled = false;
+            }
+
             if (isMove)
             {
                 Move();
             }
+            else
+            {
+                _rigidbody.velocity = Vector3.zero;
+                isItem = false;
+                isInteraction = false;
+                isMonster = false;
+            }
 
-            if (_rigidbody.velocity.y == 0)
+            /*if (_rigidbody.velocity.y == 0)
             {
                 if (isJump)
                 {
@@ -57,9 +101,7 @@ public class PlayerClickMove : MonoBehaviour
             if (_rigidbody.velocity.y > 0)
             {
                 isJump = true;
-            }
-
-
+            }*/
         }
     }
 
@@ -84,20 +126,27 @@ public class PlayerClickMove : MonoBehaviour
         _rigidbody.velocity = dir;
 
         destination.y = transform.position.y;
+
+        float a = 0;
         if (isItem || isInteraction || isMonster)
         {
-            isMove = (transform.position - destination).magnitude > 0.8f;
+            a = 0.8f;
         }
         else
         {
-            isMove = (transform.position - destination).magnitude > 0.2f;
+            a = 0.2f;
         }
-        if (!isMove && !isJump)
+
+        isMove = (transform.position - destination).magnitude > a;
+    }
+
+    private IEnumerator Jump()
+    {
+        for (int i = 0; i < lr.positionCount; i++)
         {
-            _rigidbody.velocity = Vector3.zero;
-            isItem = false;
-            isInteraction = false;
-            isMonster = false;
+            Vector3 a = lr.GetPosition(i);
+            transform.position = new Vector3(a.x, a.y + 0.95f, a.z);
+            yield return new WaitForSeconds(Time.deltaTime*2.5f);
         }
     }
 
@@ -114,9 +163,18 @@ public class PlayerClickMove : MonoBehaviour
                 {
                     if (hit.collider.gameObject.layer != gameObject.layer)
                     {
-                        isMove = true;
                         destination = new Vector3(hit.point.x, transform.position.y, hit.point.z);
                         direction = destination - transform.position;
+
+                        if (isJump)
+                        {
+                            direction.y = transform.position.y;
+                            transform.LookAt(direction);
+                            StartCoroutine(Jump());
+                            isJump = false;
+                            return;
+                        }
+                        isMove = true;
 
                         if (((1 << hit.collider.gameObject.layer) | interactionManager.itemLayerMask) == interactionManager.itemLayerMask)
                         {
@@ -149,7 +207,8 @@ public class PlayerClickMove : MonoBehaviour
         {
             if (IsGrounded())
             {
-                _rigidbody.AddForce(Vector2.up * playerController.playerStat.JumpForce, ForceMode.Impulse);
+                /*_rigidbody.AddForce(Vector2.up * playerController.playerStat.JumpForce, ForceMode.Impulse);*/
+                isJump = true;
             }
         }
     }
