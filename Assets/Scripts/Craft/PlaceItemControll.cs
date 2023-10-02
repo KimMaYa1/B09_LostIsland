@@ -1,4 +1,6 @@
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -28,8 +30,8 @@ public class PlaceItemControll : MonoBehaviour
     private Coroutine _coroutine;
     private Rigidbody _rigidbody;
     private MeshRenderer _meshRenderer;
-    private Material[] _materials;
-    private Material[] _originMaterials;
+    private List<Material> _materials = new List<Material>();
+    private List<Color> _originColors = new List<Color>();
 
     private void Start()
     {
@@ -51,10 +53,17 @@ public class PlaceItemControll : MonoBehaviour
         CraftedCameraUpdate();
         if (_craftedItemPrefab == null)
             _craftedItemPrefab = Instantiate(itemPrefab, _playerTransform.position + _playerTransform.forward, Quaternion.identity);
+
         _meshRenderer = _craftedItemPrefab.GetComponent<MeshRenderer>();
-        _materials = _meshRenderer.materials;
-        _originMaterials = (Material[])_materials.Clone();
+        _materials.Clear();
+        _materials = _meshRenderer.materials.ToList();
+        _originColors.Clear();
+        for (int i = 0; i < _materials.Count; i++)
+        {
+            _originColors.Add(_materials[i].color);
+        }
         SetColor(Color.green);
+
         _rigidbody = _craftedItemPrefab.GetComponent<Rigidbody>();
         _isPrefabActivated = true;
         PrefabPositionUpdate();
@@ -80,7 +89,17 @@ public class PlaceItemControll : MonoBehaviour
     {
         foreach (Material mat in _materials)
         {
-            mat.SetColor("Color", color);
+            Debug.Log("Ä®¶ó ¼¼ÆÃ");
+            mat.SetColor("_Color", color);
+        }
+    }
+
+    private void ReSetColor()
+    {
+        for (int i = 0; i < _materials.Count; i++)
+        {
+            Debug.Log("Ä®¶ó µÇµ¹¸®±â");
+            _materials[i].color = _originColors[i];
         }
     }
 
@@ -116,21 +135,22 @@ public class PlaceItemControll : MonoBehaviour
 
     public void PlacePrefab()
     {
-        for(int i = 0; i < _materials.Length; i++)
-        {
-            _materials[i].color = _originMaterials[i].color;
-        }
+        ReSetColor();
         _craftedItemPrefab.GetComponent<Rigidbody>().velocity = Vector3.zero;
         _craftedItemPrefab = null;
         _isPrefabActivated = false;
         _isItemMoving = false;
-        StopCoroutine(_coroutine);
+        if (_coroutine != null)
+            StopCoroutine(_coroutine);
     }
 
     public void ClearPreview()
     {
         if (_craftedItemPrefab != null)
+        {
+            ReSetColor();
             Destroy(_craftedItemPrefab);
+        }
     }
 
     
