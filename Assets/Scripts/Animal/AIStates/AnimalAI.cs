@@ -32,6 +32,7 @@ public class AnimalAI : MonoBehaviour
     private State _state;
     // navMesh
     public NavMeshAgent nav;
+    public LayerMask playerLayerMask;
 
     void Awake()
     {

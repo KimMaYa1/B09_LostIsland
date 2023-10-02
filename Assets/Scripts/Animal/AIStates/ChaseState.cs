@@ -25,6 +25,7 @@ public class ChaseState : IState
     public void Exit()
     {
         _isChase = false;
+        delaysecond = 0f;
     }
 
     public void Stay()
@@ -38,8 +39,6 @@ public class ChaseState : IState
             _Animals.States = AnimalAI.State.Idle;
         }
         //쫓는 것 구현  플레이어 위치 받아와야 함
-
-        CheckArrival();
     }
     
     public void ChaseTarget()
@@ -66,7 +65,10 @@ public class ChaseState : IState
             float angleToHit = Vector3.Angle(leftDirection, hitDirection);
             if (angleToHit <= halfAngle)
             {
-                _Animals.States = AnimalAI.State.Attack;
+                if(((1 << hit.collider.gameObject.layer) | _Animals.playerLayerMask) == _Animals.playerLayerMask)
+                {
+                    _Animals.States = AnimalAI.State.Attack;
+                }
             }
         }
     }
