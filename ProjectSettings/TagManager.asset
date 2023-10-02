@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Itme
   - Weapon
+  - Rock
   layers:
   - Default
   - TransparentFX
@@ -17,7 +18,7 @@ TagManager:
   - Interaction
   - Item
   - Monster
-  - 
+  - Mine
   - 
   - 
   - 
