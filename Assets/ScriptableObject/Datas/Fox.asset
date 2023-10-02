@@ -18,4 +18,4 @@ MonoBehaviour:
   power: 0
   health: 20
   range: 20
-  attackRange: 3
+  attackRange: 2

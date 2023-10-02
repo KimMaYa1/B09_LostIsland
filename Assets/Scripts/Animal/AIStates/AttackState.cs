@@ -6,6 +6,8 @@ public class AttackState : IState
 {
     private AnimalAI _Animals;
     private AnimalStats _AnimalStats;
+
+    float delaysecond = 0f;
     public AttackState(AnimalAI animalAI, AnimalStats animalStats)
     {
         _Animals = animalAI;
@@ -23,7 +25,8 @@ public class AttackState : IState
 
     public void Stay()
     {
-        if(Vector3.Distance(_Animals.transform.position, GameManager.Instance.PlayerObj.transform.position) >= _AnimalStats.animalSO.attackRange)
+        delaysecond += Time.deltaTime;
+        if (Vector3.Distance(_Animals.transform.position, GameManager.Instance.PlayerObj.transform.position) >= _AnimalStats.animalSO.attackRange && delaysecond > 2f)
         {
             _Animals.States = AnimalAI.State.Chase;
         }
