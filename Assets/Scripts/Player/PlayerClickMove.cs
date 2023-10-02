@@ -14,6 +14,7 @@ public class PlayerClickMove : MonoBehaviour
     private Rigidbody _rigidbody;
     private bool isMove;
     public LayerMask groundLayerMask;
+    public LayerMask jumpLayerMask;
     private bool isItem;
     private bool isInteraction;
     private bool isMonster;
@@ -165,6 +166,17 @@ public class PlayerClickMove : MonoBehaviour
 
     private IEnumerator Jump()
     {
+        for(int i = 0; i < lr.positionCount-1; i++)
+        {
+            Ray ray = new Ray(lr.GetPosition(i), lr.GetPosition(i+1));
+            RaycastHit hit;
+
+            if(Physics.Raycast(ray, out hit, Vector3.Distance(lr.GetPosition(i), lr.GetPosition(i + 1)), jumpLayerMask))
+            {
+                yield break;
+            }
+        }
+
         for (int i = 0; i < lr.positionCount; i++)
         {
             Vector3 a = lr.GetPosition(i);
