@@ -25,14 +25,11 @@ public class InteractionManager : MonoBehaviour
     public Texture2D interactionCurSor;
     public Texture2D attackCurSor;
 
-    private Camera camera;
-
 
     // Start is called before the first frame update
     void Start()
     {
         uiManager = UIManager.instance;
-        camera = Camera.main;
     }
 
     // Update is called once per frame
