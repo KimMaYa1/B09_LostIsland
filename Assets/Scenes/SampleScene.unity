@@ -18366,57 +18366,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1132485996}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1138693427
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1138693428}
-  - component: {fileID: 1138693429}
-  m_Layer: 0
-  m_Name: Inventory
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1138693428
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1138693427}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 411.93036, y: 24.088867, z: 235.3565}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 11
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1138693429
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1138693427}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fba3e0ffc6bdd2041802d4eb2321b509, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  go_InventoryBase: {fileID: 1043755057}
-  go_SlotsParent: {fileID: 1043755056}
-  startItems:
-  - {fileID: 11400000, guid: 2577707984cf40a4c9d41ae889982b00, type: 2}
-  - {fileID: 11400000, guid: 2577707984cf40a4c9d41ae889982b00, type: 2}
-  - {fileID: 11400000, guid: 2577707984cf40a4c9d41ae889982b00, type: 2}
-  - {fileID: 11400000, guid: 2577707984cf40a4c9d41ae889982b00, type: 2}
 --- !u!1 &1140953790
 GameObject:
   m_ObjectHideFlags: 0
@@ -35173,18 +35122,14 @@ PrefabInstance:
       propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1043755055}
-    - target: {fileID: 6372547845263463851, guid: 6014f7a8fc032bb479debb7142dbeb18, type: 3}
-      propertyPath: inventory
+    - target: {fileID: 6591577948329681749, guid: 6014f7a8fc032bb479debb7142dbeb18, type: 3}
+      propertyPath: go_SlotsParent
       value: 
-      objectReference: {fileID: 1138693429}
-    - target: {fileID: 6372547845263463851, guid: 6014f7a8fc032bb479debb7142dbeb18, type: 3}
-      propertyPath: jumpLayerMask.m_Bits
-      value: 943
-      objectReference: {fileID: 0}
-    - target: {fileID: 6372547845263463851, guid: 6014f7a8fc032bb479debb7142dbeb18, type: 3}
-      propertyPath: groundLayerMask.m_Bits
-      value: 959
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1043755056}
+    - target: {fileID: 6591577948329681749, guid: 6014f7a8fc032bb479debb7142dbeb18, type: 3}
+      propertyPath: go_InventoryBase
+      value: 
+      objectReference: {fileID: 1043755057}
     - target: {fileID: 7697404290593924621, guid: 6014f7a8fc032bb479debb7142dbeb18, type: 3}
       propertyPath: m_RootOrder
       value: 2
