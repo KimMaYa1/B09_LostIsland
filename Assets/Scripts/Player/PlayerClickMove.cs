@@ -115,7 +115,6 @@ public class PlayerClickMove : MonoBehaviour
 
         if (transform.forward != direction.normalized)
         {
-            Debug.Log("a");
             transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(direction), 0.25f);
         }
 
