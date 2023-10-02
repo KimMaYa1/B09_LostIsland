@@ -27160,6 +27160,9 @@ MonoBehaviour:
   groundLayerMask:
     serializedVersion: 2
     m_Bits: 959
+  jumpLayerMask:
+    serializedVersion: 2
+    m_Bits: 935
 --- !u!114 &1591363911
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27177,7 +27180,7 @@ MonoBehaviour:
     m_Bits: 128
   itemLayerMask:
     serializedVersion: 2
-    m_Bits: 384
+    m_Bits: 256
   monsterLayerMask:
     serializedVersion: 2
     m_Bits: 512
