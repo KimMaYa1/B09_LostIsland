@@ -80,7 +80,7 @@ public class PlayerClickMove : MonoBehaviour
             }
             else
             {
-                _rigidbody.velocity = Vector3.zero;
+                _rigidbody.velocity = new Vector3(0, _rigidbody.velocity.y, 0);
                 isItem = false;
                 isInteraction = false;
                 isMonster = false;
@@ -223,7 +223,7 @@ public class PlayerClickMove : MonoBehaviour
         };
         for (int i = 0; i < rays.Length; i++)
         {
-            if (Physics.Raycast(rays[i], 1f, groundLayerMask))
+            if (Physics.Raycast(rays[i], 1.5f, groundLayerMask))
             {
                 return true;
             }

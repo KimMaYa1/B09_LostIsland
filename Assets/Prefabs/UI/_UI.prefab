@@ -347,6 +347,7 @@ GameObject:
   - component: {fileID: 6311492645783915073}
   - component: {fileID: 8677944023508873940}
   - component: {fileID: 3015532586461815691}
+  - component: {fileID: 4780223134648601810}
   m_Layer: 5
   m_Name: _UI
   m_TagString: Untagged
@@ -371,7 +372,7 @@ Transform:
   - {fileID: 6511338156990411213}
   - {fileID: 3617847817922665385}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6311492645783915073
 MonoBehaviour:
@@ -523,6 +524,22 @@ MonoBehaviour:
   m_DefaultActionMap: PlaceItem
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &4780223134648601810
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 681031509938764769}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 047cebc48b6f97b40a01d7b9222b07b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _uiPrefab: {fileID: 681031509938764769}
+  _uiInventory: {fileID: 8218287664290083714}
+  _uiCrafting: {fileID: 1531486828200857875}
+  _uiItemInteract: {fileID: 5071396047194733091}
 --- !u!1 &1355446887523241175
 GameObject:
   m_ObjectHideFlags: 0
