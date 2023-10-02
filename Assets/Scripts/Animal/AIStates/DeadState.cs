@@ -24,6 +24,7 @@ public class DeadState : IState
     public void Stay()
     {
         //¸ó½ºÅÍ Á×À½
+        Debug.Log("Á×À½");
         _Animals.DeadAnimal();
     }
 }

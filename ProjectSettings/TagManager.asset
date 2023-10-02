@@ -5,7 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Itme
-  - Rock
+  - Weapon
   layers:
   - Default
   - TransparentFX
@@ -16,8 +16,8 @@ TagManager:
   - Player
   - Interaction
   - Item
-  - Monster
-  - Resource
+  - 
+  - 
   - 
   - 
   - 
