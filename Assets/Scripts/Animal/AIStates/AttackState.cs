@@ -6,6 +6,8 @@ public class AttackState : IState
 {
     private AnimalAI _Animals;
     private AnimalStats _AnimalStats;
+
+    float delaysecond = 0f;
     public AttackState(AnimalAI animalAI, AnimalStats animalStats)
     {
         _Animals = animalAI;
@@ -13,20 +15,23 @@ public class AttackState : IState
     }
     public void Enter()
     {
+        Debug.Log("Attack Enter!");
         _Animals.PlayAnimation(AnimalAI.State.Attack);
+        _Animals.nav.isStopped = true;
     }
 
     public void Exit()
     {
-        throw new System.NotImplementedException();
+        _Animals.nav.isStopped = false;
+        delaysecond = 0f;
     }
 
     public void Stay()
     {
-        if (_Animals.IsDeadCheck(_AnimalStats))
+        delaysecond += Time.deltaTime;
+        if (delaysecond > 1.0f)
         {
-            _Animals.States = AnimalAI.State.Dead;
+            _Animals.States = AnimalAI.State.Chase;
         }
-        throw new System.NotImplementedException();
     }
 }

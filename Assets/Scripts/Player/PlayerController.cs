@@ -11,27 +11,23 @@ public class PlayerController : MonoBehaviour
 {
     public PlayerStat playerStat;
 
+    [Header("Test")]
+    public Collider attackCollider;
+
     /*[Header("Movemet")]
     private Vector2 curMovementInput;*/
-
-    [Header("Look")]
-    public Transform cameraContainer;
-    public Transform target;
-    public float camRotSpeed;
-    private float camCurYRot;
-
-
-    private Vector2 lookPhase;
+    [Header("Jump")]
+    public float maxJumpRange;
 
     [HideInInspector]
     public static PlayerController instance;
-    public bool canLook = true;
 
     public float delayTime = 0;
     public bool IsAttackDelay = true;
 
     private void Awake()
     {
+        attackCollider.enabled = false;
         instance = this;
     }
 
@@ -52,33 +48,42 @@ public class PlayerController : MonoBehaviour
         }*/
     }
 
-    private void LateUpdate()
+    
+
+    /*private void Move()
     {
-        if (canLook)
+        Vector3 dir = transform.forward * curMovementInput.y + transform.right * curMovementInput.x;
+        dir *= playerStat.MoveSpeed;
+        dir.y = _rigidbody.velocity.y;
+
+        _rigidbody.velocity = dir;
+
+        if (_rigidbody.velocity.x != 0 || _rigidbody.velocity.z != 0)
         {
-            CameraLook();
-            cameraContainer.position = transform.position;
+            transform.LookAt(target);
         }
-    }
+    }*/
 
-    void CameraLook()
-    {
-        camCurYRot += lookPhase.x * camRotSpeed * Time.deltaTime;  
-        cameraContainer.localEulerAngles = new Vector3(0, -camCurYRot, 0);
-        //transform.eulerAngles += new Vector3(0, mouseDelta.x * lookSensitiveity, 0);
-    }
+    
 
-    public void OnLookInput(InputAction.CallbackContext context)
+    /*public void OnMoveInput(InputAction.CallbackContext context)
     {
-        if( context.phase == InputActionPhase.Performed)
+        if (context.phase == InputActionPhase.Performed)
         {
-            lookPhase = context.ReadValue<Vector2>();
+            isClickMove = false;
+            curMovementInput = context.ReadValue<Vector2>();
         }
         else if (context.phase == InputActionPhase.Canceled)
         {
-            lookPhase = Vector2.zero;
+            curMovementInput = Vector2.zero;
         }
+    }*/
+
+    public void AttackInvoke()
+    {
+        attackCollider.enabled = false;
     }
+
     public void OnAttackInput(InputAction.CallbackContext context)
     {
         if (IsAttackDelay)
@@ -87,6 +92,8 @@ public class PlayerController : MonoBehaviour
             {
                 GetComponent<Rigidbody>().velocity = Vector3.zero;
                 IsAttackDelay = false;
+                attackCollider.enabled = true;
+                Invoke("AttackInvoke", 0.5f);
             }
         }
     }

@@ -143,6 +143,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3395486672418959243}
     m_Modifications:
+    - target: {fileID: 749392802982417824, guid: dc02c9362b25f334989cc1d31a609f06, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 749392802982906240, guid: dc02c9362b25f334989cc1d31a609f06, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3594853295546271304, guid: dc02c9362b25f334989cc1d31a609f06, type: 3}
       propertyPath: m_RootOrder
       value: -1
@@ -191,10 +199,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: ResourceSteel
       objectReference: {fileID: 0}
+    - target: {fileID: 6173783753926925276, guid: dc02c9362b25f334989cc1d31a609f06, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6175034641423166609, guid: dc02c9362b25f334989cc1d31a609f06, type: 3}
+      propertyPath: m_Center.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6182673696573749192, guid: dc02c9362b25f334989cc1d31a609f06, type: 3}
       propertyPath: spawnOBJ
       value: 
       objectReference: {fileID: 6890106497416143641}
+    - target: {fileID: 6182673696573749192, guid: dc02c9362b25f334989cc1d31a609f06, type: 3}
+      propertyPath: dropItem.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6182673696573749192, guid: dc02c9362b25f334989cc1d31a609f06, type: 3}
+      propertyPath: dropItem.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: cd8a46d4bac525d43901df3a9903ef8e, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

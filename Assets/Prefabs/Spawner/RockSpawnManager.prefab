@@ -133,7 +133,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4547749836553188802}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 266.08, y: 10, z: 249.76}
+  m_LocalPosition: {x: 266.08, y: 0, z: 249.76}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -197,6 +197,14 @@ PrefabInstance:
       propertyPath: spawnOBJ
       value: 
       objectReference: {fileID: 3717618677555007379}
+    - target: {fileID: 4251346235394065391, guid: 9d02bb004923d964f98a9b43549e45ea, type: 3}
+      propertyPath: dropItem.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4251346235394065391, guid: 9d02bb004923d964f98a9b43549e45ea, type: 3}
+      propertyPath: dropItem.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: c5b39eb05eae7eb4ea2d0a1520b86ef5, type: 2}
     - target: {fileID: 4283196202826495083, guid: 9d02bb004923d964f98a9b43549e45ea, type: 3}
       propertyPath: m_Layer
       value: 9
@@ -308,6 +316,14 @@ PrefabInstance:
       propertyPath: spawnOBJ
       value: 
       objectReference: {fileID: 3717618677555007379}
+    - target: {fileID: 8973590958975526067, guid: 4ddfd9aeb3580ed498a75c3ffa4d3fdc, type: 3}
+      propertyPath: dropItem.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: c5b39eb05eae7eb4ea2d0a1520b86ef5, type: 2}
+    - target: {fileID: 8973590958975526067, guid: 4ddfd9aeb3580ed498a75c3ffa4d3fdc, type: 3}
+      propertyPath: dropItem.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: c5b39eb05eae7eb4ea2d0a1520b86ef5, type: 2}
     m_RemovedComponents:
     - {fileID: 628874594768401296, guid: 4ddfd9aeb3580ed498a75c3ffa4d3fdc, type: 3}
     m_RemovedGameObjects: []
@@ -400,6 +416,14 @@ PrefabInstance:
       propertyPath: spawnOBJ
       value: 
       objectReference: {fileID: 3717618677555007379}
+    - target: {fileID: 5669576605357672112, guid: f44aecc44b5d9364e8ca2526d648234c, type: 3}
+      propertyPath: dropItem.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5669576605357672112, guid: f44aecc44b5d9364e8ca2526d648234c, type: 3}
+      propertyPath: dropItem.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: c5b39eb05eae7eb4ea2d0a1520b86ef5, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -487,6 +511,14 @@ PrefabInstance:
       propertyPath: spawnOBJ
       value: 
       objectReference: {fileID: 3717618677555007379}
+    - target: {fileID: 8973590958975526067, guid: ac060b701a102c14095b32743a509b8c, type: 3}
+      propertyPath: dropItem.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: c5b39eb05eae7eb4ea2d0a1520b86ef5, type: 2}
+    - target: {fileID: 8973590958975526067, guid: ac060b701a102c14095b32743a509b8c, type: 3}
+      propertyPath: dropItem.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: c5b39eb05eae7eb4ea2d0a1520b86ef5, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -6,7 +6,7 @@ using static UnityEditor.Timeline.TimelinePlaybackControls;
 public class CraftingUI : MonoBehaviour
 {
     [SerializeField] private GameObject[] _craftItemSlots;
-    [SerializeField] private CraftedItem[] _craftedItems;
+    [SerializeField] private Item[] _craftedItems;
 
     [SerializeField] private GameObject _craftingCanvas;
     [SerializeField] private GameObject _craftingCamera;

@@ -25,48 +25,51 @@ public class ChaseState : IState
     public void Exit()
     {
         _isChase = false;
+        delaysecond = 0f;
     }
 
     public void Stay()
     {
         delaysecond += Time.deltaTime;
-        if (_Animals.IsDeadCheck(_AnimalStats))
-        {
-            _Animals.States = AnimalAI.State.Dead;
-        }
+        ChaseTarget();
+        CheckArrival();
         //30초 동안 쫓다가 안되면 Idle로 변경
-        if(delaysecond >= 30f)
+        if(delaysecond >= 30f || Vector3.Distance(_Animals.transform.position,GameManager.Instance.PlayerObj.transform.position) >= _AnimalStats.animalSO.range)
         {
             _Animals.States = AnimalAI.State.Idle;
         }
         //쫓는 것 구현  플레이어 위치 받아와야 함
-
-        CheckArrival();
     }
     
-    public void ChaseTarget(Transform transform)
+    public void ChaseTarget()
     {
-        
-        _Animals.nav.SetDestination(transform.position);
-        _isChase = true;
+        _Animals.nav.SetDestination(GameManager.Instance.PlayerObj.transform.position);
     }
 
 
     private void CheckArrival()
     {
-        if (!_Animals.nav.pathPending && _Animals.nav.remainingDistance < 0.1f)
+        float halfAngle = 45 * 0.5f;
+        Vector3 forward = _Animals.transform.forward;
+        Vector3 leftDirection = Quaternion.Euler(0, -halfAngle, 0) * forward;
+
+        // 레이캐스트 시작 지점
+        Vector3 startPoint = _Animals.transform.position;
+
+        // 부채꼴 영역에 레이캐스트를 쏩니다.
+        RaycastHit[] hits = Physics.SphereCastAll(startPoint, 0.1f, forward, _AnimalStats.animalSO.attackRange);
+
+        foreach (RaycastHit hit in hits)
         {
-            _isChase = false;
-        }
-        if (delaysecond >= 5 && !_isChase)
-        {
-            int rand = Random.Range(1, 5);
-            Debug.Log("Run : " + rand);
-            if (rand >= 3)
+            Vector3 hitDirection = hit.point - startPoint;
+            float angleToHit = Vector3.Angle(leftDirection, hitDirection);
+            if (angleToHit <= halfAngle)
             {
-                _Animals.States = AnimalAI.State.Idle;
+                if(((1 << hit.collider.gameObject.layer) | _Animals.playerLayerMask) == _Animals.playerLayerMask)
+                {
+                    _Animals.States = AnimalAI.State.Attack;
+                }
             }
-            delaysecond = 0;
         }
     }
 }
