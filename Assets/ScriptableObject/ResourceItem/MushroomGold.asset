@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 950bd62a7489313438dfeb596534efa1, type: 3}
+  m_Name: MushroomGold
+  m_EditorClassIdentifier: 
+  itemName: "\uD669\uAE08 \uBC84\uC12F"
+  itemDesc: "\uD669\uAE08 \uBC84\uC12F"
+  itemWeight: 0
+  itemType: 1
+  itemImage: {fileID: 21300000, guid: fecdf11d312cea54e9aeda465544a12e, type: 3}
+  itemPrefab: {fileID: 316557162026707044, guid: 0165fda22b394e74dad501535acd611a, type: 3}
+  weaponType: 

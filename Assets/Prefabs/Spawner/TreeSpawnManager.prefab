@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1789644859101726415}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 266.08, y: 10, z: 249.76}
+  m_LocalPosition: {x: 266.08, y: 0, z: 249.76}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -101,7 +101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dropItem:
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 4d3e9c7f05813cc4f80e0db054bdba25, type: 2}
   quantityPerHit: 1
   capacity: 0
   spawnOBJ: {fileID: 4210344879524371179}
@@ -322,6 +322,14 @@ PrefabInstance:
       propertyPath: spawnOBJ
       value: 
       objectReference: {fileID: 4210344879524371179}
+    - target: {fileID: 98916322126849336, guid: 9f76891d9743ecd4a9202967ae087d95, type: 3}
+      propertyPath: dropItem.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 98916322126849336, guid: 9f76891d9743ecd4a9202967ae087d95, type: 3}
+      propertyPath: dropItem.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 4d3e9c7f05813cc4f80e0db054bdba25, type: 2}
     - target: {fileID: 3338923586965731650, guid: 9f76891d9743ecd4a9202967ae087d95, type: 3}
       propertyPath: m_RootOrder
       value: -1
