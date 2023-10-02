@@ -57,10 +57,7 @@ public class PlayerClickMove : MonoBehaviour
                 }
             }
 
-            //Debug.Log(isItem);
-            //Debug.Log(isInteraction);
-
-            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(direction), 0.25f);
+            
         }
     }
 
@@ -137,7 +134,7 @@ public class PlayerClickMove : MonoBehaviour
 
     private bool IsGrounded()
     {
-        Ray[] rays = new Ray[4]        //¾Õ µÚ ¿Ş ¿À ¿¡´Ù°¡ ray¸¸µé¾î¼­ ±×¶ó¿îµå¿Í ¸¸³ª°íÀÖ´ÂÁö È®ÀÎ
+        Ray[] rays = new Ray[4]        //ì• ë’¤ ì™¼ ì˜¤ ì—ë‹¤ê°€ rayë§Œë“¤ì–´ì„œ ê·¸ë¼ìš´ë“œì™€ ë§Œë‚˜ê³ ìˆëŠ”ì§€ í™•ì¸
         {
             new Ray(transform.position + (transform.forward * 0.2f) + (Vector3.up * 0.01f), Vector3.down),
             new Ray(transform.position + (-transform.forward * 0.2f) + (Vector3.up * 0.01f), Vector3.down),
