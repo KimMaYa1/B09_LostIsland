@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Rhino
   m_EditorClassIdentifier: 
   isAttack: 1
-  moveSpeed: 4
-  runSpeed: 5
+  moveSpeed: 2
+  runSpeed: 3
   power: 0
-  health: 20
+  health: 50
   range: 20
   attackRange: 3

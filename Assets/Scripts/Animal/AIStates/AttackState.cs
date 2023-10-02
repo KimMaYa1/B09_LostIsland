@@ -15,18 +15,21 @@ public class AttackState : IState
     }
     public void Enter()
     {
+        Debug.Log("Attack Enter!");
         _Animals.PlayAnimation(AnimalAI.State.Attack);
+        _Animals.nav.isStopped = true;
     }
 
     public void Exit()
     {
-
+        _Animals.nav.isStopped = false;
+        delaysecond = 0f;
     }
 
     public void Stay()
     {
         delaysecond += Time.deltaTime;
-        if (Vector3.Distance(_Animals.transform.position, GameManager.Instance.PlayerObj.transform.position) >= _AnimalStats.animalSO.attackRange && delaysecond > 2f)
+        if (delaysecond > 1.0f)
         {
             _Animals.States = AnimalAI.State.Chase;
         }
