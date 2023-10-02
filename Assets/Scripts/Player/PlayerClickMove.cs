@@ -11,18 +11,23 @@ public class PlayerClickMove : MonoBehaviour
     private Vector3 direction;
     private PlayerController playerController;
     private InteractionManager interactionManager;
+    private Animator _animator;
     private Rigidbody _rigidbody;
     private bool isMove;
     public LayerMask groundLayerMask;
     public LayerMask jumpLayerMask;
+    public Inventory inventory;
     private bool isItem;
     private bool isInteraction;
     private bool isMonster;
     private bool isJump = false;
     Vector3 startPos, endPos;
     LineRenderer lr;
+    ItemPickUp target;
+
     private void Awake()
     {
+        _animator = GetComponentInChildren<Animator>();
         lr = GetComponent<LineRenderer>();
         _rigidbody = GetComponent<Rigidbody>();
         interactionManager = GetComponent<InteractionManager>();
@@ -83,11 +88,6 @@ public class PlayerClickMove : MonoBehaviour
                 lr.enabled = false;
             }
 
-            if (isMonster)
-            {
-                Attack();
-            }
-
             if (isMove)
             {
                 Move();
@@ -98,6 +98,7 @@ public class PlayerClickMove : MonoBehaviour
                 isItem = false;
                 isInteraction = false;
                 isMonster = false;
+                _animator.SetBool("IsWalking", false);
             }
 
             /*if (_rigidbody.velocity.y == 0)
@@ -132,6 +133,7 @@ public class PlayerClickMove : MonoBehaviour
 
     private void Move()
     {
+        _animator.SetBool("IsWalking", true);
         if (Vector3.Distance(destination, transform.position) <= 0.1f)
         {
             isMove = false;
@@ -162,6 +164,11 @@ public class PlayerClickMove : MonoBehaviour
         }
 
         isMove = (transform.position - destination).magnitude > a;
+        if(!isMove && isItem)
+        {
+            inventory.AcquireItem(target.item);
+            Destroy(target.transform.gameObject);
+        }
     }
 
     private IEnumerator Jump()
@@ -176,7 +183,7 @@ public class PlayerClickMove : MonoBehaviour
                 yield break;
             }
         }
-
+        _animator.SetTrigger("Jump");
         for (int i = 0; i < lr.positionCount; i++)
         {
             Vector3 a = lr.GetPosition(i);
@@ -199,6 +206,10 @@ public class PlayerClickMove : MonoBehaviour
                 {
                     if (hit.collider.gameObject.layer != gameObject.layer)
                     {
+                        isItem = false;
+                        isInteraction = false;
+                        isMonster = false;
+
                         destination = new Vector3(hit.point.x, transform.position.y, hit.point.z);
                         direction = destination - transform.position;
 
@@ -213,6 +224,7 @@ public class PlayerClickMove : MonoBehaviour
                         if (((1 << hit.collider.gameObject.layer) | interactionManager.itemLayerMask) == interactionManager.itemLayerMask)
                         {
                             isItem = true;
+                            target = hit.transform.GetComponent<ItemPickUp>();
                         }
                         else if (((1 << hit.collider.gameObject.layer) | interactionManager.interactLayerMask) == interactionManager.interactLayerMask)
                         {
