@@ -168,8 +168,7 @@ public class PlayerClickMove : MonoBehaviour
 
                         if (isJump)
                         {
-                            direction.y = transform.position.y;
-                            transform.LookAt(direction);
+                            transform.rotation = Quaternion.LookRotation(direction);
                             StartCoroutine(Jump());
                             isJump = false;
                             return;
