@@ -726,6 +726,8 @@ GameObject:
   - component: {fileID: 8934826259037570820}
   - component: {fileID: 3786985614116817086}
   - component: {fileID: 435088871357949095}
+  - component: {fileID: 4172032648514008750}
+  - component: {fileID: 7046488446493518819}
   m_Layer: 0
   m_Name: Rabbit
   m_TagString: Untagged
@@ -749,7 +751,7 @@ Transform:
   - {fileID: 4280294624668182}
   - {fileID: 4709169015965626}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &95674028643950644
 Animator:
@@ -786,6 +788,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animalSO: {fileID: 11400000, guid: 8f2172b19e02c72489e421588a1f368b, type: 2}
   animal: 1
+  health: 0
+  currentHealth: 0
 --- !u!114 &3786985614116817086
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -824,6 +828,40 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!65 &4172032648514008750
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1588090451174212}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.42529297, y: 0.49077892, z: 0.78775024}
+  m_Center: {x: 0.0026474, y: 0.25461054, z: 0.10612488}
+--- !u!114 &7046488446493518819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1588090451174212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13630c2e307e5554e98d2a29789da48e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animalStats: {fileID: 8934826259037570820}
 --- !u!1 &1593323770353162
 GameObject:
   m_ObjectHideFlags: 0

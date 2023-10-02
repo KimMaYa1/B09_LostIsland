@@ -806,6 +806,8 @@ GameObject:
   - component: {fileID: 1114334655585839864}
   - component: {fileID: 4911335874030959801}
   - component: {fileID: 8699275082035389277}
+  - component: {fileID: 6627727411455720901}
+  - component: {fileID: 1642389092300283288}
   m_Layer: 0
   m_Name: Fox
   m_TagString: Untagged
@@ -828,7 +830,7 @@ Transform:
   - {fileID: 4965958779694537047}
   - {fileID: 30173173052240625}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &7666986768240843510
 Animator:
@@ -865,6 +867,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animalSO: {fileID: 11400000, guid: c015d605fdde3284c9a80f4f18ea2ee6, type: 2}
   animal: 2
+  health: 0
+  currentHealth: 0
 --- !u!114 &4911335874030959801
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -903,6 +907,40 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!65 &6627727411455720901
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4020983980232809014}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1.4830246, z: 1}
+  m_Center: {x: 0, y: 0.7371445, z: 0}
+--- !u!114 &1642389092300283288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4020983980232809014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13630c2e307e5554e98d2a29789da48e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animalStats: {fileID: 1114334655585839864}
 --- !u!1 &4246927435662846628
 GameObject:
   m_ObjectHideFlags: 0
