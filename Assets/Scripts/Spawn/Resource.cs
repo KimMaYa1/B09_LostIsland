@@ -29,7 +29,7 @@ public class Resource : MonoBehaviour
         {
 
             spawn.InsertQueue(gameObject);
-            Destroy(gameObject);
+            this.gameObject.SetActive(false);
 
         }
     }
