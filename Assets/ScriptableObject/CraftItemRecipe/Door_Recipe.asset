@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e32ec7ddac6332d46b0c61e6dc14ee9e, type: 3}
+  m_Name: Door_Recipe
+  m_EditorClassIdentifier: 
+  recipeName: "\uBB38 \uB808\uC2DC\uD53C"
+  recipeDesc: "\uD310\uC790 5\uAC1C\uC640 \uACE0\uCCA0 \uB354\uBBF8 2\uAC1C\uB85C
+    \uBB38\uC744 \uB9CC\uB4E4 \uC218 \uC788\uB2E4."
+  item: {fileID: 11400000, guid: d692ba59ac0dab145814f3dd6a2d3d2b, type: 2}
+  itemCount: 1
+  requiredItems:
+  - {fileID: 11400000, guid: c1b0a4789f0013948a0e9fee2a75d26b, type: 2}
+  - {fileID: 11400000, guid: 648793982e02c3b448efb94887280344, type: 2}
+  requiredItemsCount: 0500000002000000
