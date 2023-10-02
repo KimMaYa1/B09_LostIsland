@@ -48,12 +48,12 @@ public class InteractionManager : MonoBehaviour
                 Cursor.SetCursor(interactionCurSor, Vector2.left + Vector2.up, CursorMode.Auto);
                 return;
             }
-            else if (((1 << hit.collider.gameObject.layer) | interactLayerMask) == interactLayerMask)
+            if (((1 << hit.collider.gameObject.layer) | interactLayerMask) == interactLayerMask)
             {
                 Cursor.SetCursor(interactionCurSor, Vector2.left + Vector2.up, CursorMode.Auto);
                 return;
             }
-            else if (((1 << hit.collider.gameObject.layer)| monsterLayerMask) == monsterLayerMask)
+            if (((1 << hit.collider.gameObject.layer)| monsterLayerMask) == monsterLayerMask)
             {
                 //���� ���� ���
 
