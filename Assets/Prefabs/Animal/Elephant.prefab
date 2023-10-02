@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 8637996421204763347}
   - component: {fileID: 3274357563367970441}
   - component: {fileID: 9017239951298677112}
-  - component: {fileID: 4366630173343422485}
   m_Layer: 0
   m_Name: Elephant
   m_TagString: Untagged
@@ -76,19 +75,6 @@ MonoBehaviour:
   animal: 3
   health: 0
   currentHealth: 0
---- !u!114 &4366630173343422485
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2067743736700382617}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13630c2e307e5554e98d2a29789da48e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _animalStats: {fileID: 9017239951298677112}
 --- !u!1 &4043845445421283560
 GameObject:
   m_ObjectHideFlags: 0
@@ -2183,6 +2169,7 @@ GameObject:
   - component: {fileID: 3315925808417636717}
   - component: {fileID: 8893468667901415718}
   - component: {fileID: 6924370668293418073}
+  - component: {fileID: 4149013218286220838}
   m_Layer: 0
   m_Name: Elephant
   m_TagString: Untagged
@@ -2204,7 +2191,7 @@ Transform:
   m_Children:
   - {fileID: 8637996421204763347}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!195 &3315925808417636717
 NavMeshAgent:
@@ -2265,6 +2252,22 @@ MonoBehaviour:
   animalStats: {fileID: 9017239951298677112}
   _state: 0
   nav: {fileID: 3315925808417636717}
+  playerLayerMask:
+    serializedVersion: 2
+    m_Bits: 64
+--- !u!114 &4149013218286220838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4043845445421283668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13630c2e307e5554e98d2a29789da48e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animalStats: {fileID: 9017239951298677112}
 --- !u!1 &4043845445421283670
 GameObject:
   m_ObjectHideFlags: 0
