@@ -23,7 +23,7 @@ public class PlayerClickMove : MonoBehaviour
     private bool isJump = false;
     Vector3 startPos, endPos;
     LineRenderer lr;
-    ItemPickUp target;
+    GameObject target;
 
     private void Awake()
     {
@@ -166,8 +166,12 @@ public class PlayerClickMove : MonoBehaviour
         isMove = (transform.position - destination).magnitude > a;
         if(!isMove && isItem)
         {
-            inventory.AcquireItem(target.item);
+            inventory.AcquireItem(target.GetComponent<ItemPickUp>().item);
             Destroy(target.transform.gameObject);
+        }
+        else if(!isMove && isInteraction)
+        {
+            target.GetComponent<Door>().InteractionDoor();
         }
     }
 
@@ -224,7 +228,7 @@ public class PlayerClickMove : MonoBehaviour
                         if (((1 << hit.collider.gameObject.layer) | interactionManager.itemLayerMask) == interactionManager.itemLayerMask)
                         {
                             isItem = true;
-                            target = hit.transform.GetComponent<ItemPickUp>();
+                            target = hit.transform.gameObject;
                         }
                         else if (((1 << hit.collider.gameObject.layer) | interactionManager.interactLayerMask) == interactionManager.interactLayerMask)
                         {
