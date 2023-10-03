@@ -166,6 +166,8 @@ public class PlayerClickMove : MonoBehaviour
         isMove = (transform.position - destination).magnitude > a;
         if(!isMove && isItem)
         {
+            Debug.Log(target.name);
+            Debug.Log(target.GetComponent<ItemPickUp>().item);
             inventory.AcquireItem(target.GetComponent<ItemPickUp>().item);
         }
         else if(!isMove && isInteraction)
