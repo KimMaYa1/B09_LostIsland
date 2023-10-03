@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
@@ -19,6 +20,10 @@ public class UIManager : MonoBehaviour
     private float _interactY;
     private float _interactWidth;
     private float _interactHeight;
+
+    [SerializeField] private GameObject _craftingCamera;
+    [SerializeField] private PlaceItemController _placeItemController;
+    private bool _isPreviewOn = false;
 
     TMP_Text itemText;
 
@@ -80,5 +85,24 @@ public class UIManager : MonoBehaviour
     {
         _uiItemInteractBGImage.color = Color.clear;
         itemText.text = string.Empty;
+    }
+
+    public void SlotClick(int slotNumber)
+    {
+        _craftingCamera.SetActive(true);
+        //_placeItemControl.PreviewItemView(_craftedItems[slotNumber].itemPrefab);
+        _isPreviewOn = true;
+
+    }
+
+    public void OnBuild(InputAction.CallbackContext context)
+    {
+        if (_isPreviewOn == true)
+            if (context.phase == InputActionPhase.Started)
+            {
+                //_placeItemControl.PlacePrefab();
+                _craftingCamera.SetActive(false);
+                _isPreviewOn = false;
+            }
     }
 }
