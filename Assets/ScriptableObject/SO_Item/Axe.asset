@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 950bd62a7489313438dfeb596534efa1, type: 3}
   m_Name: Axe
   m_EditorClassIdentifier: 
-  itemName: "\uACE1\uAD2D\uC774"
-  itemDesc: "\uC4F8\uB9CC\uD55C \uACE1\uAD2D\uC774\uB2E4."
+  itemName: "\uB3C4\uB07C"
+  itemDesc: "\uB0A0\uCE74\uB85C\uC6B4 \uB3C4\uB07C\uB2E4."
   itemWeight: 0
   itemType: 0
   itemImage: {fileID: 21300000, guid: 3bfbd2d58e073bc46b67d421c0afd4f9, type: 3}
