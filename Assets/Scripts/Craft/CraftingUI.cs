@@ -8,16 +8,11 @@ public class CraftingUI : MonoBehaviour
     [SerializeField] private GameObject[] _craftItemSlots;
     [SerializeField] private Item[] _craftedItems;
 
-    [SerializeField] private GameObject _craftingCanvas;
-    [SerializeField] private GameObject _craftingCamera;
 
     private CraftSlot _craftSlot;
-    private PlaceItemControll _placeItemControl;
-    private bool _isPreviewOn = false;
 
     private void Start()
     {
-        _placeItemControl = GetComponent<PlaceItemControll>();
         UpdateCraftingUI();
     }
 
@@ -29,7 +24,7 @@ public class CraftingUI : MonoBehaviour
             if (i < _craftedItems.Length)
             {
                 _craftItemSlots[i].SetActive(true);
-                _craftSlot.SetSlot(_craftedItems[i]);
+                _craftSlot.SetSlot(_craftedItems[i], i);
             }
             else
             {
@@ -39,25 +34,6 @@ public class CraftingUI : MonoBehaviour
         }
     }
 
-    public void SlotClick(int slotNumber)
-    {
-        _craftingCanvas.SetActive(false);
-        _craftingCamera.SetActive(true);
-        _placeItemControl.PreviewItemView(_craftedItems[slotNumber].itemPrefab);
-        _isPreviewOn = true;
-
-    }
-
-    public void OnBuild(InputAction.CallbackContext context)
-    {
-        if (_isPreviewOn == true)
-            if (context.phase == InputActionPhase.Started)
-            {
-                _placeItemControl.PlacePrefab();
-                _craftingCanvas.SetActive(true);
-                _craftingCamera.SetActive(false);
-                _isPreviewOn = false;
-            }
-    }
+    
 
 }
