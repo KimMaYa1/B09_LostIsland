@@ -35,6 +35,11 @@ public class InteractionManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Cursor.SetCursor(defaultCurSor, Vector2.left + Vector2.up, CursorMode.Auto);
+
+        if (UIManager.instance.inventoryActivated)
+            return;
+
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
 
@@ -61,7 +66,6 @@ public class InteractionManager : MonoBehaviour
                 return;
             }
         }
-        Cursor.SetCursor(defaultCurSor, Vector2.left + Vector2.up, CursorMode.Auto);
         curInteractGameObject = null;
         curInteractable = null;
         //promptText.gameObject.SetActive(false);
