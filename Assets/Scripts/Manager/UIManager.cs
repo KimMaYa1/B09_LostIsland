@@ -87,10 +87,10 @@ public class UIManager : MonoBehaviour
         itemText.text = string.Empty;
     }
 
-    public void SlotClick(int slotNumber)
+    public void SlotClickTypeETC(GameObject itemPrefab)
     {
         _craftingCamera.SetActive(true);
-        //_placeItemControl.PreviewItemView(_craftedItems[slotNumber].itemPrefab);
+        _placeItemController.PreviewItemView(itemPrefab);
         _isPreviewOn = true;
 
     }
@@ -100,7 +100,7 @@ public class UIManager : MonoBehaviour
         if (_isPreviewOn == true)
             if (context.phase == InputActionPhase.Started)
             {
-                //_placeItemControl.PlacePrefab();
+                _placeItemController.PlacePrefab();
                 _craftingCamera.SetActive(false);
                 _isPreviewOn = false;
             }
