@@ -10,9 +10,9 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private GameObject _uiPrefab;
     [SerializeField] private GameObject _uiInventory;
-    [SerializeField] private GameObject _uiCrafting;
     [SerializeField] private GameObject _uiItemInteract;
-    private GameObject _uiObject;
+    [SerializeField] private GameObject _inventoryButton;
+    [SerializeField] private GameObject _craftButton;
     private Image _uiItemInteractBGImage;
     private float _originValue;
     private float _interactX;
@@ -48,25 +48,15 @@ public class UIManager : MonoBehaviour
         {
             //Cursor.lockState = CursorLockMode.Locked;
             _uiInventory.SetActive(false);
+            _inventoryButton.SetActive(false);
+            _craftButton.SetActive(false);
         }
         else
         {
             //Cursor.lockState = CursorLockMode.Confined;
             _uiInventory.SetActive(true);
-        }
-    }
-
-    public void TabCraftingUI()
-    {
-        if (_uiCrafting.activeSelf)
-        {
-            //Cursor.lockState = CursorLockMode.Locked;
-            _uiCrafting.SetActive(false);
-        }
-        else
-        {
-            //Cursor.lockState = CursorLockMode.Confined;
-            _uiCrafting.SetActive(true);
+            _inventoryButton.SetActive(true);
+            _craftButton.SetActive(true);
         }
     }
 

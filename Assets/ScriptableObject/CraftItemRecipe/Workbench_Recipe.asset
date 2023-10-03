@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e32ec7ddac6332d46b0c61e6dc14ee9e, type: 3}
   m_Name: Workbench_Recipe
   m_EditorClassIdentifier: 
-  recipeName: 
+  recipeName: "\uC791\uC5C5\uB300 \uB808\uC2DC\uD53C"
   recipeDesc: "\uD1B5\uB098\uBB34 2\uAC1C, \uD310\uC790 6\uAC1C \uC640 \uACE0\uCCA0
     \uB354\uBBF8 5\uAC1C\uB85C \uC791\uC5C5\uB300\uB97C \uB9CC\uB4E4 \uC218 \uC788\uB2E4."
   item: {fileID: 11400000, guid: 27b2449102eef9444946aef7144fe077, type: 2}

@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 950bd62a7489313438dfeb596534efa1, type: 3}
   m_Name: Door_01
   m_EditorClassIdentifier: 
-  itemName: "\uBB38"
-  itemDesc: "\uBB38 \uC774\uB2E4."
-  itemWeight: 20
+  itemName: "\uBB38 01"
+  itemDesc: "\uC77C\uBC18\uC801\uC778 \uBB38 \uC774\uB2E4."
+  itemWeight: 10
   itemType: 3
-  itemImage: {fileID: 0}
+  itemImage: {fileID: 21300000, guid: 572916ec7f94c57469351d255f15c903, type: 3}
   itemPrefab: {fileID: 1000010346633862, guid: 9f4e5dd2165039f4a878d1c1260761df, type: 3}
   weaponType: 
