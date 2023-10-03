@@ -24,6 +24,7 @@ public class CraftingUI : MonoBehaviour
 
     private void SetAllSlots()
     {
+        _itemsList.Clear();
         _itemsList.Add(_recipe_Equipment);
         _itemsList.Add(_recipe_Used);
         _itemsList.Add(_recipe_Ingredient);
