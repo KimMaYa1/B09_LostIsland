@@ -23,10 +23,13 @@ public class PlayerController : MonoBehaviour
     [HideInInspector]
     public static PlayerController instance;
     public PlayerConditins playerConditins;
+    public string _str;
 
     public float delayTime = 0;
     public bool IsAttackDelay = true;
     public bool canWater = false;
+
+    private Animator animator;
 
     private void Awake()
     {
@@ -34,6 +37,7 @@ public class PlayerController : MonoBehaviour
         playerStat.Def = 10;
         attackCollider.enabled = false;
         instance = this;
+        animator = GetComponentInChildren<Animator>();
         playerConditins = GetComponent<PlayerConditins>();
         playerConditins.stat = playerStat;
     }
@@ -89,32 +93,34 @@ public class PlayerController : MonoBehaviour
     public void AttackInvoke()
     {
         attackCollider.enabled = false;
+        animator.SetBool("IsAttack", false);
     }
 
-    public void OnAttackInput(Animator anim)
+    public void OnAttackInput(string str)
     {
-        anim.SetBool("IsAttack", true);
-        /*if ("OneHand" == )
+        _str = str;
+        animator.SetBool("IsAttack", true);
+        if ("한손검" == _str)
         {
-            anim.SetTrigger("AttackOneHanded");
+            animator.SetTrigger("AttackOneHanded");
         }
-        else if ("TwoHand" == )
+        else if ("양손검" == _str)
         {
-            anim.SetTrigger("AttackTwoHanded");
-        }
-        else if ("Hand" == )
-        {
-            anim.SetTrigger("AttackPunchRight");
-        }*/
-        
-        if (Random.RandomRange(0, 2) == 0)
-        {
-            anim.SetTrigger("AttackPunchRight");
+            animator.SetTrigger("AttackTwoHanded");
         }
         else
         {
-            anim.SetTrigger("AttackPunchLeft");
+            if (Random.RandomRange(0, 2) == 0)
+            {
+                animator.SetTrigger("AttackPunchRight");
+            }
+            else
+            {
+                animator.SetTrigger("AttackPunchLeft");
+            }
         }
+
+
         IsAttackDelay = false;
         attackCollider.enabled = true;
         Invoke("AttackInvoke", 0.5f);
