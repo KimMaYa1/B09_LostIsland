@@ -205,12 +205,15 @@ public class CraftingUI : MonoBehaviour
         int curItemCount = 0;
         for (int i = 0; i < slots.Length; i++)
         {
-            curItem = slots[i].item;
-            curItemCount = slots[i].itemCount;
-            if (_requiredItemsDict.ContainsKey(curItem))
-                _requiredItemsDict[curItem] = curItemCount;
-            else
-                _requiredItemsDict.Add(curItem, curItemCount);
+            if(slots[i].item != null)
+            {
+                curItem = slots[i].item;
+                curItemCount = slots[i].itemCount;
+                if (_requiredItemsDict.Count > 0 && _requiredItemsDict.ContainsKey(curItem))
+                    _requiredItemsDict[curItem] = curItemCount;
+                else
+                    _requiredItemsDict.Add(curItem, curItemCount);
+            }
         }
     }
 }
