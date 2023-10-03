@@ -48,13 +48,18 @@ public class InteractionManager : MonoBehaviour
             if (((1<<hit.collider.gameObject.layer)|itemLayerMask) == itemLayerMask)
             {
                 curInteractGameObject = hit.collider.gameObject;
-                curInteractable = hit.collider.GetComponent<ItemPickUp>().item;
-                SetPromptText();
-                Cursor.SetCursor(interactionCurSor, Vector2.left + Vector2.up, CursorMode.Auto);
-                return;
+                if (hit.collider.TryGetComponent<ItemPickUp>(out ItemPickUp item))
+                {
+                    curInteractable = hit.collider.GetComponent<ItemPickUp>().item;
+                    SetPromptText();
+                    Cursor.SetCursor(interactionCurSor, Vector2.left + Vector2.up, CursorMode.Auto);
+                    return;
+                }
             }
             if (((1 << hit.collider.gameObject.layer) | interactLayerMask) == interactLayerMask)
             {
+                curInteractable = hit.collider.GetComponent<ItemPickUp>().item;
+                SetPromptText();
                 Cursor.SetCursor(interactionCurSor, Vector2.left + Vector2.up, CursorMode.Auto);
                 return;
             }

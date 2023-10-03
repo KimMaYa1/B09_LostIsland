@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Column_Rock
   m_EditorClassIdentifier: 
   itemName: "\uB3CC \uAE30\uB465"
-  itemDesc: "\uB3CC\uB85C \uB9CC \uAE30\uB465\uC774\uB2E4."
+  itemDesc: "\uB3CC\uB85C \uB9CC \uAE30\uB465 \uC774\uB2E4."
   itemWeight: 10
   itemType: 3
   itemImage: {fileID: 21300000, guid: 850cb81ea406b9b4b9ec14567a60e138, type: 3}
