@@ -12,8 +12,8 @@ public class ItemEffect
 
     //아이템의 효과는 여러가지 일 수 있으므로 배열로 설정
     [Tooltip("HP,MP,DP 만 적용가능")]
-    public string[] part; // 영향을 줄 부분 (hp,mp,dp ..)
-    public int[] num; // 영향 수치( hp -10 ...)
+    public string[] part; // 영향을 줄 부분 (hp ..)
+    public float[] num; // 영향 수치( hp -10 ...)
 }
 public class ItemEffectDatabase : MonoBehaviour
 {
@@ -21,12 +21,13 @@ public class ItemEffectDatabase : MonoBehaviour
     private ItemEffect[] itemEffects; //소모품 아이템들
     [SerializeField]
     private SlotToolTip toolTip;
-    //[SerializeField]
-    //private PlayerController player;
-
+    [SerializeField]
+    private PlayerConditins player;
+    [SerializeField]
+    private PlayerController Stat;
 
     //상수 변수 == 아이템의 효과 string
-    private const string HP = "HP", MP = "SP", DP = "DP";
+    private const string HEALTH = "HEALTH", HUNGER = "HUNGER", THIRST = "THIRST", STAMINA = "STAMINA", ATTACK = "ATTACK", DEFENSE = "DEFENSC";
 
 
 
@@ -66,17 +67,26 @@ public class ItemEffectDatabase : MonoBehaviour
                     {
                         switch (itemEffects[x].part[y]) // y번째 효과를 받음
                         {
-                            case HP:
-                                //player.IncreaseHP(itemEffects[x].num[y]); //탐색한 아이템의 y번째 수치적용
+                            case HEALTH:
+                                player.Heal(itemEffects[x].num[y]); //탐색한 아이템의 y번째 수치적용
                                 break;
-                            case MP:
-                                //player.IncreaseMP(itemEffects[x].num[y]);
+                            case HUNGER:
+                                player.Eat(itemEffects[x].num[y]);
                                 break;
-                            case DP:
-                                //player.IncreaseDP(itemEffects[x].num[y]);
+                            case THIRST:
+                                player.Drink(itemEffects[x].num[y]);
+                                break;
+                            case STAMINA:
+                                player.UseStamina(-itemEffects[x].num[y]);
+                                break;
+                            case ATTACK:
+                                Stat.playerStat.Atk += (itemEffects[x].num[y]);
+                                break;
+                            case DEFENSE:
+                                Stat.playerStat.Def += (itemEffects[x].num[y]);
                                 break;
                             default:
-                                Debug.Log("잘못된 status 자원. HP,MP,DP 만 적용가능");
+                                Debug.Log("잘못된 status 자원 사용중");
                                 break;
                         }
                         Debug.Log(_item.itemName + "을 사용했습니다");
@@ -90,7 +100,7 @@ public class ItemEffectDatabase : MonoBehaviour
         }
     }
 
-    //아이템 탈착
+    //장비 아이템 탈착
     public void Unequipped(Item _item)
     {
         if (_item.itemType == Item.ItemType.Equipment)
@@ -103,17 +113,14 @@ public class ItemEffectDatabase : MonoBehaviour
                     {
                         switch (itemEffects[x].part[y])
                         {
-                            case HP:
-                                //player.DecreaseHP(itemEffects[x].num[y]);
+                            case ATTACK:
+                                Stat.playerStat.Atk -= (itemEffects[x].num[y]);
                                 break;
-                            case MP:
-                                //player.DecreaseMP(itemEffects[x].num[y]);
-                                break;
-                            case DP:
-                                //player.DecreaseDP(itemEffects[x].num[y]);
+                            case DEFENSE:
+                                Stat.playerStat.Def -= (itemEffects[x].num[y]);
                                 break;
                             default:
-                                Debug.Log("잘못된 status 자원. HP,MP,DP 만 적용가능");
+                                Debug.Log("잘못된 status 자원 사용중");
                                 break;
                         }
                         Debug.Log(_item.itemName + "을 장착 해제함");
