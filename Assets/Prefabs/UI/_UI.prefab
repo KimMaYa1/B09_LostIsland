@@ -502,7 +502,6 @@ MonoBehaviour:
   - {fileID: 8059680684357410648}
   - {fileID: 3355035751423065762}
   - {fileID: 8969902914996488532}
-  _inventoryObj: {fileID: 0}
   _inventory: {fileID: 8501255780621025168, guid: bbe2718a1fb5c3f4d86ebc482b613bef, type: 3}
   _slider: {fileID: 5655911611868596373}
   _craftAmountTxt: {fileID: 168662963348898446}
@@ -519,7 +518,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _camera: {fileID: 2489823373690645260}
-  _mainCamera: {fileID: 0}
+  _mainCamera: {fileID: 2489823373690645260}
   _placeTransform: {fileID: 0}
   _playerTransform: {fileID: 0}
   layerMask:

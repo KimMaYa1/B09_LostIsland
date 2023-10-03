@@ -4,11 +4,11 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlaceItemControll : MonoBehaviour
+public class PlaceItemController : MonoBehaviour
 {
 
     [SerializeField] private Camera _camera;
-    [SerializeField] private Camera _mainCamera;
+    //[SerializeField] private Camera _mainCamera;
 
     [SerializeField] private Transform _placeTransform;
     [SerializeField] private Transform _playerTransform;
