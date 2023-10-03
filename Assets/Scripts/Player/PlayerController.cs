@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Timeline.Actions;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Playables;
@@ -88,12 +89,32 @@ public class PlayerController : MonoBehaviour
     public void AttackInvoke()
     {
         attackCollider.enabled = false;
-        Debug.Log("b");
     }
 
-    public void OnAttackInput()
+    public void OnAttackInput(Animator anim)
     {
-        Debug.Log("a");
+        anim.SetBool("IsAttack", true);
+        /*if ("OneHand" == )
+        {
+            anim.SetTrigger("AttackOneHanded");
+        }
+        else if ("TwoHand" == )
+        {
+            anim.SetTrigger("AttackTwoHanded");
+        }
+        else if ("Hand" == )
+        {
+            anim.SetTrigger("AttackPunchRight");
+        }*/
+        
+        if (Random.RandomRange(0, 2) == 0)
+        {
+            anim.SetTrigger("AttackPunchRight");
+        }
+        else
+        {
+            anim.SetTrigger("AttackPunchLeft");
+        }
         IsAttackDelay = false;
         attackCollider.enabled = true;
         Invoke("AttackInvoke", 0.5f);
