@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Timeline.Actions;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Playables;
@@ -22,10 +23,13 @@ public class PlayerController : MonoBehaviour
     [HideInInspector]
     public static PlayerController instance;
     public PlayerConditins playerConditins;
+    public string _str;
 
     public float delayTime = 0;
     public bool IsAttackDelay = true;
     public bool canWater = false;
+
+    private Animator animator;
 
     private void Awake()
     {
@@ -33,6 +37,7 @@ public class PlayerController : MonoBehaviour
         playerStat.Def = 10;
         attackCollider.enabled = false;
         instance = this;
+        animator = GetComponentInChildren<Animator>();
         playerConditins = GetComponent<PlayerConditins>();
         playerConditins.stat = playerStat;
     }
@@ -88,12 +93,34 @@ public class PlayerController : MonoBehaviour
     public void AttackInvoke()
     {
         attackCollider.enabled = false;
-        Debug.Log("b");
+        animator.SetBool("IsAttack", false);
     }
 
-    public void OnAttackInput()
+    public void OnAttackInput(string str)
     {
-        Debug.Log("a");
+        _str = str;
+        animator.SetBool("IsAttack", true);
+        if ("한손검" == _str)
+        {
+            animator.SetTrigger("AttackOneHanded");
+        }
+        else if ("양손검" == _str)
+        {
+            animator.SetTrigger("AttackTwoHanded");
+        }
+        else
+        {
+            if (Random.RandomRange(0, 2) == 0)
+            {
+                animator.SetTrigger("AttackPunchRight");
+            }
+            else
+            {
+                animator.SetTrigger("AttackPunchLeft");
+            }
+        }
+
+
         IsAttackDelay = false;
         attackCollider.enabled = true;
         Invoke("AttackInvoke", 0.5f);

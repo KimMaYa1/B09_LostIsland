@@ -177,7 +177,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
                             if (inventory.Equipments[i].item.itemName == item.itemName)
                             {
                                 inventory.Equipments[i].gameObject.SetActive(true);
-                                inventory.currentItem = inventory.Equipments[i].item.itemName;
+                                inventory.currentWeapon = inventory.Equipments[i].item.itemName;
                                 break;
                             }
                         }
@@ -195,7 +195,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
                             if (inventory.Equipments[i].item.itemName == item.itemName)
                             {
                                 inventory.Equipments[i].gameObject.SetActive(false);
-                                inventory.currentItem = "HAND";
+                                inventory.currentWeapon = "HAND";
                             }                              
                         }
                         EquipSym.SetActive(false);

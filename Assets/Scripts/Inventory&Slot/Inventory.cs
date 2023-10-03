@@ -27,7 +27,7 @@ public class Inventory : MonoBehaviour
     //private PlayerController player;
 
 
-    public string currentItem = "HAND";
+    public string currentWeapon = "HAND";
 
 
     //private Animator anim;
