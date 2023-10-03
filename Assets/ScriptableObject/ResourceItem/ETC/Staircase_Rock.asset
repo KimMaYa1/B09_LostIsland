@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Staircase_Rock
   m_EditorClassIdentifier: 
   itemName: "\uB3CC \uACC4\uB2E8"
-  itemDesc: "\uB3CC\uB85C \uB9CC\uB4E0 \uACC4\uB2E8\uC774\uB2E4."
+  itemDesc: "\uB3CC\uB85C \uB9CC\uB4E0 \uACC4\uB2E8 \uC774\uB2E4."
   itemWeight: 20
   itemType: 3
   itemImage: {fileID: 21300000, guid: 79afc10af733ee049b22b51c801a693c, type: 3}

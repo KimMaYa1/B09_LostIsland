@@ -108,7 +108,6 @@ public class Inventory : MonoBehaviour
                     return;
                 }
             }
-        Destroy(this.gameObject);
     }
 
     //아이템 제거
@@ -124,10 +123,14 @@ public class Inventory : MonoBehaviour
                 {
                     slots[i].SetSlotCount(_count);                  
                 }
-            }           
+            }
         }
     }
 
+    public Slot[] GetSlots()
+    {
+        return slots;
+    }
 }
 
 
