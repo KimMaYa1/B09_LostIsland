@@ -67,6 +67,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "DrinkWater",
+                    "type": "Button",
+                    "id": "01fa830b-eb24-4fe7-b1c3-da322b341cea",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -210,6 +219,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "CilckMove",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a6d0d981-ff65-4d84-9b90-a27d4e3d447b",
+                    "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "DrinkWater",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
