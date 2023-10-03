@@ -1,21 +1,41 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class CraftingUI : MonoBehaviour
 {
+    [Header("ItemType Button")]
+    [SerializeField] private Image[] _buttonImages;
+
+    [Header("ItemType Slot")]
     [SerializeField] private GameObject[] _craftItemTypeSlots;
+
+    [Header("Item Recipe")]
     [SerializeField] private CraftedItemRecipe[] _recipe_Equipment;
     [SerializeField] private CraftedItemRecipe[] _recipe_Used;
     [SerializeField] private CraftedItemRecipe[] _recipe_Ingredient;
     [SerializeField] private CraftedItemRecipe[] _recipe_ETC;
-    [SerializeField] private Image[] _buttonImages;
 
-    private CraftSlot _craftSlot;
+    [Header("Craft UI")]
+    [SerializeField] private GameObject _craftBG;
+    [SerializeField] private Image _craftItemImage;
+    [SerializeField] private TMP_Text _craftItemName;
+    [SerializeField] private TMP_Text _craftItemInfo;
+    [SerializeField] private GameObject[] _requiredItemSlots;
+
+    [Header("Slider")]
+    [SerializeField] private Slider _slider;
+    [SerializeField] TMP_Text _craftAmountTxt;
+    private int _maxAmount = 10;
+    private int _craftAmount = 0;
+
     private int _curTypeIndex = 0;
     private List<CraftedItemRecipe[]> _itemsList = new List<CraftedItemRecipe[]>();
+    private Item _curItem;
+    private CraftedItemRecipe _curRecipe;
 
     private void Start()
     {
@@ -32,42 +52,31 @@ public class CraftingUI : MonoBehaviour
 
         CraftSlot craftSlot;
         int childCount;
+        GameObject obj;
         for (int j = 0; j < _craftItemTypeSlots.Length; j++)
         {
             childCount = _craftItemTypeSlots[j].transform.childCount;
             for (int i = 0; i < childCount; i++)
             {
+                obj = _craftItemTypeSlots[j].transform.GetChild(i).gameObject;
                 if (i < _itemsList[j].Length)
                 {
-                    _craftItemTypeSlots[0].transform.GetChild(i).gameObject.SetActive(true);
-                    craftSlot = _craftItemTypeSlots[0].transform.GetChild(i).GetComponent<CraftSlot>();
+                    obj.SetActive(true);
+                    craftSlot = obj.GetComponent<CraftSlot>();
                     craftSlot.SetSlot(_itemsList[j][i].item.itemImage);
                 }
             }
         }
-    }
 
-    private void UpdateCraftingUI(Item item)
-    {
-        //for (int i = 0; i < _curItems.Length; i++)
-        //{
-        //    _craftSlot = _curItems[i].GetComponent<CraftSlot>();
-        //    if (i < _curItems.Length)
-        //    {
-        //        _curItems[i].SetActive(true);
-        //        //_craftSlot.SetSlot(_curItems[i].itemImage);
-        //    }
-        //    else
-        //    {
-        //        _craftSlot.ClearSlot();
-        //        _curItems[i].SetActive(false);
-        //    }
-        //}
+        _craftBG.SetActive(false);
     }
 
     public void SlotClick(int itemIndex)
     {
-        UpdateCraftingUI(_itemsList[_curTypeIndex][itemIndex].item);
+        _curRecipe = _itemsList[_curTypeIndex][itemIndex];
+        if (_curRecipe != null)
+            UpdateCraftingUI();
+        _craftBG.SetActive(true);
     }
 
     public void ButtonClick(int buttonIndex)
@@ -94,4 +103,69 @@ public class CraftingUI : MonoBehaviour
             _craftItemTypeSlots[i].SetActive(false);
         }
     }
+
+    private void UpdateCraftingUI()
+    {
+        _curItem = _curRecipe.item;
+        _craftItemName.text = _curItem.itemName;
+        _craftItemInfo.text = _curItem.itemDesc;
+        _craftItemImage.sprite = _curItem.itemImage;
+        ReSetRequiredItemSlots();
+        RequiredItemSlot requiredItemSlot;
+        for (int i = 0; i < _curRecipe.requiredItems.Length; i++)
+        {
+            _requiredItemSlots[i].SetActive(true);
+            requiredItemSlot = _requiredItemSlots[i].GetComponent<RequiredItemSlot>();
+            requiredItemSlot.SetRequiredItemSlot(_curRecipe.requiredItems[i].itemImage, _curRecipe.requiredItems[i].itemName, "0", _curRecipe.requiredItemsCount[i].ToString());
+        }
+        UpdateSlider();
+    }
+
+    private void ReSetRequiredItemSlots()
+    {
+        for (int i = 0; i < _requiredItemSlots.Length; i++)
+        {
+            _requiredItemSlots[i].SetActive(false);
+        }
+    }
+
+    private void UpdateSlider()
+    {
+        _slider.maxValue = _maxAmount;
+        _craftAmountTxt.text = ((int)_slider.value).ToString();
+    }
+
+    public void SetCraftAmount()
+    {
+        _craftAmount = (int)_slider.value;
+        _craftAmountTxt.text = _craftAmount.ToString();
+    }
+
+    public void MinusSliderValue()
+    {
+        _slider.value -= 1;
+    }
+
+    public void PlusSliderValue()
+    {
+        _slider.value += 1;
+    }
+
+    public void MinSliderValue()
+    {
+        _slider.value = 0;
+    }
+
+    public void MaxSliderValue()
+    {
+        _slider.value = _maxAmount;
+    }
+
+    public void OnCraft()
+    {
+        if (_craftAmount > 0)
+            Debug.Log($"¡¶¿€ {_craftAmount} ∞≥");
+    }
+
+
 }
