@@ -123,10 +123,14 @@ public class Inventory : MonoBehaviour
                 {
                     slots[i].SetSlotCount(_count);                  
                 }
-            }           
+            }
         }
     }
 
+    public Slot[] GetSlots()
+    {
+        return slots;
+    }
 }
 
 

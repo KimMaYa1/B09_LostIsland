@@ -25,17 +25,21 @@ public class CraftingUI : MonoBehaviour
     [SerializeField] private TMP_Text _craftItemName;
     [SerializeField] private TMP_Text _craftItemInfo;
     [SerializeField] private GameObject[] _requiredItemSlots;
+    [SerializeField] private Inventory _inventory;
 
     [Header("Slider")]
     [SerializeField] private Slider _slider;
     [SerializeField] TMP_Text _craftAmountTxt;
-    private int _maxAmount = 10;
+    private int _maxAmount = 0;
     private int _craftAmount = 0;
 
     private int _curTypeIndex = 0;
     private List<CraftedItemRecipe[]> _itemsList = new List<CraftedItemRecipe[]>();
     private Item _curItem;
+    private Item _lastReqItem;
+    private string _curReqItemCountTxt;
     private CraftedItemRecipe _curRecipe;
+    private Dictionary<Item, int> _requiredItemsDict = new Dictionary<Item, int>();
 
     private void Start()
     {
@@ -74,6 +78,7 @@ public class CraftingUI : MonoBehaviour
     public void SlotClick(int itemIndex)
     {
         _curRecipe = _itemsList[_curTypeIndex][itemIndex];
+        UpdateReqItemDictFromInventory();
         if (_curRecipe != null)
             UpdateCraftingUI();
         _craftBG.SetActive(true);
@@ -116,7 +121,17 @@ public class CraftingUI : MonoBehaviour
         {
             _requiredItemSlots[i].SetActive(true);
             requiredItemSlot = _requiredItemSlots[i].GetComponent<RequiredItemSlot>();
-            requiredItemSlot.SetRequiredItemSlot(_curRecipe.requiredItems[i].itemImage, _curRecipe.requiredItems[i].itemName, "0", _curRecipe.requiredItemsCount[i].ToString());
+
+            _lastReqItem = _curRecipe.requiredItems[i];
+
+            if (_requiredItemsDict.ContainsKey(_lastReqItem))
+                _curReqItemCountTxt = _requiredItemsDict[(_lastReqItem)].ToString();
+            else
+                _curReqItemCountTxt = "0";
+
+            requiredItemSlot.SetRequiredItemSlot(_lastReqItem.itemImage, _lastReqItem.itemName, _curReqItemCountTxt, _curRecipe.requiredItemsCount[i].ToString());
+
+            CheckMaxAmount(int.Parse(_curReqItemCountTxt), _curRecipe.requiredItemsCount[i]);
         }
         UpdateSlider();
     }
@@ -127,6 +142,14 @@ public class CraftingUI : MonoBehaviour
         {
             _requiredItemSlots[i].SetActive(false);
         }
+    }
+
+    private void CheckMaxAmount(int curAmount, int maxAmount)
+    {
+        int amount = 0;
+        if (maxAmount != 0)
+            amount = curAmount / maxAmount;
+        _maxAmount = _maxAmount > amount ? _maxAmount : amount;
     }
 
     private void UpdateSlider()
@@ -164,8 +187,30 @@ public class CraftingUI : MonoBehaviour
     public void OnCraft()
     {
         if (_craftAmount > 0)
-            Debug.Log($"¡¶¿€ {_craftAmount} ∞≥");
+        {
+            _inventory.AcquireItem(_curRecipe.item, _curRecipe.itemCount * _craftAmount);
+            for(int i = 0; i < _curRecipe.requiredItems.Length; i++)
+            {
+                _inventory.DeAcquireItem(_curRecipe.requiredItems[i], _curRecipe.requiredItemsCount[i] * _craftAmount);
+                _requiredItemsDict[_curRecipe.requiredItems[i]] -= _curRecipe.requiredItemsCount[i] * _craftAmount;
+            }
+        }
+        
     }
 
-
+    private void UpdateReqItemDictFromInventory()
+    {
+        Slot[] slots = _inventory.GetSlots();
+        Item curItem;
+        int curItemCount = 0;
+        for (int i = 0; i < slots.Length; i++)
+        {
+            curItem = slots[i].item;
+            curItemCount = slots[i].itemCount;
+            if (_requiredItemsDict.ContainsKey(curItem))
+                _requiredItemsDict[curItem] = curItemCount;
+            else
+                _requiredItemsDict.Add(curItem, curItemCount);
+        }
+    }
 }
