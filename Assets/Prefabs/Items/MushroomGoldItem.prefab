@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7872599569499420878}
   - component: {fileID: 5646052816183293401}
   - component: {fileID: 5955437869135477893}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: MushroomGoldItem
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -745,6 +745,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 1588090451174212, guid: c737dd230724d61469e1c672cf47ed9e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1593323770353162, guid: c737dd230724d61469e1c672cf47ed9e, type: 3}
       propertyPath: m_Layer
       value: 9
@@ -816,6 +820,26 @@ PrefabInstance:
     - target: {fileID: 4677745771901032, guid: c737dd230724d61469e1c672cf47ed9e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 95674028643950644, guid: c737dd230724d61469e1c672cf47ed9e, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 435088871357949095, guid: c737dd230724d61469e1c672cf47ed9e, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 435088871357949095, guid: c737dd230724d61469e1c672cf47ed9e, type: 3}
+      propertyPath: m_AutoTraverseOffMeshLink
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3786985614116817086, guid: c737dd230724d61469e1c672cf47ed9e, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4172032648514008750, guid: c737dd230724d61469e1c672cf47ed9e, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6002,7 +6026,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dropItem:
   - {fileID: 11400000, guid: 4d3e9c7f05813cc4f80e0db054bdba25, type: 2}
-  quantityPerHit: 1
   capacity: 0
   spawnOBJ: {fileID: 1420475164}
 --- !u!65 &248898870
@@ -8213,7 +8236,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dropItem:
   - {fileID: 11400000, guid: 4d3e9c7f05813cc4f80e0db054bdba25, type: 2}
-  quantityPerHit: 1
   capacity: 0
   spawnOBJ: {fileID: 206552904}
 --- !u!65 &339118123
@@ -15003,7 +15025,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dropItem:
   - {fileID: 11400000, guid: 4d3e9c7f05813cc4f80e0db054bdba25, type: 2}
-  quantityPerHit: 1
   capacity: 0
   spawnOBJ: {fileID: 2011407975}
 --- !u!65 &703525312
@@ -21825,7 +21846,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dropItem:
   - {fileID: 11400000, guid: 4d3e9c7f05813cc4f80e0db054bdba25, type: 2}
-  quantityPerHit: 1
   capacity: 0
   spawnOBJ: {fileID: 1608367591}
 --- !u!65 &1027477784
@@ -31168,7 +31188,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dropItem:
   - {fileID: 11400000, guid: 4d3e9c7f05813cc4f80e0db054bdba25, type: 2}
-  quantityPerHit: 1
   capacity: 0
   spawnOBJ: {fileID: 91732539}
 --- !u!65 &1452025052
@@ -32354,7 +32373,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dropItem:
   - {fileID: 11400000, guid: 4d3e9c7f05813cc4f80e0db054bdba25, type: 2}
-  quantityPerHit: 1
   capacity: 0
   spawnOBJ: {fileID: 1208004357}
 --- !u!65 &1503763245
@@ -34749,7 +34767,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dropItem:
   - {fileID: 11400000, guid: 4d3e9c7f05813cc4f80e0db054bdba25, type: 2}
-  quantityPerHit: 1
   capacity: 0
   spawnOBJ: {fileID: 1504496859}
 --- !u!65 &1634154954
@@ -44967,6 +44984,26 @@ PrefabInstance:
     - target: {fileID: 1938121871752761321, guid: 6014f7a8fc032bb479debb7142dbeb18, type: 3}
       propertyPath: m_Name
       value: MainCharacter
+      objectReference: {fileID: 0}
+    - target: {fileID: 3120115236361750716, guid: 6014f7a8fc032bb479debb7142dbeb18, type: 3}
+      propertyPath: m_Size.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3120115236361750716, guid: 6014f7a8fc032bb479debb7142dbeb18, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3469434644108765012, guid: 6014f7a8fc032bb479debb7142dbeb18, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3469434644108765012, guid: 6014f7a8fc032bb479debb7142dbeb18, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3469434644108765012, guid: 6014f7a8fc032bb479debb7142dbeb18, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.2
       objectReference: {fileID: 0}
     - target: {fileID: 5559438188034363796, guid: 6014f7a8fc032bb479debb7142dbeb18, type: 3}
       propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_Target
