@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 387618652561075114}
   - component: {fileID: 734075413573096932}
   - component: {fileID: 1606626046062882707}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Tree1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 1309787202760280106}
   - component: {fileID: 2175397431574702726}
   - component: {fileID: 851635876222870596}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: ResourceTree
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -154,7 +154,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dropItem:
   - {fileID: 0}
-  quantityPerHit: 1
   capacity: 0
   spawnOBJ: {fileID: 0}
 --- !u!208 &851635876222870596
@@ -169,7 +168,7 @@ NavMeshObstacle:
   m_Shape: 1
   m_Extents: {x: 0.5, y: 0.5, z: 0.5}
   m_MoveThreshold: 0.1
-  m_Carve: 0
+  m_Carve: 1
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0, z: 0}
   m_TimeToStationary: 0.5

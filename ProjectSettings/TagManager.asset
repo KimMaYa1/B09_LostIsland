@@ -7,6 +7,7 @@ TagManager:
   - Itme
   - Weapon
   - Rock
+  - AnimalWeapon
   layers:
   - Default
   - TransparentFX

@@ -68,10 +68,10 @@ public class CamMove : MonoBehaviour
 
         _rigidbody.velocity = dir;
 
-        if (!_playerClickMove.IsGrounded())
-        {
-            return;
-        }
+        //if (!_playerClickMove.IsGrounded())
+        //{
+        //    return;
+        //}
 
         transform.position = new Vector3(transform.position.x, target.position.y, transform.position.z);
     }

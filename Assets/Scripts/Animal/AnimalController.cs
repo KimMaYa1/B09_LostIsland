@@ -5,7 +5,6 @@ using UnityEngine;
 public class AnimalController : MonoBehaviour
 {
     public AnimalStats _animalStats;
-
     public void Awake()
     {
         _animalStats.health = _animalStats.animalSO.health;
@@ -21,9 +20,10 @@ public class AnimalController : MonoBehaviour
         }
     }
 
+   
+
     public void GetHit()
     {
-        //공격 받는 것
         _animalStats.currentHealth -= 10;
     }
 
@@ -31,4 +31,5 @@ public class AnimalController : MonoBehaviour
     {
 
     }
+
 }

@@ -15,8 +15,8 @@ public class AttackState : IState
     }
     public void Enter()
     {
-        Debug.Log("Attack Enter!");
         _Animals.PlayAnimation(AnimalAI.State.Attack);
+        _Animals.attackCollider.enabled = true;
         _Animals.nav.isStopped = true;
     }
 
@@ -31,6 +31,7 @@ public class AttackState : IState
         delaysecond += Time.deltaTime;
         if (delaysecond > 1.0f)
         {
+            _Animals.attackCollider.enabled = false;
             _Animals.States = AnimalAI.State.Chase;
         }
     }

@@ -20,6 +20,7 @@ public class ChaseState : IState
     {
         _Animals.PlayAnimation(AnimalAI.State.Run);
         _Animals.nav.speed = _AnimalStats.animalSO.runSpeed;
+        _Animals.transform.rotation = Quaternion.Lerp(_Animals.transform.rotation, Quaternion.LookRotation(GameManager.Instance.PlayerObj.transform.position), 0.25f);
     }
 
     public void Exit()

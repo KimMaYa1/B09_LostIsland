@@ -213,6 +213,10 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8013871857042775080, guid: 9d02bb004923d964f98a9b43549e45ea, type: 3}
+      propertyPath: m_Carve
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8377805752808920635, guid: 9d02bb004923d964f98a9b43549e45ea, type: 3}
       propertyPath: m_Name
       value: ResourceRock2

@@ -6,6 +6,7 @@ public class GetHitState : IState
 {
     private AnimalAI _Animals;
     private AnimalStats _AnimalStats;
+    float delaysecond = 0f;
     public GetHitState(AnimalAI animalAI, AnimalStats animalStats)
     {
         _Animals = animalAI;
@@ -23,21 +24,25 @@ public class GetHitState : IState
 
     public void Stay()
     {
-        if(_AnimalStats.animal == Animal.Fox)
+        delaysecond = Time.deltaTime;
+        if(delaysecond >= 0.1f)
         {
-            int rand = Random.Range(1, 5);
-            if (rand >= 3)
+            if (_AnimalStats.animal == Animal.Fox)
             {
-                _Animals.States = AnimalAI.State.Run;
+                int rand = Random.Range(1, 5);
+                if (rand >= 3)
+                {
+                    _Animals.States = AnimalAI.State.Run;
+                }
+                else
+                {
+                    _Animals.States = AnimalAI.State.Chase;
+                }
             }
             else
             {
                 _Animals.States = AnimalAI.State.Chase;
             }
-        }
-        else
-        {
-            _Animals.States = AnimalAI.State.Chase;
         }
     }
 

@@ -122,13 +122,7 @@ public class PlayerClickMove : MonoBehaviour
 
     private void Attack()
     {
-        Ray ray = new Ray(transform.position + (transform.forward * 0.15f) + (-transform.up * 0.5f), Vector3.forward);
-        RaycastHit hit;
 
-        if(Physics.Raycast(ray, out hit, 0.8f))
-        {
-
-        }
     }
 
     private void Move()
@@ -164,13 +158,12 @@ public class PlayerClickMove : MonoBehaviour
         }
 
         isMove = (transform.position - destination).magnitude > a;
-        if(!isMove && isItem)
+        if (!isMove && isItem)
         {
-            Debug.Log(target.name);
-            Debug.Log(target.GetComponent<ItemPickUp>().item);
             inventory.AcquireItem(target.GetComponent<ItemPickUp>().item);
+            Destroy(target);
         }
-        else if(!isMove && isInteraction)
+        else if (!isMove && isInteraction)
         {
             target.GetComponent<Door>().InteractionDoor();
         }
@@ -178,12 +171,12 @@ public class PlayerClickMove : MonoBehaviour
 
     private IEnumerator Jump()
     {
-        for(int i = 0; i < lr.positionCount-1; i++)
+        for (int i = 0; i < lr.positionCount - 1; i++)
         {
-            Ray ray = new Ray(lr.GetPosition(i), lr.GetPosition(i+1));
+            Ray ray = new Ray(lr.GetPosition(i), lr.GetPosition(i + 1));
             RaycastHit hit;
 
-            if(Physics.Raycast(ray, out hit, Vector3.Distance(lr.GetPosition(i), lr.GetPosition(i + 1)), jumpLayerMask))
+            if (Physics.Raycast(ray, out hit, Vector3.Distance(lr.GetPosition(i), lr.GetPosition(i + 1)), jumpLayerMask))
             {
                 yield break;
             }

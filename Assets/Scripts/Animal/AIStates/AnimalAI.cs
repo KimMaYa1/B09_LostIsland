@@ -33,6 +33,14 @@ public class AnimalAI : MonoBehaviour
     // navMesh
     public NavMeshAgent nav;
     public LayerMask playerLayerMask;
+    // drop Item
+    public GameObject dropItem;
+    // Attack Collider
+    public Collider attackCollider;
+    public void Dead()
+    {
+        Instantiate(dropItem, this.transform.position + Vector3.up * 2,Quaternion.identity);
+    }
 
     void Awake()
     {
@@ -50,8 +58,8 @@ public class AnimalAI : MonoBehaviour
     private void Update()
     {
         _IStates[(int)_state].Stay();
-        if (IsDeadCheck()) {
-            _state = State.Dead;
+        if (IsDeadCheck() && States != State.Dead) {
+            States = State.Dead;
         }
     }
 
@@ -94,17 +102,13 @@ public class AnimalAI : MonoBehaviour
         }
     }
 
-    //Á×À½ Ã³¸®
-    public void DeadAnimal()
-    {
-        Destroy(this.gameObject);
-    }
-
     //Á×Àº Áö Ã¼Å©
     public bool IsDeadCheck()
     {
         if(animalStats.currentHealth <= 0)
         {
+            animalStats.health = 0;
+
             return true;
         }
         else

@@ -71,7 +71,6 @@ MonoBehaviour:
   dropItem:
   - {fileID: 0}
   - {fileID: 0}
-  quantityPerHit: 1
   capacity: 0
   spawnOBJ: {fileID: 0}
 --- !u!208 &1021783769387819679
@@ -86,7 +85,7 @@ NavMeshObstacle:
   m_Shape: 1
   m_Extents: {x: 0.3, y: 0.625, z: 0.35}
   m_MoveThreshold: 0.1
-  m_Carve: 0
+  m_Carve: 1
   m_CarveOnlyStationary: 1
   m_Center: {x: 0.04, y: 0.8, z: 0}
   m_TimeToStationary: 0.5
