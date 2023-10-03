@@ -167,7 +167,6 @@ public class PlayerClickMove : MonoBehaviour
         if(!isMove && isItem)
         {
             inventory.AcquireItem(target.GetComponent<ItemPickUp>().item);
-            Destroy(target.transform.gameObject);
         }
         else if(!isMove && isInteraction)
         {
@@ -233,10 +232,12 @@ public class PlayerClickMove : MonoBehaviour
                         else if (((1 << hit.collider.gameObject.layer) | interactionManager.interactLayerMask) == interactionManager.interactLayerMask)
                         {
                             isInteraction = true;
+                            target = hit.transform.gameObject;
                         }
                         else if (((1 << hit.collider.gameObject.layer) | interactionManager.monsterLayerMask) == interactionManager.monsterLayerMask)
                         {
                             isMonster = true;
+                            target = hit.transform.gameObject;
                         }
                     }
 

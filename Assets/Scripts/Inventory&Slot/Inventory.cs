@@ -107,8 +107,8 @@ public class Inventory : MonoBehaviour
                     slots[i].AddItem(_item, _count); // 슬롯의 additem 함수 호출(새 아이템 추가)
                     return;
                 }
-            }          
-
+            }
+        Destroy(this.gameObject);
     }
 
     //아이템 제거
