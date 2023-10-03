@@ -29,6 +29,8 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
+        playerStat.Atk = 50;
+        playerStat.Def = 10;
         attackCollider.enabled = false;
         instance = this;
         playerConditins = GetComponent<PlayerConditins>();

@@ -47,7 +47,12 @@ public class PlayerClickMove : MonoBehaviour
     }
     private void Update()
     {
-        if (playerController.IsAttackDelay && !UIManager.instance.inventoryActivated)
+        if (UIManager.instance.inventoryActivated)
+        {
+            nav.ResetPath();
+            nav.velocity = Vector3.zero;
+        }
+        if (playerController.IsAttackDelay)
         {
             if (isMove)
             {
@@ -160,59 +165,61 @@ public class PlayerClickMove : MonoBehaviour
     }
     public void OnClickMoveInput(InputAction.CallbackContext context)
     {
-        //if (IsGrounded())
-        //{
-        if (context.phase == InputActionPhase.Canceled)
+        if (context.phase == InputActionPhase.Canceled )
         {
-            Ray ray = camera.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-            if (Physics.Raycast(ray, out hit, 100f))
+            if (!UIManager.instance.inventoryActivated)
             {
-                if (hit.collider.gameObject.layer != gameObject.layer)
+                Ray ray = camera.ScreenPointToRay(Input.mousePosition);
+                RaycastHit hit;
+                if (Physics.Raycast(ray, out hit, 100f))
                 {
-                    isItem = false;
-                    isInteraction = false;
-                    isMonster = false;
-                    nav.velocity = Vector3.zero;
-
-                    destination = new Vector3(hit.point.x, transform.position.y, hit.point.z);
-                    direction = destination - transform.position;
-
-                    
-
-                    if (isJump)
+                    if (hit.collider.gameObject.layer != gameObject.layer)
                     {
-                        _animator.SetBool("IsWalking", false);
-                        isJump = false;
-                        StartCoroutine(Jump());
-                        return;
-                    }
+                        isItem = false;
+                        isInteraction = false;
+                        isMonster = false;
+                        nav.velocity = Vector3.zero;
 
-                    if (nav.SetDestination(hit.point))
-                    {
-                        _animator.SetBool("IsWalking", true);
-                    }
+                        destination = new Vector3(hit.point.x, transform.position.y, hit.point.z);
+                        direction = destination - transform.position;
 
-                    isMove = true;
 
-                    if (((1 << hit.collider.gameObject.layer) | interactionManager.itemLayerMask) == interactionManager.itemLayerMask)
-                    {
-                        isItem = true;
-                        target = hit.transform.gameObject;
-                    }
-                    else if (((1 << hit.collider.gameObject.layer) | interactionManager.interactLayerMask) == interactionManager.interactLayerMask)
-                    {
-                        isInteraction = true;
-                        target = hit.transform.gameObject;
-                    }
-                    else if (((1 << hit.collider.gameObject.layer) | interactionManager.monsterLayerMask) == interactionManager.monsterLayerMask)
-                    {
-                        isMonster = true;
-                        target = hit.transform.gameObject;
+
+                        if (isJump)
+                        {
+                            _animator.SetBool("IsWalking", false);
+                            isJump = false;
+                            StartCoroutine(Jump());
+                            return;
+                        }
+
+                        if (nav.SetDestination(hit.point))
+                        {
+                            _animator.SetBool("IsWalking", true);
+                        }
+
+                        isMove = true;
+
+                        if (((1 << hit.collider.gameObject.layer) | interactionManager.itemLayerMask) == interactionManager.itemLayerMask)
+                        {
+                            isItem = true;
+                            target = hit.transform.gameObject;
+                        }
+                        else if (((1 << hit.collider.gameObject.layer) | interactionManager.interactLayerMask) == interactionManager.interactLayerMask)
+                        {
+                            isInteraction = true;
+                            target = hit.transform.gameObject;
+                        }
+                        else if (((1 << hit.collider.gameObject.layer) | interactionManager.monsterLayerMask) == interactionManager.monsterLayerMask)
+                        {
+                            isMonster = true;
+                            target = hit.transform.gameObject;
+                        }
                     }
                 }
             }
         }
+        
     }
     public void OnJumpInput(InputAction.CallbackContext context)
     {
