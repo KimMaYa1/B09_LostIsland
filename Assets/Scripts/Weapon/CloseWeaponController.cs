@@ -15,7 +15,11 @@ public class CloseWeaponController : MonoBehaviour
     //공격 시 대상 체크
     private RaycastHit hitInfo;
 
-
+    void Start()
+    {
+        WeaponManager.currentWeapon = currentCloseWeapon.GetComponent<Transform>();
+        WeaponManager.currentWeaponAnim = currentCloseWeapon.anim;
+    }
 
     void Update()
     {

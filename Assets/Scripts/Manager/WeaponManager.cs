@@ -50,15 +50,15 @@ public class WeaponManager : MonoBehaviour
     }
 
 
-    //무기 교체
+    //무기 교체(임시/수정 필요)
     void Update()
     {
         if(!isChangeWeapon)
         {
             if (Input.GetKeyDown(KeyCode.Alpha1))
-                ;
+                StartCoroutine(ChangeWeaponCoroutine("HAND", "맨손"));
             else if (Input.GetKeyDown(KeyCode.Alpha2))
-                ;
+                StartCoroutine(ChangeWeaponCoroutine("HAND", "한손검"));
         }
     }
 
@@ -69,6 +69,13 @@ public class WeaponManager : MonoBehaviour
         currentWeaponAnim.SetTrigger("무기교체 모션"); //필요 없으면 제거
 
         yield return new WaitForSeconds(changeWeaponDelayTime);
+
+        yield return new WaitForSeconds(changeWeaponEndDelayTime);
+
+        currentWeaponType = type; //바뀐 무기 타입(필요 없으면 제거-원거리 무기용)
+
+        //무기교체 가능 on
+        isChangeWeapon = false; 
 
     }
 
