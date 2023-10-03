@@ -48,9 +48,9 @@ public class InteractionManager : MonoBehaviour
             if (((1<<hit.collider.gameObject.layer)|itemLayerMask) == itemLayerMask)
             {
                 curInteractGameObject = hit.collider.gameObject;
-                if (hit.collider.TryGetComponent<ItemPickUp>(out ItemPickUp item))
+                if (hit.collider.TryGetComponent<ItemPickUp>(out ItemPickUp itemPickUp))
                 {
-                    curInteractable = hit.collider.GetComponent<ItemPickUp>().item;
+                    curInteractable = itemPickUp.item;
                     SetPromptText();
                     Cursor.SetCursor(interactionCurSor, Vector2.left + Vector2.up, CursorMode.Auto);
                     return;
