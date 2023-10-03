@@ -148,6 +148,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 749392802982906240, guid: dc02c9362b25f334989cc1d31a609f06, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 749392802982906240, guid: dc02c9362b25f334989cc1d31a609f06, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
@@ -198,6 +202,10 @@ PrefabInstance:
     - target: {fileID: 6173783753926925276, guid: dc02c9362b25f334989cc1d31a609f06, type: 3}
       propertyPath: m_Name
       value: ResourceSteel
+      objectReference: {fileID: 0}
+    - target: {fileID: 6173783753926925276, guid: dc02c9362b25f334989cc1d31a609f06, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6173783753926925276, guid: dc02c9362b25f334989cc1d31a609f06, type: 3}
       propertyPath: m_IsActive
