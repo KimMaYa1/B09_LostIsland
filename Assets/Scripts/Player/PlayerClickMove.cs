@@ -122,13 +122,7 @@ public class PlayerClickMove : MonoBehaviour
 
     private void Attack()
     {
-        Ray ray = new Ray(transform.position + (transform.forward * 0.15f) + (-transform.up * 0.5f), Vector3.forward);
-        RaycastHit hit;
-
-        if(Physics.Raycast(ray, out hit, 0.8f))
-        {
-
-        }
+        
     }
 
     private void Move()
