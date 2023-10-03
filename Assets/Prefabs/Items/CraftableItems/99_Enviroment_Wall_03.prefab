@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5722707269199470825}
   - component: {fileID: 6872180449481956848}
   - component: {fileID: 9048642306034935972}
+  - component: {fileID: 6343463017124797820}
   m_Layer: 8
   m_Name: Wall_Main.002
   m_TagString: Untagged
@@ -83,6 +84,22 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!208 &6343463017124797820
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3156727550487122120}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 2, y: 1.102, z: 0.333}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: -0.024, y: 1.07, z: -2.2710001}
+  m_TimeToStationary: 0.5
 --- !u!1 &4808101341289430985
 GameObject:
   m_ObjectHideFlags: 0
@@ -163,6 +180,7 @@ GameObject:
   - component: {fileID: 6975932406742899479}
   - component: {fileID: 3915682874678824402}
   - component: {fileID: 1486144763176289881}
+  - component: {fileID: 5884288418690408713}
   m_Layer: 8
   m_Name: Wall_Top.002
   m_TagString: Untagged
@@ -235,3 +253,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!208 &5884288418690408713
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8915316354170833909}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 2, y: 0.32000002, z: 0.32900003}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: -0.024, y: 2.492, z: -2.275}
+  m_TimeToStationary: 0.5

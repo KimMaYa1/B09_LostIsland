@@ -4,11 +4,10 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlaceItemControll : MonoBehaviour
+public class PlaceItemController : MonoBehaviour
 {
 
     [SerializeField] private Camera _camera;
-    [SerializeField] private Camera _mainCamera;
 
     [SerializeField] private Transform _placeTransform;
     [SerializeField] private Transform _playerTransform;
@@ -153,25 +152,4 @@ public class PlaceItemControll : MonoBehaviour
         }
     }
 
-    //다른 곳에서 할 예정
-    //public void SlotClick(int slotNumber)
-    //{
-    //    _craftingCanvas.SetActive(false);
-    //    _craftingCamera.SetActive(true);
-    //    _placeItemControl.PreviewItemView(_craftedItems[slotNumber].itemPrefab);
-    //    _isPreviewOn = true;
-
-    //}
-
-    //public void OnBuild(InputAction.CallbackContext context)
-    //{
-    //    if (_isPreviewOn == true)
-    //        if (context.phase == InputActionPhase.Started)
-    //        {
-    //            _placeItemControl.PlacePrefab();
-    //            _craftingCanvas.SetActive(true);
-    //            _craftingCamera.SetActive(false);
-    //            _isPreviewOn = false;
-    //        }
-    //}
 }
