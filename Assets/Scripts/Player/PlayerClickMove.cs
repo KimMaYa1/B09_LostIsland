@@ -126,42 +126,7 @@ public class PlayerClickMove : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit, 0.8f))
         {
-        }
-    }
-    private void Move()
-    {
-        _animator.SetBool("IsWalking", true);
-        if (Vector3.Distance(destination, transform.position) <= 0.1f)
-        {
-            isMove = false;
-            return;
-        }
-        if (transform.forward != direction.normalized)
-        {
-            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(direction), 0.25f);
-        }
-        Vector3 dir = direction.normalized;
-        dir *= playerController.playerStat.MoveSpeed;
-        dir.y = _rigidbody.velocity.y;
-        _rigidbody.velocity = dir;
-        destination.y = transform.position.y;
-        float a = 0;
-        if (isItem || isInteraction)
-        {
-            a = 0.8f;
-        }
-        else
-        {
-            a = 0.2f;
-        }
-        isMove = (transform.position - destination).magnitude > a;
-        if (!isMove && isItem)
-        {
-            inventory.AcquireItem(target.GetComponent<ItemPickUp>().item);
-        }
-        else if (!isMove && isInteraction)
-        {
-            target.GetComponent<Door>().InteractionDoor();
+
         }
     }
     private IEnumerator Jump()
