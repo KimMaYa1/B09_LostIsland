@@ -599,7 +599,7 @@ GameObject:
   - component: {fileID: 1840090701288688001}
   - component: {fileID: 3977490306348248632}
   m_Layer: 5
-  m_Name: RequiredItem
+  m_Name: RequiredItemSlot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
