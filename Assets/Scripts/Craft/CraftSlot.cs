@@ -7,32 +7,14 @@ using UnityEngine.UI;
 public class CraftSlot : MonoBehaviour
 {
     [SerializeField] private Image _icon;
-    private Button _button;
-    private Item _crafteditem;
-    private int _itemIndex;
 
-    private void Awake()
+    public void SetSlot(Sprite sprite)
     {
-        _itemIndex = -1;
-        _button = GetComponent<Button>();
-    }
-
-    public void SetSlot(Item craftedItem, int itemIndex)
-    {
-        _itemIndex = itemIndex;
-        _crafteditem = craftedItem;
-        _icon.sprite = _crafteditem.itemImage;
+        _icon.sprite = sprite;
     }
 
     public void ClearSlot()
     {
-        _itemIndex = -1;
-        _crafteditem = null;
         _icon.sprite = null;
-    }
-
-    public int GetItemIndex()
-    {
-        return _itemIndex;
     }
 }
