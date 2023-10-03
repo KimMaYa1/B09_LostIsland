@@ -99,7 +99,7 @@ public class PlayerConditins : MonoBehaviour, IDamagable
 
     public void Drink(float amount)
     {
-        hunger.Add(amount);
+        thirst.Add(amount);
     }
 
     public bool UseStamina(float amount)

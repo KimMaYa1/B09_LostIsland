@@ -31,7 +31,7 @@ Transform:
   - {fileID: 6764894226491015230}
   - {fileID: 8895039148927622106}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4092607741571070888
 GameObject:
@@ -178,6 +178,57 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4417103214610900928}
   m_Enabled: 1
+--- !u!1 &4480930417385508394
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4744667660736858665}
+  - component: {fileID: 1898305855390682785}
+  m_Layer: 0
+  m_Name: Inventory
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4744667660736858665
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4480930417385508394}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -5.2696533, y: 12.788867, z: -25.843506}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8895039148927622106}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1898305855390682785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4480930417385508394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fba3e0ffc6bdd2041802d4eb2321b509, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  go_InventoryBase: {fileID: 0}
+  go_SlotsParent: {fileID: 0}
+  startItems:
+  - {fileID: 11400000, guid: 2577707984cf40a4c9d41ae889982b00, type: 2}
+  - {fileID: 11400000, guid: 2577707984cf40a4c9d41ae889982b00, type: 2}
+  - {fileID: 11400000, guid: 2577707984cf40a4c9d41ae889982b00, type: 2}
+  - {fileID: 11400000, guid: 2577707984cf40a4c9d41ae889982b00, type: 2}
 --- !u!1 &4806375380964396500
 GameObject:
   m_ObjectHideFlags: 0
@@ -247,6 +298,7 @@ Transform:
   m_Children:
   - {fileID: 4473082132965029820}
   - {fileID: 3469434644108765012}
+  - {fileID: 4744667660736858665}
   m_Father: {fileID: 7697404290593924621}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -343,22 +395,6 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1886691414357762281}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
-        m_MethodName: OnAttackInput
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 58af9c3f-8a55-40df-a8df-e539158f5929
-    m_ActionName: Player/Attack[/Mouse/leftButton]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1886691414357762281}
-        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
         m_MethodName: OnRunInput
         m_Mode: 0
         m_Arguments:
@@ -439,6 +475,22 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 890ddfd6-f223-4ab7-8d79-1c0a0b9de9cd
     m_ActionName: Player/PlaceItem[/Keyboard/enter]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1886691414357762281}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: OnDrinkWater
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 01fa830b-eb24-4fe7-b1c3-da322b341cea
+    m_ActionName: Player/DrinkWater[/Keyboard/f]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -463,8 +515,10 @@ MonoBehaviour:
     JumpForce: 80
   attackCollider: {fileID: 3120115236361750716}
   maxJumpRange: 0
+  playerConditins: {fileID: 0}
   delayTime: 0
   IsAttackDelay: 1
+  canWater: 0
 --- !u!114 &6599527638160861095
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -472,47 +526,40 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4872466348856677596}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 19e6be85c1dd6374db31a92854736c4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   health:
     curValue: 0
-    maxValue: 0
-    startValue: 0
+    maxValue: 100
+    startValue: 100
     regenRate: 0
     decayRate: 0
     uiBar: {fileID: 0}
   hunger:
     curValue: 0
-    maxValue: 0
-    startValue: 0
+    maxValue: 100
+    startValue: 80
     regenRate: 0
-    decayRate: 0
+    decayRate: 0.5
     uiBar: {fileID: 0}
   thirst:
     curValue: 0
-    maxValue: 0
-    startValue: 0
+    maxValue: 100
+    startValue: 80
     regenRate: 0
-    decayRate: 0
+    decayRate: 0.5
     uiBar: {fileID: 0}
   stamina:
     curValue: 0
-    maxValue: 0
-    startValue: 0
-    regenRate: 0
+    maxValue: 100
+    startValue: 100
+    regenRate: 5
     decayRate: 0
     uiBar: {fileID: 0}
-  weight:
-    curValue: 0
-    maxValue: 0
-    startValue: 0
-    regenRate: 0
-    decayRate: 0
-    uiBar: {fileID: 0}
-  noHungerHealthDecay: 0
+  noHungerHealthDecay: 0.5
   onTakeDamage:
     m_PersistentCalls:
       m_Calls: []
@@ -558,7 +605,7 @@ MonoBehaviour:
   jumpLayerMask:
     serializedVersion: 2
     m_Bits: 0
-  inventory: {fileID: 0}
+  inventory: {fileID: 1898305855390682785}
 --- !u!120 &9019005382311370121
 LineRenderer:
   serializedVersion: 2
