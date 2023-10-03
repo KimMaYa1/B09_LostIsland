@@ -108,6 +108,7 @@ public class Inventory : MonoBehaviour
                     return;
                 }
             }
+        Destroy(this.gameObject);
     }
 
     //아이템 제거
