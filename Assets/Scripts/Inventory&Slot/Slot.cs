@@ -151,8 +151,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
         if (eventData.button == PointerEventData.InputButton.Left)
         {
             if (item != null)
-            {
-                ChangeDiarog();          
+            {       
                 if (item.itemType == Item.ItemType.Used) // && !isCooltTime)
                 {
                     //PlayerPos.DecreaseWT(item.itemWeight); //소모품 사용시 무게감소
@@ -202,6 +201,10 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
 
                 }
             }
+        }
+        else if(eventData.button == PointerEventData.InputButton.Right && inventory.gameObject.activeSelf == true)
+        {
+            ChangeDiarog();
         }
     }
 

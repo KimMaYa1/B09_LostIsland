@@ -6,7 +6,7 @@ public class AnimalAttack : MonoBehaviour
 {
     PlayerConditins playerConditins;
     AnimalStats aniamlStats;
-    private void Awake()
+    private void Start()
     {
         playerConditins = GameManager.Instance.PlayerObj.GetComponentInChildren<PlayerConditins>();
         aniamlStats = this.gameObject.GetComponentInParent<AnimalStats>();
