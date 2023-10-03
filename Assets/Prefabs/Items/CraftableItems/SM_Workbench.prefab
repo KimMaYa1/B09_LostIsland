@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6553008995678029814}
   - component: {fileID: 8523391424481830863}
   - component: {fileID: -2334197949454795410}
+  - component: {fileID: 1799426294746912049}
   m_Layer: 8
   m_Name: SM_Workbench
   m_TagString: Itme
@@ -33,7 +34,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &9012830677334553404
 MeshFilter:
@@ -120,3 +121,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 11400000, guid: 27b2449102eef9444946aef7144fe077, type: 2}
+--- !u!208 &1799426294746912049
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4751309179195205155}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.841, y: 0.869, z: 0.453}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.87200004, z: 0.047000002}
+  m_TimeToStationary: 0.5
