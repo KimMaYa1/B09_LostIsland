@@ -96,8 +96,14 @@ public class PlayerClickMove : MonoBehaviour
                         }
                         else if (isMonster)
                         {
-                            playerController.OnAttackInput(_animator);
+                            playerController.OnAttackInput(inventory.currentWeapon);
                             isMonster = false;
+                            /*if ()
+                            {
+                                몬스터가 안죽었다면
+                                0.5초 있다가 또 때리기
+                                return;
+                            }*/
                         }
                         interactioncoll.target = null;
                     }
