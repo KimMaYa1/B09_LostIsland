@@ -21,8 +21,8 @@ public class InputNumber : MonoBehaviour
     [SerializeField]
     private GameObject go_Base; // 아이템 드랍 UI base
 
-    //[SerializeField]
-    //private PlayerController playerPos; //아이템 드랍 위치용
+    [SerializeField]
+    private GameObject playerPos; //아이템 드랍 위치용
 
 
     //버리기 입력창 호출
@@ -79,7 +79,7 @@ public class InputNumber : MonoBehaviour
         {
             //playerPos.DecreaseWT(DragSlot.instance.dragSlot.item.itemWeight); //무게 감소           
             //PlayerController.canPickUp = true;//아이템 획득 가능
-            //Instantiate(DragSlot.instance.dragSlot.item.itemPrefab, playerPos.transform.position + playerPos.transform.forward, Quaternion.identity); //아이템 생성
+            Instantiate(DragSlot.instance.dragSlot.item.itemPrefab, playerPos.transform.position + playerPos.transform.forward, Quaternion.identity); //아이템 생성
             DragSlot.instance.dragSlot.SetSlotCount(-1); //인벤토리 아이템의 개수 감소
             yield return new WaitForSeconds(0.05f); //각 생성의 대기시간
         }
