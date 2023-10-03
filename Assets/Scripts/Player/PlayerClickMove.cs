@@ -29,7 +29,7 @@ public class PlayerClickMove : MonoBehaviour
     //test
     private NavMeshAgent nav;
 
-    public GameObject interactioncoll;
+    public InteractionTarget interactioncoll;
 
     private void Awake()
     {
@@ -52,29 +52,46 @@ public class PlayerClickMove : MonoBehaviour
             nav.ResetPath();
             nav.velocity = Vector3.zero;
         }
+        Debug.Log(isMove);
         if (playerController.IsAttackDelay)
         {
             if (isMove)
             {
+                if (interactioncoll.target != null)
+                {
+                    if(target == interactioncoll.target)
+                    {
+                        Debug.Log("여기 들어옴");
+                        _animator.SetBool("IsWalking", false);
+                        nav.ResetPath();
+                        nav.velocity = Vector3.zero;
+                        isMove = false;
+
+                        if (isItem)
+                        {
+                            inventory.AcquireItem(target.GetComponent<ItemPickUp>().item);
+                            Destroy(target);
+                            isItem = false;
+                        }
+                        else if (isInteraction)
+                        {
+                            target.GetComponent<Door>().InteractionDoor();
+                            isInteraction = false;
+                        }
+                        else if (isMonster)
+                        {
+                            playerController.OnAttackInput();
+                            isMonster = false;
+                        }
+                        interactioncoll.target = null;
+                    }
+                }
+
                 if (!nav.pathPending && nav.remainingDistance < 0.2f)
                 {
                     _animator.SetBool("IsWalking", false);
-                    isMove = false;
                     nav.ResetPath();
                     nav.velocity = Vector3.zero;
-                    if (isItem)
-                    {
-                        inventory.AcquireItem(target.GetComponent<ItemPickUp>().item);
-                        Destroy(target);
-                    }
-                    else if (isInteraction)
-                    {
-                        target.GetComponent<Door>().InteractionDoor();
-                    }
-                    else if (isMonster)
-                    {
-                        playerController.OnAttackInput();
-                    }
                 }
                 else
                 {
@@ -193,12 +210,13 @@ public class PlayerClickMove : MonoBehaviour
                             return;
                         }
 
+                        isMove = true;
+
                         if (nav.SetDestination(hit.point))
                         {
                             _animator.SetBool("IsWalking", true);
                         }
 
-                        isMove = true;
 
                         if (((1 << hit.collider.gameObject.layer) | interactionManager.itemLayerMask) == interactionManager.itemLayerMask)
                         {
