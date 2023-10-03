@@ -7,7 +7,7 @@ public class Inventory : MonoBehaviour
 {
 
     public static bool inventoryActivated = false; //인벤토리 활성화 상태
-    public static bool shopActivated = false; //상점 활성호 ㅏ상태
+    public static bool shopActivated = false; //상점 활성화상태
 
 
 
@@ -80,7 +80,7 @@ public class Inventory : MonoBehaviour
         
             if (Item.ItemType.Equipment != _item.itemType) // 장비가 아닌경우에만 (장비는 개수x)
             {
-                if (_item.itemType != Item.ItemType.Ingredient) //아이템 타입이 "재료" 가 아닌경우만 무게 계산
+                //if (_item.itemType != Item.ItemType.Ingredient) //아이템 타입이 "재료" 가 아닌경우만 무게 계산
                 //player.IncreaseWT(_item.itemWeight);
 
             //동일 아이템이 있는 경우부터 조사 반복문 

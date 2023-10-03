@@ -42,7 +42,7 @@ public class PlayerClickMove : MonoBehaviour
 
     private void Update()
     {
-        if (playerController.IsAttackDelay)
+        if (playerController.IsAttackDelay) //TODO&& !UIManager.instance.inventoryActivated)
         {
             if (isJump)
             {
