@@ -98,6 +98,7 @@ GameObject:
   - component: {fileID: 4000013859883750}
   - component: {fileID: 95000012944575982}
   - component: {fileID: 4590766116738574075}
+  - component: {fileID: 7319501056618064743}
   m_Layer: 8
   m_Name: TimsAssets_Door
   m_TagString: Itme
@@ -112,7 +113,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1000010346633862}
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -121,7 +122,7 @@ Transform:
   - {fileID: 4000010688086050}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!95 &95000012944575982
 Animator:
   serializedVersion: 5
@@ -164,6 +165,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.5, y: 0.2, z: 2.55}
   m_Center: {x: 0, y: 0, z: 0.95}
+--- !u!114 &7319501056618064743
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000010346633862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 763f78be84cb1f1449705077c0407520, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 11400000, guid: d692ba59ac0dab145814f3dd6a2d3d2b, type: 2}
 --- !u!1 &1000010487714768
 GameObject:
   m_ObjectHideFlags: 0
@@ -471,14 +485,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1000012957683102}
-  m_LocalRotation: {x: 0.7071068, y: 0, z: -0, w: 0.7071068}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -0.6195, y: 0.041279998, z: -2.0452964}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4000010688086050}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!33 &33000014247284822
 MeshFilter:
   m_ObjectHideFlags: 0

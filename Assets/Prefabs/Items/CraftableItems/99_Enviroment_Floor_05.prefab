@@ -11,9 +11,11 @@ GameObject:
   - component: {fileID: 6843027303298045855}
   - component: {fileID: 7590969483677538362}
   - component: {fileID: 5673547959623412976}
-  m_Layer: 0
+  - component: {fileID: 6703032890511189147}
+  - component: {fileID: 1421305793398434815}
+  m_Layer: 8
   m_Name: 99_Enviroment_Floor_05
-  m_TagString: Untagged
+  m_TagString: Itme
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -83,3 +85,38 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &6703032890511189147
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6177955446382480677}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 8757463438446164566, guid: 6670a1e69c32cf14c805b03a61a90bb0, type: 3}
+--- !u!114 &1421305793398434815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6177955446382480677}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 763f78be84cb1f1449705077c0407520, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 11400000, guid: 190546a41640a0a4ab3eed9a867db2a4, type: 2}

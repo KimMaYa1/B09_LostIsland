@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 4470945578116613530}
   - component: {fileID: 1596407147639928667}
   - component: {fileID: 4145089654797748696}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SteelItem
-  m_TagString: Untagged
+  m_TagString: Itme
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 3049483655659413529}
   - component: {fileID: 3994956418435415230}
   - component: {fileID: 3547550280591805868}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: LogItem
-  m_TagString: Untagged
+  m_TagString: Itme
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

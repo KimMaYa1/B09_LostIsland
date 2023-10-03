@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 216370356216554104}
   - component: {fileID: 2658325514752005810}
   - component: {fileID: 2134040083762532256}
+  - component: {fileID: 1486513564562279451}
   m_Layer: 8
   m_Name: SM_THE_CLOTH
   m_TagString: Itme
@@ -106,3 +107,16 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -1800573055530453110, guid: a36adfa80e417e0419dd2259bdbf0b0a, type: 3}
+--- !u!114 &1486513564562279451
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4604007615793018727}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 763f78be84cb1f1449705077c0407520, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 11400000, guid: 62ae9cc642ee59d4b961c1ba6114811c, type: 2}
