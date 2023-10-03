@@ -22,6 +22,9 @@ public class UIManager : MonoBehaviour
 
     TMP_Text itemText;
 
+
+    public bool inventoryActivated = false;
+
     private void Awake()
     {
         instance = this;
@@ -40,6 +43,7 @@ public class UIManager : MonoBehaviour
 
     public void TabInventory()
     {
+        inventoryActivated = !inventoryActivated;
         if (_uiInventory.activeSelf)
         {
             //Cursor.lockState = CursorLockMode.Locked;
