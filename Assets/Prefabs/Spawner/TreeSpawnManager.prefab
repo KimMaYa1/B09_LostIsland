@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 5661466929831830358}
   - component: {fileID: 3531416761189931085}
   - component: {fileID: 7195194364113090222}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: ResourceTree1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -102,7 +102,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dropItem:
   - {fileID: 11400000, guid: 4d3e9c7f05813cc4f80e0db054bdba25, type: 2}
-  quantityPerHit: 1
   capacity: 0
   spawnOBJ: {fileID: 4210344879524371179}
 --- !u!208 &7195194364113090222
@@ -184,7 +183,7 @@ GameObject:
   - component: {fileID: 6775773938342955324}
   - component: {fileID: 5858254680277205686}
   - component: {fileID: 410730103600617570}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: Tree1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -330,6 +329,10 @@ PrefabInstance:
       propertyPath: dropItem.Array.data[0]
       value: 
       objectReference: {fileID: 11400000, guid: 4d3e9c7f05813cc4f80e0db054bdba25, type: 2}
+    - target: {fileID: 2184150022862432553, guid: 9f76891d9743ecd4a9202967ae087d95, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 3338923586965731650, guid: 9f76891d9743ecd4a9202967ae087d95, type: 3}
       propertyPath: m_RootOrder
       value: -1
@@ -377,6 +380,10 @@ PrefabInstance:
     - target: {fileID: 9093734189356820111, guid: 9f76891d9743ecd4a9202967ae087d95, type: 3}
       propertyPath: m_Name
       value: ResourceTree2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9093734189356820111, guid: 9f76891d9743ecd4a9202967ae087d95, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 9093734189356820111, guid: 9f76891d9743ecd4a9202967ae087d95, type: 3}
       propertyPath: m_IsActive
