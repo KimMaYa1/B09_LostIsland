@@ -4,7 +4,9 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
-
+using UnityEngine.Pool;
+using UnityEditor.XR;
+using System;
 
 public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler
 {
@@ -38,6 +40,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
 
 
     //필요한 컴포넌트
+    [SerializeField]
     private ItemEffectDatabase theItemEffectDatabase;
 
     //슬롯 아이템 개수
@@ -57,9 +60,12 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
     //private PlayerController PlayerPos; // 드래그 종료 시 드랍 될 위치용
     [SerializeField]
     private InputNumber theInputNumber; // 아이템 판매 시 나타날 UI 연동
+
+    //장비용
+    private bool UsingEquipment = false; //슬롯의 장비 장착 여부
+    public GameObject EquipSym; // 슬롯의 장착 여부 아이콘                                 
     void Start()
     {
-        theItemEffectDatabase = FindObjectOfType<ItemEffectDatabase>();
         originPos = transform.position; // 슬롯 원래 위치 저장
         //PlayerPos = FindObjectOfType<PlayerController>();   
     }
@@ -137,28 +143,70 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
         go_CountImage.SetActive(false);
     }
 
+    
+
     //슬롯 클릭 & 아이템 사용★
     public virtual void OnPointerClick(PointerEventData eventData)
     {
         if (eventData.button == PointerEventData.InputButton.Left)
         {
-                if (item != null)
+            if (item != null)
+            {
+                ChangeDiarog();          
+                if (item.itemType == Item.ItemType.Used) // && !isCooltTime)
                 {
-                    if (item.itemType == Item.ItemType.Used) // && !isCooltTime)
+                    //PlayerPos.DecreaseWT(item.itemWeight); //소모품 사용시 무게감소
+                    //쿨타임 적용
+                    //currentCoolTime = coolTime;
+                    //isCooltTime = true;
+
+                    //아이템 획득 가능 여부
+                    //PlayerController.canPickUp = true;
+
+                    //theItemEffectDatabase.UseItem(item); //아이템 사용 시 효과
+                    SetSlotCount(-1);
+                }
+                else if (item.itemType == Item.ItemType.Equipment)
+                {
+                    if(!UsingEquipment)
                     {
-                        //PlayerPos.DecreaseWT(item.itemWeight); //소모품 사용시 무게감소
-                                                                   //쿨타임 적용
-                        //currentCoolTime = coolTime;
-                        //isCooltTime = true;
+                        theItemEffectDatabase.UseItem(item);
+                        //하이어라키에서 아이템 활성화v
+                        for (int i = 0; i < inventory.Equipments.Length; i++)
+                        {
+                            Debug.Log("아이템 탐색중");
+                            if (inventory.Equipments[i].item.itemName == item.itemName)
+                                inventory.Equipments[i].gameObject.SetActive(true);
+                        }
 
-                        //아이템 획득 가능 여부
-                        //PlayerController.canPickUp = true;
+                        //인벤토리에서 장착 아이콘 활성화v
+                        EquipSym.SetActive(true);
+                        UsingEquipment = true;
+                    }                
+                    else if(UsingEquipment)
+                    {
+                        theItemEffectDatabase.Unequipped(item);
 
-                        //theItemEffectDatabase.UseItem(item);
-                        SetSlotCount(-1);
+                        for (int i = 0; i < inventory.Equipments.Length; i++)
+                        {
+                            if (inventory.Equipments[i].item.itemName == item.itemName)
+                                inventory.Equipments[i].gameObject.SetActive(false);
+                        }
+                        EquipSym.SetActive(false);
+                        UsingEquipment = false;
                     }
-                }           
+
+
+                }
+            }
         }
+    }
+
+    //TODO인벤토리 정보창 수정 => 퀵슬롯에서 못씀 다른걸로 바꿔야함
+    private void ChangeDiarog()
+    {
+        inventory.itemNameTxt.text = item.itemName.ToString();
+        inventory.itemDescTxt.text = item.itemDesc.ToString();
     }
 
     //슬롯 드래그 시작
