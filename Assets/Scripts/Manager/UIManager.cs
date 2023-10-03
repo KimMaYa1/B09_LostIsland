@@ -78,7 +78,7 @@ public class UIManager : MonoBehaviour
 
         Color color = _uiItemInteractBGImage.color;
         _uiItemInteractBGImage.color = new Color(color.r, color.g, color.b, _originValue);
-        itemText.text = string.Format($"<b>[F]</b> {item.Interactable()}");
+        itemText.text = string.Format($"{item.Interactable()}");
     }
 
     public void ClearInteractItem()

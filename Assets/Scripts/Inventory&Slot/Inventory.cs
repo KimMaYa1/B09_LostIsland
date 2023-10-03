@@ -11,13 +11,18 @@ public class Inventory : MonoBehaviour
 
 
 
-
+     
 
     //필요한 컴포넌트
     [SerializeField]
     private GameObject go_InventoryBase;
     [SerializeField]
     private GameObject go_SlotsParent; //그리드 세팅 (모든 슬롯관리)
+
+    public ItemPickUp[] Equipments; //장비 on & off용 정보 받아오기
+
+    public TextMeshProUGUI itemNameTxt;
+    public TextMeshProUGUI itemDescTxt;
     //[SerializeField]
     //private PlayerController player;
 
@@ -27,6 +32,7 @@ public class Inventory : MonoBehaviour
 
     //시작 시 테스트용 아이템 추가
     public Item[] startItems;
+
     void Start()
     {
         //슬롯 배열내에 모든 실제 슬롯 입력

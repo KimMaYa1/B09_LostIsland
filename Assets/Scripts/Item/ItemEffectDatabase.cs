@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+//##스테이터스에 영향을 주는 전체적인 아이템 데이터베이스##
+
 [System.Serializable]
 public class ItemEffect
 {
@@ -53,7 +56,7 @@ public class ItemEffectDatabase : MonoBehaviour
         else if ..*/
 
 
-        if (_item.itemType == Item.ItemType.Used)
+        if (_item.itemType == Item.ItemType.Used || _item.itemType == Item.ItemType.Equipment)
         {
             for (int x = 0; x < itemEffects.Length; x++)
             {
@@ -82,10 +85,47 @@ public class ItemEffectDatabase : MonoBehaviour
                     return;
                 }
 
-                }
-            Debug.Log("ItemEffectDatabase에 일치하는 itemName이 없음");
             }
+            Debug.Log("ItemEffectDatabase에 일치하는 itemName이 없음");
         }
     }
+
+    //아이템 탈착
+    public void Unequipped(Item _item)
+    {
+        if (_item.itemType == Item.ItemType.Equipment)
+        {
+            for (int x = 0; x < itemEffects.Length; x++)
+            {
+                if (itemEffects[x].itemName == _item.itemName)
+                {
+                    for (int y = 0; y < itemEffects[x].part.Length; y++)
+                    {
+                        switch (itemEffects[x].part[y])
+                        {
+                            case HP:
+                                //player.DecreaseHP(itemEffects[x].num[y]);
+                                break;
+                            case MP:
+                                //player.DecreaseMP(itemEffects[x].num[y]);
+                                break;
+                            case DP:
+                                //player.DecreaseDP(itemEffects[x].num[y]);
+                                break;
+                            default:
+                                Debug.Log("잘못된 status 자원. HP,MP,DP 만 적용가능");
+                                break;
+                        }
+                        Debug.Log(_item.itemName + "을 장착 해제함");
+
+                    }
+                    return;
+                }
+
+            }
+            Debug.Log("ItemEffectDatabase에 일치하는 itemName이 없음");
+        }
+    }
+}
 
 

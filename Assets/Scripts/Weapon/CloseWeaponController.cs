@@ -17,7 +17,7 @@ public class CloseWeaponController : MonoBehaviour
 
     void Start()
     {
-        WeaponManager.currentWeapon = currentCloseWeapon.GetComponent<Transform>();
+        //WeaponManager.currentWeapon = currentCloseWeapon.GetComponent<Transform>();
         WeaponManager.currentWeaponAnim = currentCloseWeapon.anim;
     }
 
@@ -30,7 +30,7 @@ public class CloseWeaponController : MonoBehaviour
     {
         //공격 시도 조건(공격 입력이 들어왔는지 체크 && 대상에 충분히 가까이 갔는지 체크)
         //임시(좌클릭)->인풋 시스템 사용, 대상 접근 체크 추가할것
-        if(Input.GetButton("fire1"))
+        if(Input.GetKeyDown(KeyCode.Alpha3))
         {
             //공격 중 아님(딜레이 계산 시작)
             if(!isAttack)
@@ -46,7 +46,7 @@ public class CloseWeaponController : MonoBehaviour
         isAttack = true;
 
         //여기 공격 애니메이션 실행
-        //currentCloseWeapon.anim.SetTrigger("Attack");
+        currentCloseWeapon.anim.SetTrigger("IsAttack");
 
         yield return new WaitForSeconds(currentCloseWeapon.attackDelayStart);
         isSwing = true; //공격 판정 on

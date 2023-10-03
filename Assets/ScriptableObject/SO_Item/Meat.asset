@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 950bd62a7489313438dfeb596534efa1, type: 3}
   m_Name: Meat
   m_EditorClassIdentifier: 
-  itemName: Meat_Raw
+  itemName: "\uC0DD\uACE0\uAE30"
   itemDesc: "\uC0DD\uACE0\uAE30\uB2E4"
   itemWeight: 0
   itemType: 1
