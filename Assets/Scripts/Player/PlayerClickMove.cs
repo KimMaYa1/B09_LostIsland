@@ -23,6 +23,8 @@ public class PlayerClickMove : MonoBehaviour
     private bool isInteraction;
     private bool isMonster;
     private bool isJump = false;
+    private float jumpDelay = 0;
+    private float jumpDelayTime = 0;
     Vector3 startPos, endPos;
     LineRenderer lr;
     GameObject target;
@@ -47,6 +49,19 @@ public class PlayerClickMove : MonoBehaviour
     }
     private void Update()
     {
+        if (jumpDelay > 0)
+        {
+            if (jumpDelayTime < jumpDelay)
+            {
+                jumpDelayTime += Time.deltaTime;
+            }
+            else
+            {
+                jumpDelayTime = 0;
+                jumpDelay = 0;
+            }
+            Debug.Log(0);
+        }
         if (UIManager.instance.inventoryActivated)
         {
             nav.ResetPath();
@@ -69,6 +84,7 @@ public class PlayerClickMove : MonoBehaviour
 
                         if (isItem)
                         {
+                            _animator.SetTrigger("Gather");
                             inventory.AcquireItem(target.GetComponent<ItemPickUp>().item);
                             Destroy(target);
                             isItem = false;
@@ -80,7 +96,7 @@ public class PlayerClickMove : MonoBehaviour
                         }
                         else if (isMonster)
                         {
-                            playerController.OnAttackInput();
+                            playerController.OnAttackInput(_animator);
                             isMonster = false;
                         }
                         interactioncoll.target = null;
@@ -204,8 +220,9 @@ public class PlayerClickMove : MonoBehaviour
 
                         if (isJump)
                         {
-                            _animator.SetBool("IsWalking", false);
                             isJump = false;
+                            jumpDelay = 1;
+                            _animator.SetBool("IsWalking", false);
                             StartCoroutine(Jump());
                             return;
                         }
@@ -246,9 +263,12 @@ public class PlayerClickMove : MonoBehaviour
             if (IsGrounded())
             {
                 /*_rigidbody.AddForce(Vector2.up * playerController.playerStat.JumpForce, ForceMode.Impulse);*/
-                nav.velocity = Vector3.zero;
-                nav.ResetPath();
-                isJump = true;
+                if (jumpDelay == 0)
+                {
+                    nav.velocity = Vector3.zero;
+                    nav.ResetPath();
+                    isJump = true;
+                }
             }
         }
     }
