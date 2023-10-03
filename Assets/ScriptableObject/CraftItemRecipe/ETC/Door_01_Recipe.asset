@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e32ec7ddac6332d46b0c61e6dc14ee9e, type: 3}
-  m_Name: Door_Recipe
+  m_Name: Door_01_Recipe
   m_EditorClassIdentifier: 
-  recipeName: "\uBB38 \uB808\uC2DC\uD53C"
+  recipeName: "\uBB38 01 \uB808\uC2DC\uD53C"
   recipeDesc: "\uD310\uC790 5\uAC1C\uC640 \uACE0\uCCA0 \uB354\uBBF8 2\uAC1C\uB85C
     \uBB38\uC744 \uB9CC\uB4E4 \uC218 \uC788\uB2E4."
   item: {fileID: 11400000, guid: d692ba59ac0dab145814f3dd6a2d3d2b, type: 2}
