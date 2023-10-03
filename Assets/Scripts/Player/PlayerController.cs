@@ -85,37 +85,17 @@ public class PlayerController : MonoBehaviour
     public void AttackInvoke()
     {
         attackCollider.enabled = false;
+        Debug.Log("b");
     }
 
-    public void OnAttackInput(InputAction.CallbackContext context)
+    public void OnAttackInput()
     {
-        if (IsAttackDelay)
-        {
-            if (context.phase == InputActionPhase.Started)
-            {
-                GetComponent<Rigidbody>().velocity = Vector3.zero;
-                IsAttackDelay = false;
-                attackCollider.enabled = true;
-                Invoke("AttackInvoke", 0.5f);
-            }
-        }
+        Debug.Log("a");
+        IsAttackDelay = false;
+        attackCollider.enabled = true;
+        Invoke("AttackInvoke", 0.5f);
     }
 
-    public void OnRunInput(InputAction.CallbackContext context)
-    {
-        if (context.phase == InputActionPhase.Started)
-        {
-
-        }
-    }
-
-    public void OnInventoryInput(InputAction.CallbackContext context)
-    {
-        if (context.phase == InputActionPhase.Started)
-        {
-            
-        }
-    }
     public void OnDrinkWater(InputAction.CallbackContext context)
     {
         if (canWater)
