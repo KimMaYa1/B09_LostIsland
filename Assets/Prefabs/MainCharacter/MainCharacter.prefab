@@ -277,6 +277,7 @@ GameObject:
   - component: {fileID: 1887170033396401680}
   - component: {fileID: 6372547845263463851}
   - component: {fileID: 9019005382311370121}
+  - component: {fileID: 266796043551124554}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -604,7 +605,7 @@ MonoBehaviour:
     m_Bits: 447
   jumpLayerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1983
   inventory: {fileID: 1898305855390682785}
 --- !u!120 &9019005382311370121
 LineRenderer:
@@ -733,6 +734,28 @@ LineRenderer:
   m_UseWorldSpace: 1
   m_Loop: 0
   m_ApplyActiveColorSpace: 1
+--- !u!195 &266796043551124554
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4872466348856677596}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.35
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 480
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0.95
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &7256407614148054222
 GameObject:
   m_ObjectHideFlags: 0
