@@ -21,14 +21,17 @@ public class PlayerController : MonoBehaviour
 
     [HideInInspector]
     public static PlayerController instance;
+    public PlayerConditins playerConditins;
 
     public float delayTime = 0;
     public bool IsAttackDelay = true;
+    public bool canWater=false;
 
     private void Awake()
     {
         attackCollider.enabled = false;
         instance = this;
+        playerConditins= GetComponent<PlayerConditins>();
     }
 
     private void FixedUpdate()
@@ -111,6 +114,14 @@ public class PlayerController : MonoBehaviour
         if (context.phase == InputActionPhase.Started)
         {
             
+        }
+    }
+
+    public void OnDrinkWater(InputAction.CallbackContext context) 
+    {
+        if (canWater) 
+        {
+            playerConditins.Drink(30);
         }
     }
 }
