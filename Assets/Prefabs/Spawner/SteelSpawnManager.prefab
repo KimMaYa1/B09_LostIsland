@@ -133,7 +133,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rangeObject: {fileID: 589488548328103535}
   Model:
-  - {fileID: 6420970251705389958}
+  - {fileID: 490911296055902682}
   count: 10
 --- !u!1001 &6016174289848883718
 PrefabInstance:
@@ -232,9 +232,9 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dc02c9362b25f334989cc1d31a609f06, type: 3}
---- !u!1 &6420970251705389958 stripped
+--- !u!1 &490911296055902682 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 749392802982906240, guid: dc02c9362b25f334989cc1d31a609f06, type: 3}
+  m_CorrespondingSourceObject: {fileID: 6173783753926925276, guid: dc02c9362b25f334989cc1d31a609f06, type: 3}
   m_PrefabInstance: {fileID: 6016174289848883718}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &7106331265659984974 stripped
