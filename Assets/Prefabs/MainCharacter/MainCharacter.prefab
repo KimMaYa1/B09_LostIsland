@@ -475,6 +475,22 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 890ddfd6-f223-4ab7-8d79-1c0a0b9de9cd
     m_ActionName: Player/PlaceItem[/Keyboard/enter]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1886691414357762281}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: OnDrinkWater
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 01fa830b-eb24-4fe7-b1c3-da322b341cea
+    m_ActionName: Player/DrinkWater[/Keyboard/f]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -499,8 +515,10 @@ MonoBehaviour:
     JumpForce: 80
   attackCollider: {fileID: 3120115236361750716}
   maxJumpRange: 0
+  playerConditins: {fileID: 0}
   delayTime: 0
   IsAttackDelay: 1
+  canWater: 0
 --- !u!114 &6599527638160861095
 MonoBehaviour:
   m_ObjectHideFlags: 0
