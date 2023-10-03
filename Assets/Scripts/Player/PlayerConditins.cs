@@ -44,7 +44,7 @@ public class PlayerConditins : MonoBehaviour, IDamagable
     public Condition hunger;
     public Condition thirst;
     public Condition stamina;
-    public Condition weight;
+    //public Condition weight;
 
     public float noHungerHealthDecay;
 
@@ -55,16 +55,16 @@ public class PlayerConditins : MonoBehaviour, IDamagable
     {
         health.curValue = health.startValue;
         hunger.curValue = hunger.startValue;
-        thirst.curValue = stamina.startValue;
+        thirst.curValue = thirst.startValue;
         stamina.curValue = stamina.startValue;
-        weight.curValue = stamina.startValue;
+        //weight.curValue = stamina.startValue;
     }
 
     // Update is called once per frame
     void Update()
     {
         hunger.Subtract(hunger.decayRate * Time.deltaTime);
-        thirst.Subtract(hunger.decayRate * Time.deltaTime);
+        thirst.Subtract(thirst.decayRate * Time.deltaTime);
         stamina.Add(stamina.regenRate * Time.deltaTime);
 
         if (hunger.curValue == 0.0f || thirst.curValue == 0.0f)         //배고프거나 목마르면 뎀
@@ -82,9 +82,9 @@ public class PlayerConditins : MonoBehaviour, IDamagable
 
         health.uiBar.fillAmount = health.GetPercentage();
         hunger.uiBar.fillAmount = hunger.GetPercentage();
-        thirst.uiBar.fillAmount = hunger.GetPercentage();
+        thirst.uiBar.fillAmount = thirst.GetPercentage();
         stamina.uiBar.fillAmount = stamina.GetPercentage();
-        weight.uiBar.fillAmount = stamina.GetPercentage();
+        //weight.uiBar.fillAmount = stamina.GetPercentage();
     }
 
     public void Heal(float amount)

@@ -35,6 +35,11 @@ public class InteractionManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Cursor.SetCursor(defaultCurSor, Vector2.left + Vector2.up, CursorMode.Auto);
+
+        if (UIManager.instance.inventoryActivated)
+            return;
+
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
 
@@ -43,13 +48,18 @@ public class InteractionManager : MonoBehaviour
             if (((1<<hit.collider.gameObject.layer)|itemLayerMask) == itemLayerMask)
             {
                 curInteractGameObject = hit.collider.gameObject;
-                curInteractable = hit.collider.GetComponent<ItemPickUp>().item;
-                SetPromptText();
-                Cursor.SetCursor(interactionCurSor, Vector2.left + Vector2.up, CursorMode.Auto);
-                return;
+                if (hit.collider.TryGetComponent<ItemPickUp>(out ItemPickUp item))
+                {
+                    curInteractable = hit.collider.GetComponent<ItemPickUp>().item;
+                    SetPromptText();
+                    Cursor.SetCursor(interactionCurSor, Vector2.left + Vector2.up, CursorMode.Auto);
+                    return;
+                }
             }
             if (((1 << hit.collider.gameObject.layer) | interactLayerMask) == interactLayerMask)
             {
+                curInteractable = hit.collider.GetComponent<ItemPickUp>().item;
+                SetPromptText();
                 Cursor.SetCursor(interactionCurSor, Vector2.left + Vector2.up, CursorMode.Auto);
                 return;
             }
@@ -61,7 +71,6 @@ public class InteractionManager : MonoBehaviour
                 return;
             }
         }
-        Cursor.SetCursor(defaultCurSor, Vector2.left + Vector2.up, CursorMode.Auto);
         curInteractGameObject = null;
         curInteractable = null;
         //promptText.gameObject.SetActive(false);

@@ -23,7 +23,7 @@ public class PlayerClickMove : MonoBehaviour
     private bool isJump = false;
     Vector3 startPos, endPos;
     LineRenderer lr;
-    ItemPickUp target;
+    GameObject target;
 
     private void Awake()
     {
@@ -42,7 +42,7 @@ public class PlayerClickMove : MonoBehaviour
 
     private void Update()
     {
-        if (playerController.IsAttackDelay) //TODO&& !UIManager.instance.inventoryActivated)
+        if (playerController.IsAttackDelay && !UIManager.instance.inventoryActivated)
         {
             if (isJump)
             {
@@ -166,8 +166,11 @@ public class PlayerClickMove : MonoBehaviour
         isMove = (transform.position - destination).magnitude > a;
         if(!isMove && isItem)
         {
-            inventory.AcquireItem(target.item);
-            Destroy(target.transform.gameObject);
+            inventory.AcquireItem(target.GetComponent<ItemPickUp>().item);
+        }
+        else if(!isMove && isInteraction)
+        {
+            target.GetComponent<Door>().InteractionDoor();
         }
     }
 
@@ -224,15 +227,17 @@ public class PlayerClickMove : MonoBehaviour
                         if (((1 << hit.collider.gameObject.layer) | interactionManager.itemLayerMask) == interactionManager.itemLayerMask)
                         {
                             isItem = true;
-                            target = hit.transform.GetComponent<ItemPickUp>();
+                            target = hit.transform.gameObject;
                         }
                         else if (((1 << hit.collider.gameObject.layer) | interactionManager.interactLayerMask) == interactionManager.interactLayerMask)
                         {
                             isInteraction = true;
+                            target = hit.transform.gameObject;
                         }
                         else if (((1 << hit.collider.gameObject.layer) | interactionManager.monsterLayerMask) == interactionManager.monsterLayerMask)
                         {
                             isMonster = true;
+                            target = hit.transform.gameObject;
                         }
                     }
 
