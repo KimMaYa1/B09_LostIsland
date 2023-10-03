@@ -126,7 +126,11 @@ public class PlaceItemController : MonoBehaviour
             Debug.Log("무브 코루틴");
             Vector3 dir = _prefabForword * _curMovementInput.z + _prefabRight * _curMovementInput.x + _prefabUp * _curMovementInput.y;
             dir *= _moveSpeed;
-
+            Debug.Log("dir : " + dir);
+            Debug.Log("앞 : " + _prefabForword);
+            Debug.Log("오 : " + _prefabRight);
+            Debug.Log("업 : " + _prefabUp);
+            Debug.Log("컬 : " + _curMovementInput);
             _rigidbody.velocity = dir;
             yield return new WaitForFixedUpdate();
         }

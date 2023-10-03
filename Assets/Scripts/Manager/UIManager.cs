@@ -89,7 +89,8 @@ public class UIManager : MonoBehaviour
 
     public void SlotClickTypeETC(GameObject itemPrefab)
     {
-        _craftingCamera.SetActive(true);
+        //_craftingCamera.SetActive(true);
+        TabInventory();
         _placeItemController.PreviewItemView(itemPrefab);
         _isPreviewOn = true;
 
@@ -101,7 +102,7 @@ public class UIManager : MonoBehaviour
             if (context.phase == InputActionPhase.Started)
             {
                 _placeItemController.PlacePrefab();
-                _craftingCamera.SetActive(false);
+                //_craftingCamera.SetActive(false);
                 _isPreviewOn = false;
             }
     }
