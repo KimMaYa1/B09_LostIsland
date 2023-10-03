@@ -34,6 +34,7 @@ public class PlayerController : MonoBehaviour
         attackCollider.enabled = false;
         instance = this;
         playerConditins = GetComponent<PlayerConditins>();
+        playerConditins.stat = playerStat;
     }
 
     private void FixedUpdate()

@@ -40,6 +40,9 @@ public class Condition
 
 public class PlayerConditins : MonoBehaviour, IDamagable
 {
+    [HideInInspector]
+    public PlayerStat stat;
+
     public Condition health;
     public Condition hunger;
     public Condition thirst;
