@@ -28,6 +28,9 @@ public class PlayerClickMove : MonoBehaviour
     GameObject target;
     //test
     private NavMeshAgent nav;
+
+    public GameObject interactioncoll;
+
     private void Awake()
     {
         nav = GetComponentInChildren<NavMeshAgent>();
@@ -52,6 +55,8 @@ public class PlayerClickMove : MonoBehaviour
                 {
                     _animator.SetBool("IsWalking", false);
                     isMove = false;
+                    nav.ResetPath();
+                    nav.velocity = Vector3.zero;
                     if (isItem)
                     {
                         inventory.AcquireItem(target.GetComponent<ItemPickUp>().item);
@@ -60,6 +65,10 @@ public class PlayerClickMove : MonoBehaviour
                     else if (isInteraction)
                     {
                         target.GetComponent<Door>().InteractionDoor();
+                    }
+                    else if (isMonster)
+                    {
+                        playerController.OnAttackInput();
                     }
                 }
                 else
