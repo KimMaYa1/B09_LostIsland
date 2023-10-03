@@ -26,6 +26,10 @@ public class Inventory : MonoBehaviour
     //[SerializeField]
     //private PlayerController player;
 
+
+    public string currentItem = "HAND";
+
+
     //private Animator anim;
     //½½·Ô
     private Slot[] slots;
