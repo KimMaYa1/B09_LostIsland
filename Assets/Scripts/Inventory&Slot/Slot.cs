@@ -176,7 +176,10 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
                         {
                             Debug.Log("아이템 탐색중");
                             if (inventory.Equipments[i].item.itemName == item.itemName)
+                            {
                                 inventory.Equipments[i].gameObject.SetActive(true);
+                                break;
+                            }
                         }
 
                         //인벤토리에서 장착 아이콘 활성화v

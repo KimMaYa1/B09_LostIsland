@@ -828,16 +828,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23e8c5eea7a184d4dbd3ed706bdd59cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _craftItemTypeSlots: []
-  _recipe_Equipment: []
-  _recipe_Used: []
-  _recipe_Ingredient: []
-  _recipe_ETC: []
   _buttonImages:
   - {fileID: 2414776775066155976}
   - {fileID: 2674317732028570329}
   - {fileID: 8490826864966049694}
   - {fileID: 3329233038965270853}
+  _craftItemTypeSlots: []
+  _recipe_Equipment: []
+  _recipe_Used: []
+  _recipe_Ingredient: []
+  _recipe_ETC: []
+  _craftBG: {fileID: 0}
+  _craftItemImage: {fileID: 0}
+  _craftItemName: {fileID: 0}
+  _craftItemInfo: {fileID: 0}
+  _requiredItemSlots: []
+  _inventory: {fileID: 0}
+  _slider: {fileID: 0}
+  _craftAmountTxt: {fileID: 0}
 --- !u!114 &8677944023508873940
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -886,10 +894,6 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: ee2fc0ac-dcb0-4561-a0a4-df58332e862a
     m_ActionName: Player/Jump[/Keyboard/space]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 58af9c3f-8a55-40df-a8df-e539158f5929
-    m_ActionName: Player/Attack[/Mouse/leftButton]
   - m_PersistentCalls:
       m_Calls: []
     m_ActionId: 8f225833-40c0-4b98-a54a-bdab71d3a9b5
@@ -950,6 +954,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 890ddfd6-f223-4ab7-8d79-1c0a0b9de9cd
     m_ActionName: Player/PlaceItem[/Keyboard/enter]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 01fa830b-eb24-4fe7-b1c3-da322b341cea
+    m_ActionName: Player/DrinkWater[/Keyboard/f]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: PlaceItem
