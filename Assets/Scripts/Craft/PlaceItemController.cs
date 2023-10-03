@@ -4,7 +4,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlaceItemControll : MonoBehaviour
+public class PlaceItemController : MonoBehaviour
 {
 
     [SerializeField] private Camera _camera;
