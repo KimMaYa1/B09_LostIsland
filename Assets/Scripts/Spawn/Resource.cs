@@ -25,7 +25,7 @@ public class Resource : MonoBehaviour
             for (int j = 0; j < dropItem.Length; ++j)
             {
                 //Instantiate(dropItem[j].itemPrefab, hitPoint + Vector3.up, Quaternion.LookRotation(hitNormal, Vector3.up));
-                Debug.Log("2차 포문");
+                //Debug.Log("2차 포문");
                 Instantiate(dropItem[j].itemPrefab, this.transform.position + Vector3.up, Quaternion.identity);
             }
             spawn.InsertQueue(gameObject);
@@ -37,7 +37,7 @@ public class Resource : MonoBehaviour
     {
         if (other.tag == "Weapon" || other.tag == "player")
         {
-            Debug.Log("접촉 테스트 성공");
+            //Debug.Log("접촉 테스트 성공");
             Gather();
         }
     }
