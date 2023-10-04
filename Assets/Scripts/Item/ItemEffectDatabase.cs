@@ -19,8 +19,8 @@ public class ItemEffectDatabase : MonoBehaviour
 {
     [SerializeField]
     private ItemEffect[] itemEffects; //소모품 아이템들
-    [SerializeField]
-    private SlotToolTip toolTip;
+    //[SerializeField]
+    //private SlotToolTip toolTip;
     [SerializeField]
     private PlayerConditins player;
     [SerializeField]
@@ -36,6 +36,7 @@ public class ItemEffectDatabase : MonoBehaviour
 
     //함수 로직 slot.cs에서 _item 넘겨주고-> 해당 함수에서 SlotToolTip.cs의 ShowToolTip 실행
    //해당 방식은 스택 오버플로우 일어날 수 있으니 주의
+   /*
     public void ShowToolTip(Item _item, Vector2 _pos)
     {
         toolTip.ShowToolTip(_item, _pos);
@@ -45,7 +46,7 @@ public class ItemEffectDatabase : MonoBehaviour
     {
         toolTip.HideToolTip();
     }
-
+   */
     //아이템 사용
     public void UseItem(Item _item)
     {

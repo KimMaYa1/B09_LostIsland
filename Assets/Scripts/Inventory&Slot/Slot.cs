@@ -275,7 +275,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
             if (DragSlot.instance.dragSlot != null) // 드래그슬롯에 아이템이 있는경우만 실행
             {
                 Debug.Log("영역 밖 드롭-드래그 슬롯 위치 : " + DragSlot.instance.slotRect.anchoredPosition);
-                //theInputNumber.Call();
+                theInputNumber.Call();
             }
         }
         else //인벤토리 영역 내부인 경우 == 드래그 슬롯값만 비워줌
