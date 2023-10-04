@@ -21,8 +21,10 @@ public class UIManager : MonoBehaviour
     private float _interactWidth;
     private float _interactHeight;
 
-    [SerializeField] private GameObject _craftingCamera;
     [SerializeField] private PlaceItemController _placeItemController;
+    [SerializeField] private Inventory _inventory;
+
+    private Item _previewItem;
     private bool _isPreviewOn = false;
 
     TMP_Text itemText;
@@ -49,20 +51,19 @@ public class UIManager : MonoBehaviour
     public void TabInventory()
     {
         inventoryActivated = !inventoryActivated;
-        if (_uiInventory.activeSelf)
+        if (_isPreviewOn)
         {
-            //Cursor.lockState = CursorLockMode.Locked;
-            _uiInventory.SetActive(false);
-            _inventoryButton.SetActive(false);
-            _craftButton.SetActive(false);
+            _placeItemController.ClearPreview();
+            _isPreviewOn = false;
         }
-        else
-        {
-            //Cursor.lockState = CursorLockMode.Confined;
-            _uiInventory.SetActive(true);
-            _inventoryButton.SetActive(true);
-            _craftButton.SetActive(true);
-        }
+        SetInventoryObjects(!_uiInventory.activeSelf);
+    }
+
+    private void SetInventoryObjects(bool isActive)
+    {
+        _uiInventory.SetActive(isActive);
+        _inventoryButton.SetActive(isActive);
+        _craftButton.SetActive(isActive);
     }
 
     public void InteractItem(Item item)
@@ -87,11 +88,11 @@ public class UIManager : MonoBehaviour
         itemText.text = string.Empty;
     }
 
-    public void SlotClickTypeETC(GameObject itemPrefab)
+    public void SlotClickTypeETC(Item item)
     {
-        //_craftingCamera.SetActive(true);
+        _previewItem = item;
         TabInventory();
-        _placeItemController.PreviewItemView(itemPrefab);
+        _placeItemController.PreviewItemView(item.itemPrefab);
         _isPreviewOn = true;
 
     }
@@ -102,7 +103,8 @@ public class UIManager : MonoBehaviour
             if (context.phase == InputActionPhase.Started)
             {
                 _placeItemController.PlacePrefab();
-                //_craftingCamera.SetActive(false);
+                _inventory.DeAcquireItem(_previewItem);
+                _previewItem = null;
                 _isPreviewOn = false;
             }
     }
