@@ -47,6 +47,9 @@ public class PlayerConditins : MonoBehaviour, IDamagable
     public Condition hunger;
     public Condition thirst;
     public Condition stamina;
+
+    [Header("DieCanvas")]
+    public GameObject canvas;
     //public Condition weight;
 
     public float noHungerHealthDecay;
@@ -116,7 +119,17 @@ public class PlayerConditins : MonoBehaviour, IDamagable
 
     public void Die()
     {
-        Debug.Log("Á×À½");
+        canvas.SetActive(true);
+    }
+
+    public void OnReStart()
+    {
+        LoadingSceneController.LoadScene("PrologScene");
+    }
+
+    public void OnLoby()
+    {
+        LoadingSceneController.LoadScene("StartScene");
     }
 
     public void TakePhysicalDamage(int damageAmount)
