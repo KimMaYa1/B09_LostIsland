@@ -53,7 +53,7 @@ public class PlaceItemController : MonoBehaviour
     public void PreviewItemView(GameObject itemPrefab)
     {
         if (_craftedItemPrefab == null)
-            _craftedItemPrefab = Instantiate(itemPrefab, _playerTransform.position + _playerTransform.forward, Quaternion.identity);
+            _craftedItemPrefab = Instantiate(itemPrefab, _playerTransform.position + _playerTransform.forward, itemPrefab.transform.rotation);
 
         _meshRenderers = _craftedItemPrefab.GetComponentsInChildren<MeshRenderer>();
         _materials.Clear();

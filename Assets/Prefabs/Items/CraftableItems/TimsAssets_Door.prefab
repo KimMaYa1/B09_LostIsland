@@ -123,7 +123,7 @@ Transform:
   - {fileID: 4000012722903954}
   - {fileID: 4000010688086050}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!95 &95000012944575982
 Animator:

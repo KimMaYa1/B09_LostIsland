@@ -162,7 +162,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
                     //아이템 획득 가능 여부
                     //PlayerController.canPickUp = true;
 
-                    //theItemEffectDatabase.UseItem(item); //아이템 사용 시 효과
+                    theItemEffectDatabase.UseItem(item); //아이템 사용 시 효과
                     SetSlotCount(-1);
                 }
                 else if (item.itemType == Item.ItemType.Equipment)
