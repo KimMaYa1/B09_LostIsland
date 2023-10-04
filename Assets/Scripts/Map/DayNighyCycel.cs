@@ -34,7 +34,6 @@ public class DayNightCycle : MonoBehaviour
     private void Update()
     {
         time = (time + timeRate * Time.deltaTime) % 1.0f;
-
         UpdateLighting(sun, sunColor, sunIntensity);
         UpdateLighting(moon, moonColor, moonIntensity);
 
