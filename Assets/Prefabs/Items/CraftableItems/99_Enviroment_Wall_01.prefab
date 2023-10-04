@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 8618221828529856684}
   - component: {fileID: 8812873668589119846}
   - component: {fileID: 8016484722371785335}
-  - component: {fileID: 1206218204626138691}
-  m_Layer: 0
+  - component: {fileID: 6339299806589827859}
+  m_Layer: 8
   m_Name: Wall_Top
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -84,7 +84,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!208 &1206218204626138691
+--- !u!208 &6339299806589827859
 NavMeshObstacle:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -111,8 +111,8 @@ GameObject:
   - component: {fileID: 1485005735364615926}
   - component: {fileID: 7204604502340038032}
   - component: {fileID: 3346176026779782268}
-  - component: {fileID: 7719059990416946040}
-  m_Layer: 0
+  - component: {fileID: 6067283804123562419}
+  m_Layer: 8
   m_Name: Wall_Main
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -184,7 +184,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!208 &7719059990416946040
+--- !u!208 &6067283804123562419
 NavMeshObstacle:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -213,7 +213,7 @@ GameObject:
   - component: {fileID: 3977380806882428817}
   - component: {fileID: -4984651618458163006}
   - component: {fileID: 1974693889906259206}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: 99_Enviroment_Wall_01
   m_TagString: Itme
   m_Icon: {fileID: 0}
@@ -235,7 +235,7 @@ Transform:
   - {fileID: 1485005735364615926}
   - {fileID: 8618221828529856684}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &-805220142239696565
 MonoBehaviour:
