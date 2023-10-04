@@ -68,20 +68,18 @@ public class PlayerClickMove : MonoBehaviour
             nav.ResetPath();
             nav.velocity = Vector3.zero;
         }
-        Debug.Log(playerController.IsAttackDelay);
         if (playerController.IsAttackDelay)
         {
             if (isMove)
             {
                 if (interactioncoll.target != null)
                 {
-                    if(target == interactioncoll.target)
+                    if (target == interactioncoll.target)
                     {
+
                         _animator.SetBool("IsWalking", false);
                         nav.ResetPath();
                         nav.velocity = Vector3.zero;
-
-                        Debug.Log("여긴 들어오냐");
 
                         if (isItem)
                         {
@@ -97,15 +95,17 @@ public class PlayerClickMove : MonoBehaviour
                         }
                         else if (isMonster)
                         {
-                            Debug.Log("여기는");
                             transform.LookAt(target.transform.position);
                             playerController.OnAttackInput(inventory.currentWeapon);
 
-                            if (target.GetComponent<AnimalAI>().animalStats.States == State.Dead)
+                            Debug.Log($"target{target.gameObject.name}");
+                            if (target.GetComponent<AnimalAI>().animalStats.currentHealth <= 0)
                             {
+                                Debug.Log("잡음");
+                                nav.ResetPath();
+                                isMonster = false;
                                 target = null;
                                 interactioncoll.target = null;
-                                isMonster = false;
                             }
                             else
                             {
@@ -119,9 +119,10 @@ public class PlayerClickMove : MonoBehaviour
                             }*/
                         }
                         isMove = false;
+                        return;
                     }
                 }
-                else if (target != null && ((1 << target.layer) | interactionManager.monsterLayerMask) == interactionManager.monsterLayerMask)
+                else if (target != null)
                 {
                     if (nav.SetDestination(target.transform.position))
                     {
@@ -129,7 +130,7 @@ public class PlayerClickMove : MonoBehaviour
                     }
                 }
 
-                if (!nav.pathPending && nav.remainingDistance < 0.2f)
+                if (!nav.pathPending && nav.remainingDistance < 0.5f)
                 {
                     _animator.SetBool("IsWalking", false);
                     nav.ResetPath();
@@ -193,11 +194,9 @@ public class PlayerClickMove : MonoBehaviour
             }*/
         }
     }
-    private void Attack()
+    private IEnumerator Attack()
     {
-        Ray ray = new Ray(transform.position + (transform.forward * 0.15f) + (-transform.up * 0.5f), Vector3.forward);
-        RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, 0.8f))
+        while (true)
         {
 
         }
@@ -237,6 +236,7 @@ public class PlayerClickMove : MonoBehaviour
                         isItem = false;
                         isInteraction = false;
                         isMonster = false;
+                        interactioncoll.target = null;
                         target = null;
                         nav.velocity = Vector3.zero;
 

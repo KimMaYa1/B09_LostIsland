@@ -10,17 +10,26 @@ public class InteractionTarget : MonoBehaviour
     [HideInInspector]
     public GameObject target;
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (((1 << other.gameObject.layer) | layerMask) == layerMask)
+        {
+            target = other.gameObject;
+        }
+    }
+
     private void OnTriggerStay(Collider other)
     {
         if (((1 << other.gameObject.layer) | layerMask) == layerMask)
         {
             target = other.gameObject;
         }
-        else
+        if (other.tag == "AnimalWeapon")
         {
-            target = null;
+            PlayerController.instance.playerConditins.TakePhysicalDamage(10);
         }
     }
+
 
     private void OnTriggerExit(Collider other)
     {
