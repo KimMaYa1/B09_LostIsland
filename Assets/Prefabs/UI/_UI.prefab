@@ -867,7 +867,7 @@ MonoBehaviour:
   _playerTransform: {fileID: 0}
   layerMask:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 264
 --- !u!114 &3015532586461815691
 MonoBehaviour:
   m_ObjectHideFlags: 0
