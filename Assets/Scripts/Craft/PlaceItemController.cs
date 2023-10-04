@@ -148,10 +148,10 @@ public class PlaceItemController : MonoBehaviour
     public void PlacePrefab()
     {
         ReSetColor();
+        _craftedItemPrefab.GetComponent<NavMeshSurface>().BuildNavMesh();
         _craftedItemPrefab = null;
         _isPrefabActivated = false;
         _isItemMoving = false;
-        _craftedItemPrefab.GetComponent<NavMeshSurface>().BuildNavMesh();
         if (_coroutine != null)
             StopCoroutine(_coroutine);
     }

@@ -24,7 +24,11 @@ public class GetHitState : IState
 
     public void Stay()
     {
-            if (_AnimalStats.animal == Animal.Fox)
+        if (_AnimalStats.currentHealth < _AnimalStats.health)
+        {
+            _AnimalStats.health = _AnimalStats.currentHealth;
+        }
+        if (_AnimalStats.animal == Animal.Fox)
             {
                 int rand = Random.Range(1, 5);
                 if (rand >= 3)

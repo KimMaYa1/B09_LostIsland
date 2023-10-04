@@ -31,7 +31,12 @@ public class RunState : IState
     public void Stay()
     {
         delaysecond += Time.deltaTime;
-        
+
+        if (_AnimalStats.currentHealth < _AnimalStats.health)
+        {
+            _AnimalStats.health = _AnimalStats.currentHealth;
+        }
+
         if (!_isRun)
         {
             RunAway();

@@ -31,6 +31,10 @@ public class ChaseState : IState
 
     public void Stay()
     {
+        if (_AnimalStats.currentHealth < _AnimalStats.health)
+        {
+            _AnimalStats.health = _AnimalStats.currentHealth;
+        }
         delaysecond += Time.deltaTime;
         ChaseTarget();
         CheckArrival();
