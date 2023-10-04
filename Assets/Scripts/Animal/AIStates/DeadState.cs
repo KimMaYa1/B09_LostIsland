@@ -20,16 +20,17 @@ public class DeadState : IState
 
     public void Exit()
     {
+        _AnimalStats.currentHealth = _AnimalStats.animalSO.health;
+        _AnimalStats.health = _AnimalStats.animalSO.health;
     }
 
     public void Stay()
     {
         delaysecond += Time.deltaTime;
-        if(delaysecond > 1.5f)
+        if(delaysecond > 3f)
         {
+            delaysecond = 0;
             _Animals.States = AnimalAI.State.Idle;
-            _AnimalStats.currentHealth = _AnimalStats.animalSO.health;
-            _AnimalStats.health = _AnimalStats.animalSO.health;
             AnimalSpawner.Instance.InsertQueue(_Animals.gameObject);
             _Animals.Dead();
         }

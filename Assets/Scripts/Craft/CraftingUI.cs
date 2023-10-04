@@ -33,6 +33,9 @@ public class CraftingUI : MonoBehaviour
     private int _maxAmount = int.MaxValue;
     private int _craftAmount = 0;
 
+    [Header("Audio")]
+    [SerializeField] private AudioSource _audioSource;
+
     private int _curTypeIndex = 0;
     private List<CraftedItemRecipe[]> _itemsList = new List<CraftedItemRecipe[]>();
     private Item _curItem;
@@ -194,6 +197,8 @@ public class CraftingUI : MonoBehaviour
                 _inventory.DeAcquireItem(_curRecipe.requiredItems[i], changeAmount);
                 _requiredItemsDict[_curRecipe.requiredItems[i]] += changeAmount;
             }
+
+            _audioSource.Play();
         }
 
         UpdateCraftingUI();

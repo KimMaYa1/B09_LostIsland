@@ -16,7 +16,7 @@ public class AttackState : IState
     public void Enter()
     {
         _Animals.PlayAnimation(AnimalAI.State.Attack);
-        _Animals.attackCollider.enabled = true;
+        _Animals.attackCollider.enabled = false;
         _Animals.nav.isStopped = true;
     }
 
@@ -31,7 +31,8 @@ public class AttackState : IState
         delaysecond += Time.deltaTime;
         if (delaysecond > 1.0f)
         {
-            _Animals.attackCollider.enabled = false;
+            delaysecond = 0;
+            _Animals.attackCollider.enabled = true;
             _Animals.States = AnimalAI.State.Chase;
 
             Vector3 startPoint = _Animals.transform.position;
