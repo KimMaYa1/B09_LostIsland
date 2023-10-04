@@ -20,7 +20,7 @@ public class Item : ScriptableObject // 게임 오브젝트에 붙일 필요없는 스크립트
     }
 
     public string itemName; // 아이템 이름
-    [TextArea] // 인스펙터 창에서 여러줄로 적는것이 가능해짐-메모장처럼 됨
+    [TextArea]
     public string itemDesc; // 아이템의 설명
 
     public int itemWeight; // 아이템 무게
