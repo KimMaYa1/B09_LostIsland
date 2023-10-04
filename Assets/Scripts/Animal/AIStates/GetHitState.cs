@@ -24,10 +24,11 @@ public class GetHitState : IState
 
     public void Stay()
     {
-        delaysecond = Time.deltaTime;
-        if(delaysecond >= 0.1f)
+        if (_AnimalStats.currentHealth < _AnimalStats.health)
         {
-            if (_AnimalStats.animal == Animal.Fox)
+            _AnimalStats.health = _AnimalStats.currentHealth;
+        }
+        if (_AnimalStats.animal == Animal.Fox)
             {
                 int rand = Random.Range(1, 5);
                 if (rand >= 3)
@@ -43,7 +44,6 @@ public class GetHitState : IState
             {
                 _Animals.States = AnimalAI.State.Chase;
             }
-        }
     }
 
 }

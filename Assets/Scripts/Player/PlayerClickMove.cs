@@ -4,6 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.HID;
 using UnityEngine.SocialPlatforms;
 
 public class PlayerClickMove : MonoBehaviour
@@ -67,7 +68,7 @@ public class PlayerClickMove : MonoBehaviour
             nav.ResetPath();
             nav.velocity = Vector3.zero;
         }
-        Debug.Log(isMove);
+        Debug.Log(playerController.IsAttackDelay);
         if (playerController.IsAttackDelay)
         {
             if (isMove)
@@ -76,11 +77,11 @@ public class PlayerClickMove : MonoBehaviour
                 {
                     if(target == interactioncoll.target)
                     {
-                        Debug.Log("여기 들어옴");
                         _animator.SetBool("IsWalking", false);
                         nav.ResetPath();
                         nav.velocity = Vector3.zero;
-                        isMove = false;
+
+                        Debug.Log("여긴 들어오냐");
 
                         if (isItem)
                         {
@@ -96,8 +97,20 @@ public class PlayerClickMove : MonoBehaviour
                         }
                         else if (isMonster)
                         {
+                            Debug.Log("여기는");
+                            transform.LookAt(target.transform.position);
                             playerController.OnAttackInput(inventory.currentWeapon);
-                            isMonster = false;
+                            /*
+                            if (target.GetComponent<AnimalAI>().animalStats.States == State.Dead)
+                            {
+                                target = null;
+                                interactioncoll.target = null;
+                                isMonster = false;
+                            }
+                            else
+                            {
+                                return;
+                            }*/
                             /*if ()
                             {
                                 몬스터가 안죽었다면
@@ -105,7 +118,14 @@ public class PlayerClickMove : MonoBehaviour
                                 return;
                             }*/
                         }
-                        interactioncoll.target = null;
+                        isMove = false;
+                    }
+                }
+                else if (target != null && ((1 << target.layer) | interactionManager.monsterLayerMask) == interactionManager.monsterLayerMask)
+                {
+                    if (nav.SetDestination(target.transform.position))
+                    {
+                        _animator.SetBool("IsWalking", true);
                     }
                 }
 
@@ -217,11 +237,8 @@ public class PlayerClickMove : MonoBehaviour
                         isItem = false;
                         isInteraction = false;
                         isMonster = false;
+                        target = null;
                         nav.velocity = Vector3.zero;
-
-                        destination = new Vector3(hit.point.x, transform.position.y, hit.point.z);
-                        direction = destination - transform.position;
-
 
 
                         if (isJump)

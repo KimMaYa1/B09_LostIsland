@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6209383606746548516}
   - component: {fileID: 6820178704581862856}
   - component: {fileID: 7328902085315725141}
+  - component: {fileID: 2475532157038117736}
   m_Layer: 8
   m_Name: BigSword
   m_TagString: Itme
@@ -119,3 +120,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 8.40301, y: 122.91833, z: 20.663605}
   m_Center: {x: 0.0000046785644, y: 48.788284, z: 0.00000043193342}
+--- !u!208 &2475532157038117736
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6546701300940867330}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 4.202, y: 61.459003, z: 10.332001}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 48.789, z: 0}
+  m_TimeToStationary: 0.5

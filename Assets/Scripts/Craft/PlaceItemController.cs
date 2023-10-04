@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.AI.Navigation;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -18,52 +19,56 @@ public class PlaceItemController : MonoBehaviour
     private RaycastHit hit;
     private float range = 10f;
 
-    private Vector3 _originPlace;
     private Vector3 _curMovementInput;
+    private Vector2 _curRotateInput;
     private Vector3 _prefabForword;
     private Vector3 _prefabRight;
-    private Vector3 _prefabUp;
     private bool _isPrefabActivated = false;
     private bool _isItemMoving = false;
-    private float _moveSpeed = 2f;
-    private Coroutine _coroutine;
-    private Rigidbody _rigidbody;
-    private MeshRenderer _meshRenderer;
+    private bool _isItemRotating = false;
+    private float _itemMoveSpeed = 0.1f;
+    private float _itemRotateSpeed = 2f;
+    private float _itemPrefabYRot = 0;
+    private Coroutine _coroutineMove;
+    private Coroutine _coroutineRotate;
+    private MeshRenderer[] _meshRenderers;
     private List<Material> _materials = new List<Material>();
     private List<Color> _originColors = new List<Color>();
 
-    private void Start()
+    private void Update()
     {
-        _originPlace = _camera.transform.position;
+        UpdateCameraPosition();
     }
 
-    private void CraftedCameraUpdate()
+    private void UpdateCameraPosition()
     {
-        _camera.transform.position = _originPlace + _placeTransform.position;
-
-        float x = _camera.transform.rotation.eulerAngles.x;
-        float y = _placeTransform.rotation.eulerAngles.y;
-
-        _camera.transform.localRotation = Quaternion.Euler(x, y, 0);
+        _prefabForword = _camera.transform.forward;
+        _prefabForword.y = 0f;
+        _prefabForword.Normalize();
+        _prefabRight = _camera.transform.right;
+        _prefabRight.y = 0f;
+        _prefabRight.Normalize();
     }
 
     public void PreviewItemView(GameObject itemPrefab)
     {
-        CraftedCameraUpdate();
         if (_craftedItemPrefab == null)
             _craftedItemPrefab = Instantiate(itemPrefab, _playerTransform.position + _playerTransform.forward, Quaternion.identity);
 
-        _meshRenderer = _craftedItemPrefab.GetComponent<MeshRenderer>();
+        _meshRenderers = _craftedItemPrefab.GetComponentsInChildren<MeshRenderer>();
         _materials.Clear();
-        _materials = _meshRenderer.materials.ToList();
         _originColors.Clear();
-        for (int i = 0; i < _materials.Count; i++)
+        for (int j = 0; j < _meshRenderers.Length; j++)
         {
-            _originColors.Add(_materials[i].color);
+            _materials = _meshRenderers[j].materials.ToList();
+            for (int i = 0; i < _materials.Count; i++)
+            {
+                _originColors.Add(_materials[i].color);
+            }
         }
+
         SetColor(Color.green);
 
-        _rigidbody = _craftedItemPrefab.GetComponent<Rigidbody>();
         _isPrefabActivated = true;
         PrefabPositionUpdate();
     }
@@ -78,27 +83,31 @@ public class PlaceItemController : MonoBehaviour
             {
                 Vector3 _location = hit.point;
                 _craftedItemPrefab.transform.position = _location;
-                _prefabForword = _playerTransform.forward;
-                _prefabRight = _playerTransform.right;
-                _prefabUp = _playerTransform.up;
             }
         }
     }
+
     private void SetColor(Color color)
     {
-        foreach (Material mat in _materials)
+        foreach (MeshRenderer meshRenderer in _meshRenderers)
         {
-            Debug.Log("칼라 세팅");
-            mat.SetColor("_Color", color);
+            _materials = meshRenderer.materials.ToList();
+            foreach (Material mat in _materials)
+            {
+                mat.SetColor("_Color", color);
+            }
         }
     }
 
     private void ReSetColor()
     {
-        for (int i = 0; i < _materials.Count; i++)
+        for (int j = 0; j < _meshRenderers.Length; j++)
         {
-            Debug.Log("칼라 되돌리기");
-            _materials[i].color = _originColors[i];
+            _materials = _meshRenderers[j].materials.ToList();
+            for (int i = 0; i < _materials.Count; i++)
+            {
+                _materials[i].color = _originColors[(1 + i) * j];
+            }
         }
     }
 
@@ -109,12 +118,16 @@ public class PlaceItemController : MonoBehaviour
             {
                 _isItemMoving = true;
                 _curMovementInput = context.ReadValue<Vector3>();
-                if (_coroutine != null)
-                    StopCoroutine(_coroutine);
-                _coroutine = StartCoroutine(MoveItemCo());
+                if (_coroutineMove == null)
+                    _coroutineMove = StartCoroutine(MoveItemCo());
             }
             else
             {
+                if (_coroutineMove != null)
+                {
+                    StopCoroutine(_coroutineMove);
+                    _coroutineMove = null;
+                }
                 _isItemMoving = false;
             }
     }
@@ -123,11 +136,37 @@ public class PlaceItemController : MonoBehaviour
     {
         while (_isItemMoving)
         {
-            Debug.Log("무브 코루틴");
-            Vector3 dir = _prefabForword * _curMovementInput.z + _prefabRight * _curMovementInput.x + _prefabUp * _curMovementInput.y;
-            dir *= _moveSpeed;
+            Vector3 dir = _prefabForword * _curMovementInput.z + _prefabRight * _curMovementInput.x + new Vector3(0, 1, 0) * _curMovementInput.y;
+            dir *= _itemMoveSpeed;
+            _craftedItemPrefab.transform.position += dir;
 
-            _rigidbody.velocity = dir;
+            yield return new WaitForFixedUpdate();
+        }
+    }
+
+    public void OnRotateItem(InputAction.CallbackContext context)
+    {
+        if (_isPrefabActivated)
+            if (context.phase == InputActionPhase.Performed)
+            {
+                _isItemRotating = true;
+                _curRotateInput = context.ReadValue<Vector2>();
+                if (_coroutineRotate != null)
+                    StopCoroutine(_coroutineRotate);
+                _coroutineRotate = StartCoroutine(RotateItemCo());
+            }
+            else
+            {
+                _isItemRotating = false;
+            }
+    }
+
+    IEnumerator RotateItemCo()
+    {
+        while (_isItemRotating)
+        {
+            _itemPrefabYRot += _curRotateInput.x * _itemRotateSpeed;
+            _craftedItemPrefab.transform.localEulerAngles = new Vector3(0, _itemPrefabYRot, 0);
             yield return new WaitForFixedUpdate();
         }
     }
@@ -135,21 +174,28 @@ public class PlaceItemController : MonoBehaviour
     public void PlacePrefab()
     {
         ReSetColor();
-        _craftedItemPrefab.GetComponent<Rigidbody>().velocity = Vector3.zero;
+        _craftedItemPrefab.GetComponent<NavMeshSurface>().RemoveData();
+        _craftedItemPrefab.GetComponent<NavMeshSurface>().BuildNavMesh();
         _craftedItemPrefab = null;
         _isPrefabActivated = false;
         _isItemMoving = false;
-        if (_coroutine != null)
-            StopCoroutine(_coroutine);
+        if (_coroutineMove != null)
+            StopCoroutine(_coroutineMove);
+        if (_coroutineRotate != null)
+            StopCoroutine(_coroutineRotate);
     }
 
     public void ClearPreview()
     {
+        if (_coroutineMove != null)
+            StopCoroutine(_coroutineMove);
+        if (_coroutineRotate != null)
+            StopCoroutine(_coroutineRotate);
+
         if (_craftedItemPrefab != null)
         {
             ReSetColor();
             Destroy(_craftedItemPrefab);
         }
     }
-
 }

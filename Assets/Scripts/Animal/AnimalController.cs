@@ -15,7 +15,6 @@ public class AnimalController : MonoBehaviour
     {
         if(other.tag == "Weapon")
         {
-            Debug.Log("È÷Æ®!!");
             GetHit();
         }
     }

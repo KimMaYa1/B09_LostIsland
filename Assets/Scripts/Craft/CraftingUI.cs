@@ -30,7 +30,7 @@ public class CraftingUI : MonoBehaviour
     [Header("Slider")]
     [SerializeField] private Slider _slider;
     [SerializeField] TMP_Text _craftAmountTxt;
-    private int _maxAmount = 0;
+    private int _maxAmount = int.MaxValue;
     private int _craftAmount = 0;
 
     private int _curTypeIndex = 0;
@@ -131,7 +131,8 @@ public class CraftingUI : MonoBehaviour
 
             requiredItemSlot.SetRequiredItemSlot(_lastReqItem.itemImage, _lastReqItem.itemName, _curReqItemCountTxt, _curRecipe.requiredItemsCount[i].ToString());
 
-            CheckMaxAmount(int.Parse(_curReqItemCountTxt), _curRecipe.requiredItemsCount[i]);
+            if(_curRecipe.requiredItemsCount[i] != 0)
+                CheckMaxAmount(int.Parse(_curReqItemCountTxt) / _curRecipe.requiredItemsCount[i]);
         }
         UpdateSlider();
     }
@@ -144,12 +145,9 @@ public class CraftingUI : MonoBehaviour
         }
     }
 
-    private void CheckMaxAmount(int curAmount, int maxAmount)
+    private void CheckMaxAmount(int amount)
     {
-        int amount = 0;
-        if (maxAmount != 0)
-            amount = curAmount / maxAmount;
-        _maxAmount = _maxAmount > amount ? _maxAmount : amount;
+        _maxAmount = _maxAmount > amount ? amount : _maxAmount;
     }
 
     private void UpdateSlider()
@@ -186,16 +184,19 @@ public class CraftingUI : MonoBehaviour
 
     public void OnCraft()
     {
+        int changeAmount = 0;
         if (_craftAmount > 0)
         {
             _inventory.AcquireItem(_curRecipe.item, _curRecipe.itemCount * _craftAmount);
             for(int i = 0; i < _curRecipe.requiredItems.Length; i++)
             {
-                _inventory.DeAcquireItem(_curRecipe.requiredItems[i], _curRecipe.requiredItemsCount[i] * _craftAmount);
-                _requiredItemsDict[_curRecipe.requiredItems[i]] -= _curRecipe.requiredItemsCount[i] * _craftAmount;
+                changeAmount = -(_curRecipe.requiredItemsCount[i] * _craftAmount);
+                _inventory.DeAcquireItem(_curRecipe.requiredItems[i], changeAmount);
+                _requiredItemsDict[_curRecipe.requiredItems[i]] += changeAmount;
             }
         }
-        
+
+        UpdateCraftingUI();
     }
 
     private void UpdateReqItemDictFromInventory()
