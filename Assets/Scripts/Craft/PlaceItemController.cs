@@ -85,6 +85,7 @@ public class PlaceItemController : MonoBehaviour
             }
         }
     }
+
     private void SetColor(Color color)
     {
         foreach (MeshRenderer meshRenderer in _meshRenderers)
@@ -96,7 +97,6 @@ public class PlaceItemController : MonoBehaviour
                 mat.SetColor("_Color", color);
             }
         }
-
     }
 
     private void ReSetColor()
@@ -166,9 +166,7 @@ public class PlaceItemController : MonoBehaviour
     {
         while (_isItemRotating)
         {
-            
             _itemPrefabYRot += _curRotateInput.x * _itemRotateSpeed;
-            Debug.Log("회전 : " + _curRotateInput + "와이Rot : " + _itemPrefabYRot);
             _craftedItemPrefab.transform.localEulerAngles = new Vector3(0, _itemPrefabYRot, 0);
             yield return new WaitForFixedUpdate();
         }
@@ -194,5 +192,4 @@ public class PlaceItemController : MonoBehaviour
             Destroy(_craftedItemPrefab);
         }
     }
-
 }
