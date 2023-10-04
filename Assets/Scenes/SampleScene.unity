@@ -10875,6 +10875,14 @@ PrefabInstance:
       propertyPath: dropItem.Array.data[0]
       value: 
       objectReference: {fileID: 11400000, guid: 4d3e9c7f05813cc4f80e0db054bdba25, type: 2}
+    - target: {fileID: 98916322126849336, guid: 9f76891d9743ecd4a9202967ae087d95, type: 3}
+      propertyPath: RareDropItem.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 98916322126849336, guid: 9f76891d9743ecd4a9202967ae087d95, type: 3}
+      propertyPath: RareDropItem.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 90e2ccbcaf8f23544ba9a380cf7907f7, type: 2}
     - target: {fileID: 2184150022862432553, guid: 9f76891d9743ecd4a9202967ae087d95, type: 3}
       propertyPath: m_Layer
       value: 9
@@ -11347,6 +11355,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dropItem:
   - {fileID: 11400000, guid: 4d3e9c7f05813cc4f80e0db054bdba25, type: 2}
+  RareDropItem: []
   capacity: 0
   spawnOBJ: {fileID: 1420475164}
 --- !u!65 &248898870
@@ -15916,6 +15925,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dropItem:
   - {fileID: 11400000, guid: 4d3e9c7f05813cc4f80e0db054bdba25, type: 2}
+  RareDropItem: []
   capacity: 0
   spawnOBJ: {fileID: 206552904}
 --- !u!65 &339118123
@@ -16874,6 +16884,14 @@ PrefabInstance:
       propertyPath: dropItem.Array.data[0]
       value: 
       objectReference: {fileID: 11400000, guid: 4d3e9c7f05813cc4f80e0db054bdba25, type: 2}
+    - target: {fileID: 98916322126849336, guid: 9f76891d9743ecd4a9202967ae087d95, type: 3}
+      propertyPath: RareDropItem.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 98916322126849336, guid: 9f76891d9743ecd4a9202967ae087d95, type: 3}
+      propertyPath: RareDropItem.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 90e2ccbcaf8f23544ba9a380cf7907f7, type: 2}
     - target: {fileID: 2184150022862432553, guid: 9f76891d9743ecd4a9202967ae087d95, type: 3}
       propertyPath: m_Layer
       value: 9
@@ -23162,6 +23180,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dropItem:
   - {fileID: 11400000, guid: 4d3e9c7f05813cc4f80e0db054bdba25, type: 2}
+  RareDropItem:
+  - {fileID: 11400000, guid: 90e2ccbcaf8f23544ba9a380cf7907f7, type: 2}
   capacity: 0
   spawnOBJ: {fileID: 873473516}
 --- !u!65 &504385826
@@ -29019,6 +29039,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dropItem:
   - {fileID: 11400000, guid: 4d3e9c7f05813cc4f80e0db054bdba25, type: 2}
+  RareDropItem:
+  - {fileID: 11400000, guid: 90e2ccbcaf8f23544ba9a380cf7907f7, type: 2}
   capacity: 0
   spawnOBJ: {fileID: 409082332}
 --- !u!65 &650903423
@@ -30875,6 +30897,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dropItem:
   - {fileID: 11400000, guid: 4d3e9c7f05813cc4f80e0db054bdba25, type: 2}
+  RareDropItem: []
   capacity: 0
   spawnOBJ: {fileID: 2011407975}
 --- !u!65 &703525312
@@ -38083,6 +38106,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dropItem:
   - {fileID: 11400000, guid: 4d3e9c7f05813cc4f80e0db054bdba25, type: 2}
+  RareDropItem:
+  - {fileID: 11400000, guid: 90e2ccbcaf8f23544ba9a380cf7907f7, type: 2}
   capacity: 0
   spawnOBJ: {fileID: 798971913}
 --- !u!65 &873030331
@@ -38825,6 +38850,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dropItem:
   - {fileID: 11400000, guid: 4d3e9c7f05813cc4f80e0db054bdba25, type: 2}
+  RareDropItem:
+  - {fileID: 11400000, guid: 90e2ccbcaf8f23544ba9a380cf7907f7, type: 2}
   capacity: 0
   spawnOBJ: {fileID: 232499664}
 --- !u!65 &892847465
@@ -44022,6 +44049,14 @@ PrefabInstance:
       propertyPath: dropItem.Array.data[0]
       value: 
       objectReference: {fileID: 11400000, guid: 4d3e9c7f05813cc4f80e0db054bdba25, type: 2}
+    - target: {fileID: 98916322126849336, guid: 9f76891d9743ecd4a9202967ae087d95, type: 3}
+      propertyPath: RareDropItem.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 98916322126849336, guid: 9f76891d9743ecd4a9202967ae087d95, type: 3}
+      propertyPath: RareDropItem.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 90e2ccbcaf8f23544ba9a380cf7907f7, type: 2}
     - target: {fileID: 2184150022862432553, guid: 9f76891d9743ecd4a9202967ae087d95, type: 3}
       propertyPath: m_Layer
       value: 9
@@ -44381,6 +44416,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dropItem:
   - {fileID: 11400000, guid: 4d3e9c7f05813cc4f80e0db054bdba25, type: 2}
+  RareDropItem: []
   capacity: 0
   spawnOBJ: {fileID: 1608367591}
 --- !u!65 &1027477784
@@ -51255,6 +51291,14 @@ PrefabInstance:
       propertyPath: dropItem.Array.data[0]
       value: 
       objectReference: {fileID: 11400000, guid: 4d3e9c7f05813cc4f80e0db054bdba25, type: 2}
+    - target: {fileID: 3531416761189931085, guid: 9c205740feb477e4792332f684ad7b32, type: 3}
+      propertyPath: RareDropItem.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3531416761189931085, guid: 9c205740feb477e4792332f684ad7b32, type: 3}
+      propertyPath: RareDropItem.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 90e2ccbcaf8f23544ba9a380cf7907f7, type: 2}
     - target: {fileID: 4202056578293486209, guid: 9c205740feb477e4792332f684ad7b32, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -51327,6 +51371,14 @@ PrefabInstance:
       propertyPath: dropItem.Array.data[0]
       value: 
       objectReference: {fileID: 11400000, guid: 4d3e9c7f05813cc4f80e0db054bdba25, type: 2}
+    - target: {fileID: 8692536936105968563, guid: 9c205740feb477e4792332f684ad7b32, type: 3}
+      propertyPath: RareDropItem.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8692536936105968563, guid: 9c205740feb477e4792332f684ad7b32, type: 3}
+      propertyPath: RareDropItem.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 90e2ccbcaf8f23544ba9a380cf7907f7, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -52483,6 +52535,14 @@ PrefabInstance:
       propertyPath: dropItem.Array.data[0]
       value: 
       objectReference: {fileID: 11400000, guid: 4d3e9c7f05813cc4f80e0db054bdba25, type: 2}
+    - target: {fileID: 98916322126849336, guid: 9f76891d9743ecd4a9202967ae087d95, type: 3}
+      propertyPath: RareDropItem.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 98916322126849336, guid: 9f76891d9743ecd4a9202967ae087d95, type: 3}
+      propertyPath: RareDropItem.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 90e2ccbcaf8f23544ba9a380cf7907f7, type: 2}
     - target: {fileID: 2184150022862432553, guid: 9f76891d9743ecd4a9202967ae087d95, type: 3}
       propertyPath: m_Layer
       value: 9
@@ -59904,6 +59964,14 @@ PrefabInstance:
       propertyPath: dropItem.Array.data[0]
       value: 
       objectReference: {fileID: 11400000, guid: 4d3e9c7f05813cc4f80e0db054bdba25, type: 2}
+    - target: {fileID: 98916322126849336, guid: 9f76891d9743ecd4a9202967ae087d95, type: 3}
+      propertyPath: RareDropItem.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 98916322126849336, guid: 9f76891d9743ecd4a9202967ae087d95, type: 3}
+      propertyPath: RareDropItem.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 90e2ccbcaf8f23544ba9a380cf7907f7, type: 2}
     - target: {fileID: 2184150022862432553, guid: 9f76891d9743ecd4a9202967ae087d95, type: 3}
       propertyPath: m_Layer
       value: 9
@@ -61563,6 +61631,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dropItem:
   - {fileID: 11400000, guid: 4d3e9c7f05813cc4f80e0db054bdba25, type: 2}
+  RareDropItem:
+  - {fileID: 11400000, guid: 90e2ccbcaf8f23544ba9a380cf7907f7, type: 2}
   capacity: 0
   spawnOBJ: {fileID: 1381257133}
 --- !u!65 &1438669131
@@ -62340,6 +62410,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dropItem:
   - {fileID: 11400000, guid: 4d3e9c7f05813cc4f80e0db054bdba25, type: 2}
+  RareDropItem: []
   capacity: 0
   spawnOBJ: {fileID: 91732539}
 --- !u!65 &1452025052
@@ -64313,6 +64384,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dropItem:
   - {fileID: 11400000, guid: 4d3e9c7f05813cc4f80e0db054bdba25, type: 2}
+  RareDropItem: []
   capacity: 0
   spawnOBJ: {fileID: 1208004357}
 --- !u!65 &1503763245
@@ -65242,6 +65314,14 @@ PrefabInstance:
       propertyPath: dropItem.Array.data[0]
       value: 
       objectReference: {fileID: 11400000, guid: 4d3e9c7f05813cc4f80e0db054bdba25, type: 2}
+    - target: {fileID: 98916322126849336, guid: 9f76891d9743ecd4a9202967ae087d95, type: 3}
+      propertyPath: RareDropItem.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 98916322126849336, guid: 9f76891d9743ecd4a9202967ae087d95, type: 3}
+      propertyPath: RareDropItem.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 90e2ccbcaf8f23544ba9a380cf7907f7, type: 2}
     - target: {fileID: 2184150022862432553, guid: 9f76891d9743ecd4a9202967ae087d95, type: 3}
       propertyPath: m_Layer
       value: 9
@@ -70951,6 +71031,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dropItem:
   - {fileID: 11400000, guid: 4d3e9c7f05813cc4f80e0db054bdba25, type: 2}
+  RareDropItem: []
   capacity: 0
   spawnOBJ: {fileID: 1504496859}
 --- !u!65 &1634154954
@@ -80243,6 +80324,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dropItem:
   - {fileID: 11400000, guid: 4d3e9c7f05813cc4f80e0db054bdba25, type: 2}
+  RareDropItem:
+  - {fileID: 11400000, guid: 90e2ccbcaf8f23544ba9a380cf7907f7, type: 2}
   capacity: 0
   spawnOBJ: {fileID: 154633866}
 --- !u!65 &1877559922
@@ -80369,6 +80452,14 @@ PrefabInstance:
       propertyPath: dropItem.Array.data[0]
       value: 
       objectReference: {fileID: 11400000, guid: 4d3e9c7f05813cc4f80e0db054bdba25, type: 2}
+    - target: {fileID: 98916322126849336, guid: 9f76891d9743ecd4a9202967ae087d95, type: 3}
+      propertyPath: RareDropItem.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 98916322126849336, guid: 9f76891d9743ecd4a9202967ae087d95, type: 3}
+      propertyPath: RareDropItem.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 90e2ccbcaf8f23544ba9a380cf7907f7, type: 2}
     - target: {fileID: 2184150022862432553, guid: 9f76891d9743ecd4a9202967ae087d95, type: 3}
       propertyPath: m_Layer
       value: 9
@@ -88709,6 +88800,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dropItem:
   - {fileID: 11400000, guid: 4d3e9c7f05813cc4f80e0db054bdba25, type: 2}
+  RareDropItem:
+  - {fileID: 11400000, guid: 90e2ccbcaf8f23544ba9a380cf7907f7, type: 2}
   capacity: 0
   spawnOBJ: {fileID: 1175288013}
 --- !u!65 &2092622902
