@@ -68,10 +68,9 @@ public class PlayerClickMove : MonoBehaviour
             nav.ResetPath();
             nav.velocity = Vector3.zero;
         }
+        Debug.Log(playerController.IsAttackDelay);
         if (playerController.IsAttackDelay)
         {
-            Debug.Log($"isMove{isMove}");
-            Debug.Log($"isMonster{isMonster}");
             if (isMove)
             {
                 if (interactioncoll.target != null)
@@ -81,6 +80,8 @@ public class PlayerClickMove : MonoBehaviour
                         _animator.SetBool("IsWalking", false);
                         nav.ResetPath();
                         nav.velocity = Vector3.zero;
+
+                        Debug.Log("여긴 들어오냐");
 
                         if (isItem)
                         {
@@ -96,10 +97,11 @@ public class PlayerClickMove : MonoBehaviour
                         }
                         else if (isMonster)
                         {
+                            Debug.Log("여기는");
                             transform.LookAt(target.transform.position);
                             playerController.OnAttackInput(inventory.currentWeapon);
 
-                            if (target.GetComponent<AnimalAI>().animalStats.health <= 0)
+                            if (target.GetComponent<AnimalAI>().animalStats.States == State.Dead)
                             {
                                 target = null;
                                 interactioncoll.target = null;
@@ -121,7 +123,6 @@ public class PlayerClickMove : MonoBehaviour
                 }
                 else if (target != null && ((1 << target.layer) | interactionManager.monsterLayerMask) == interactionManager.monsterLayerMask)
                 {
-                    Debug.Log("a");
                     if (nav.SetDestination(target.transform.position))
                     {
                         _animator.SetBool("IsWalking", true);
