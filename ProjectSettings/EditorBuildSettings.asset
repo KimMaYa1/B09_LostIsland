@@ -9,27 +9,12 @@ EditorBuildSettings:
     path: Assets/Scenes/DevScenes/MinHyuk/LoadingScene.unity
     guid: 9f63edaddbd104c4f9694a78bf089c04
   - enabled: 1
-    path: Assets/Scenes/DevScenes/MinHyuk/MinHyuk.unity
-    guid: 3e1c772f1dc5b1d42b3d8b625537e6a6
-  - enabled: 1
     path: Assets/Scenes/DevScenes/MinHyuk/PrologScene.unity
     guid: 5818843878173344b9e107d097bc0176
   - enabled: 1
     path: Assets/Scenes/DevScenes/MinHyuk/StartScene.unity
     guid: 45471009faece9345aefd3832845027b
   - enabled: 1
-    path: Assets/Scenes/DevScenes/BeomJun.unity
-    guid: 0b54550062422234bacd8f2a9884fd81
-  - enabled: 1
-    path: Assets/Scenes/DevScenes/MinGyu.unity
-    guid: 6f5cdd5f333c8024c97aa1033d656ed1
-  - enabled: 1
-    path: Assets/Scenes/DevScenes/MinHuck.unity
-    guid: 0b501c64f9e99b04cafd30a3940ddbdd
-  - enabled: 1
-    path: Assets/Scenes/DevScenes/SungLim.unity
-    guid: 640907fd2a7df7548a763dd35c182c84
-  - enabled: 1
-    path: Assets/Scenes/DevScenes/YoungHyun.unity
-    guid: dac2e69c530a3944a89d7a5cd0cf8e43
+    path: Assets/Scenes/SampleScene.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
   m_configObjects: {}

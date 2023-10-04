@@ -53,6 +53,6 @@ public class PrologScript : MonoBehaviour
 
     void End() 
     {
-        LoadingSceneController.LoadScene("MinHyuk");
+        LoadingSceneController.LoadScene("SampleScene");
     }
 }
