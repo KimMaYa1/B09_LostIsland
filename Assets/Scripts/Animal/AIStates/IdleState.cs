@@ -44,7 +44,7 @@ public class IdleState : IState
                     break;
             }
         }
-        if(delaysecond >= 5)
+        if(delaysecond >= 1)
         {
             int rand = Random.Range(1, 5);
             if (rand >= 3)
