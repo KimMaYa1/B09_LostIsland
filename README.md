@@ -73,12 +73,16 @@
 
 # 3. 플레이 화면
 - 시작 화면
+  
   ![image](https://github.com/KimMaYa1/B09_LostIsland/assets/86953615/e7413f02-0455-4dbe-be3e-a6d883b1414d)
 - 로딩 화면
+  
   ![image](https://github.com/KimMaYa1/B09_LostIsland/assets/86953615/f4b4f29a-7bb6-4271-b13b-022d7bc94ba9)
 - 프롤로그 화면
+  
   ![image](https://github.com/KimMaYa1/B09_LostIsland/assets/86953615/c8ab1292-58e5-41e6-b098-35d3b930260a)
 - 게임 화면
+  
   ![image](https://github.com/KimMaYa1/B09_LostIsland/assets/86953615/037baa60-cf43-40b1-805f-c662c2fea126)
 
 
