@@ -10,7 +10,7 @@ public class InteractionTarget : MonoBehaviour
     [HideInInspector]
     public GameObject target;
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if (((1 << other.gameObject.layer) | layerMask) == layerMask)
         {
@@ -20,5 +20,10 @@ public class InteractionTarget : MonoBehaviour
         {
             target = null;
         }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        target = null;
     }
 }

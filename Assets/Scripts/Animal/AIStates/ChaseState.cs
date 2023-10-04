@@ -19,8 +19,8 @@ public class ChaseState : IState
     public void Enter()
     {
         _Animals.PlayAnimation(AnimalAI.State.Run);
-        _Animals.nav.speed = _AnimalStats.animalSO.runSpeed;
-        _Animals.transform.rotation = Quaternion.Lerp(_Animals.transform.rotation, Quaternion.LookRotation(GameManager.Instance.PlayerObj.transform.position), 0.25f);
+        _Animals.nav.speed = _AnimalStats.animalSO.runSpeed; 
+        _Animals.transform.rotation = Quaternion.LookRotation(GameManager.Instance.PlayerObj.transform.position - _Animals.transform.position);
     }
 
     public void Exit()
@@ -50,26 +50,19 @@ public class ChaseState : IState
 
     private void CheckArrival()
     {
-        float halfAngle = 45 * 0.5f;
         Vector3 forward = _Animals.transform.forward;
-        Vector3 leftDirection = Quaternion.Euler(0, -halfAngle, 0) * forward;
 
         // 레이캐스트 시작 지점
         Vector3 startPoint = _Animals.transform.position;
 
         // 부채꼴 영역에 레이캐스트를 쏩니다.
-        RaycastHit[] hits = Physics.SphereCastAll(startPoint, 0.1f, forward, _AnimalStats.animalSO.attackRange);
+        RaycastHit[] hits = Physics.SphereCastAll(startPoint, _AnimalStats.animalSO.attackRange, forward, 0);
 
         foreach (RaycastHit hit in hits)
         {
-            Vector3 hitDirection = hit.point - startPoint;
-            float angleToHit = Vector3.Angle(leftDirection, hitDirection);
-            if (angleToHit <= halfAngle)
+            if(((1 << hit.collider.gameObject.layer) | _Animals.playerLayerMask) == _Animals.playerLayerMask)
             {
-                if(((1 << hit.collider.gameObject.layer) | _Animals.playerLayerMask) == _Animals.playerLayerMask)
-                {
-                    _Animals.States = AnimalAI.State.Attack;
-                }
+                _Animals.States = AnimalAI.State.Attack;
             }
         }
     }

@@ -128,9 +128,11 @@ public class PlayerController : MonoBehaviour
 
     public void OnDrinkWater(InputAction.CallbackContext context)
     {
-        if (canWater)
+        if (canWater && context.phase == InputActionPhase.Started)
         {
             playerConditins.Drink(30);
+            GameObject waterbottle = Resources.Load<GameObject>("Water_Bottle");
+            Instantiate(waterbottle, this.transform.position + Vector3.up, Quaternion.identity);
         }
     }
 }
