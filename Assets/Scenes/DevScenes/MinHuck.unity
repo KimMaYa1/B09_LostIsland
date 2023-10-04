@@ -13358,11 +13358,6 @@ MonoBehaviour:
   groundLayerMask:
     serializedVersion: 2
     m_Bits: 447
-  jumpLayerMask:
-    serializedVersion: 2
-    m_Bits: 0
-  inventory: {fileID: 0}
-  interactioncoll: {fileID: 0}
 --- !u!114 &676367212
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13399,10 +13394,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19e6be85c1dd6374db31a92854736c4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stat:
-    Atk: 0
-    Def: 0
-    MoveSpeed: 0
   health:
     curValue: 0
     maxValue: 0
@@ -13431,6 +13422,13 @@ MonoBehaviour:
     regenRate: 0
     decayRate: 0
     uiBar: {fileID: 0}
+  weight:
+    curValue: 0
+    maxValue: 0
+    startValue: 0
+    regenRate: 0
+    decayRate: 0
+    uiBar: {fileID: 0}
   noHungerHealthDecay: 0
   onTakeDamage:
     m_PersistentCalls:
@@ -13451,13 +13449,14 @@ MonoBehaviour:
     Atk: 10
     Def: 5
     MoveSpeed: 5
+    JumpForce: 80
   attackCollider: {fileID: 1971892874}
-  maxJumpRange: 0
-  playerConditins: {fileID: 0}
-  _str: 
+  cameraContainer: {fileID: 2062059744}
+  target: {fileID: 772873139}
+  camRotSpeed: 120
+  canLook: 1
   delayTime: 0
   IsAttackDelay: 1
-  canWater: 0
 --- !u!114 &676367215
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30323,13 +30322,14 @@ MonoBehaviour:
     Atk: 0
     Def: 0
     MoveSpeed: 0
+    JumpForce: 0
   attackCollider: {fileID: 0}
-  maxJumpRange: 0
-  playerConditins: {fileID: 0}
-  _str: 
+  cameraContainer: {fileID: 1910993353}
+  target: {fileID: 1595248936}
+  camRotSpeed: 120
+  canLook: 1
   delayTime: 0
   IsAttackDelay: 1
-  canWater: 0
 --- !u!114 &1595248934
 MonoBehaviour:
   m_ObjectHideFlags: 0
