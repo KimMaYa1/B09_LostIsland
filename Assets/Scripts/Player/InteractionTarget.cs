@@ -16,6 +16,10 @@ public class InteractionTarget : MonoBehaviour
         {
             target = other.gameObject;
         }
+        if (other.tag == "AnimalWeapon")
+        {
+            PlayerController.instance.playerConditins.TakePhysicalDamage(10);
+        }
     }
 
     private void OnTriggerStay(Collider other)
@@ -23,10 +27,6 @@ public class InteractionTarget : MonoBehaviour
         if (((1 << other.gameObject.layer) | layerMask) == layerMask)
         {
             target = other.gameObject;
-        }
-        if (other.tag == "AnimalWeapon")
-        {
-            PlayerController.instance.playerConditins.TakePhysicalDamage(10);
         }
     }
 
