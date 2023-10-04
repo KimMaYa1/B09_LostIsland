@@ -44,7 +44,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(delayTime >= 0.55f)
+        if(delayTime >= 0.8f)
         {
             IsAttackDelay = true;
             delayTime = 0;
@@ -123,7 +123,7 @@ public class PlayerController : MonoBehaviour
 
         IsAttackDelay = false;
         attackCollider.enabled = true;
-        Invoke("AttackInvoke", 0.5f);
+        Invoke("AttackInvoke", 0.8f);
     }
 
     public void OnDrinkWater(InputAction.CallbackContext context)
