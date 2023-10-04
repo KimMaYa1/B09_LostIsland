@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     public static GameManager _instance;
     private GameObject playerObj;
 
+
     public GameObject PlayerObj
     {
         get { return playerObj; }
@@ -22,5 +23,7 @@ public class GameManager : MonoBehaviour
         _instance = this;
         playerObj = GameObject.FindWithTag("Player");
     }
+
+    
 
 }

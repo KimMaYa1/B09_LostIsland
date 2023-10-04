@@ -40,6 +40,7 @@ public class Condition
 
 public class PlayerConditins : MonoBehaviour, IDamagable
 {
+
     [HideInInspector]
     public PlayerStat stat;
 
@@ -125,11 +126,13 @@ public class PlayerConditins : MonoBehaviour, IDamagable
     public void OnReStart()
     {
         LoadingSceneController.LoadScene("PrologScene");
+        Time.timeScale = 1.0f;
     }
 
     public void OnLoby()
     {
         LoadingSceneController.LoadScene("StartScene");
+        Time.timeScale = 1.0f;
     }
 
     public void TakePhysicalDamage(int damageAmount)
