@@ -21,7 +21,6 @@ public class UIManager : MonoBehaviour
     private float _interactWidth;
     private float _interactHeight;
 
-    [SerializeField] private GameObject _craftingCamera;
     [SerializeField] private PlaceItemController _placeItemController;
     private bool _isPreviewOn = false;
 
@@ -51,14 +50,12 @@ public class UIManager : MonoBehaviour
         inventoryActivated = !inventoryActivated;
         if (_uiInventory.activeSelf)
         {
-            //Cursor.lockState = CursorLockMode.Locked;
             _uiInventory.SetActive(false);
             _inventoryButton.SetActive(false);
             _craftButton.SetActive(false);
         }
         else
         {
-            //Cursor.lockState = CursorLockMode.Confined;
             _uiInventory.SetActive(true);
             _inventoryButton.SetActive(true);
             _craftButton.SetActive(true);
@@ -89,7 +86,6 @@ public class UIManager : MonoBehaviour
 
     public void SlotClickTypeETC(GameObject itemPrefab)
     {
-        //_craftingCamera.SetActive(true);
         TabInventory();
         _placeItemController.PreviewItemView(itemPrefab);
         _isPreviewOn = true;
@@ -102,7 +98,6 @@ public class UIManager : MonoBehaviour
             if (context.phase == InputActionPhase.Started)
             {
                 _placeItemController.PlacePrefab();
-                //_craftingCamera.SetActive(false);
                 _isPreviewOn = false;
             }
     }
