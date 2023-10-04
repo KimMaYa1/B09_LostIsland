@@ -100,7 +100,7 @@ public class PlayerClickMove : MonoBehaviour
                             Debug.Log("여기는");
                             transform.LookAt(target.transform.position);
                             playerController.OnAttackInput(inventory.currentWeapon);
-
+                            /*
                             if (target.GetComponent<AnimalAI>().animalStats.States == State.Dead)
                             {
                                 target = null;
@@ -110,7 +110,7 @@ public class PlayerClickMove : MonoBehaviour
                             else
                             {
                                 return;
-                            }
+                            }*/
                             /*if ()
                             {
                                 몬스터가 안죽었다면

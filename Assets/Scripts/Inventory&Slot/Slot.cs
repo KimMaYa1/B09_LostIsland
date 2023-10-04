@@ -205,7 +205,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
 
                 }else if(item.itemType == Item.ItemType.ETC)
                 {
-                    UIManager.instance.SlotClickTypeETC(item.itemPrefab);
+                    UIManager.instance.SlotClickTypeETC(item);
                 }
             }
         }
