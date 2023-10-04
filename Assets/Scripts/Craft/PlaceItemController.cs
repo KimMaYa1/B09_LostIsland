@@ -94,7 +94,6 @@ public class PlaceItemController : MonoBehaviour
             _materials = meshRenderer.materials.ToList();
             foreach (Material mat in _materials)
             {
-                Debug.Log("Į�� ����");
                 mat.SetColor("_Color", color);
             }
         }
@@ -107,7 +106,6 @@ public class PlaceItemController : MonoBehaviour
             _materials = _meshRenderers[j].materials.ToList();
             for (int i = 0; i < _materials.Count; i++)
             {
-                Debug.Log("Į�� �ǵ�����");
                 _materials[i].color = _originColors[(1 + i) * j];
             }
         }
@@ -189,6 +187,11 @@ public class PlaceItemController : MonoBehaviour
 
     public void ClearPreview()
     {
+        if (_coroutineMove != null)
+            StopCoroutine(_coroutineMove);
+        if (_coroutineRotate != null)
+            StopCoroutine(_coroutineRotate);
+
         if (_craftedItemPrefab != null)
         {
             ReSetColor();
