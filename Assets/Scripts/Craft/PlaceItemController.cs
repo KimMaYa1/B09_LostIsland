@@ -18,52 +18,58 @@ public class PlaceItemController : MonoBehaviour
     private RaycastHit hit;
     private float range = 10f;
 
-    private Vector3 _originPlace;
     private Vector3 _curMovementInput;
     private Vector3 _prefabForword;
     private Vector3 _prefabRight;
-    private Vector3 _prefabUp;
     private bool _isPrefabActivated = false;
     private bool _isItemMoving = false;
-    private float _moveSpeed = 2f;
+    private float _itemMoveSpeed = 0.1f;
     private Coroutine _coroutine;
-    private Rigidbody _rigidbody;
-    private MeshRenderer _meshRenderer;
+    private MeshRenderer[] _meshRenderers;
     private List<Material> _materials = new List<Material>();
     private List<Color> _originColors = new List<Color>();
 
-    private void Start()
+    private void Update()
     {
-        _originPlace = _camera.transform.position;
+        UpdateCameraPosition();
     }
 
-    private void CraftedCameraUpdate()
+    private void UpdateCameraPosition()
     {
-        _camera.transform.position = _originPlace + _placeTransform.position;
-
-        float x = _camera.transform.rotation.eulerAngles.x;
-        float y = _placeTransform.rotation.eulerAngles.y;
-
-        _camera.transform.localRotation = Quaternion.Euler(x, y, 0);
+        _prefabForword = _camera.transform.forward;
+        _prefabForword.y = 0f;
+        _prefabForword.Normalize();
+        _prefabRight = _camera.transform.right;
+        _prefabRight.y = 0f;
+        _prefabRight.Normalize();
     }
 
     public void PreviewItemView(GameObject itemPrefab)
     {
-        CraftedCameraUpdate();
         if (_craftedItemPrefab == null)
             _craftedItemPrefab = Instantiate(itemPrefab, _playerTransform.position + _playerTransform.forward, Quaternion.identity);
 
-        _meshRenderer = _craftedItemPrefab.GetComponent<MeshRenderer>();
+        _prefabForword = _camera.transform.forward;
+        _prefabForword.y = 0f;
+        _prefabForword.Normalize();
+        _prefabRight = _camera.transform.right;
+        _prefabRight.y = 0f;
+        _prefabRight.Normalize();
+
+        _meshRenderers = _craftedItemPrefab.GetComponentsInChildren<MeshRenderer>();
         _materials.Clear();
-        _materials = _meshRenderer.materials.ToList();
         _originColors.Clear();
-        for (int i = 0; i < _materials.Count; i++)
+        for (int j = 0; j < _meshRenderers.Length; j++)
         {
-            _originColors.Add(_materials[i].color);
+            _materials = _meshRenderers[j].materials.ToList();
+            for (int i = 0; i < _materials.Count; i++)
+            {
+                _originColors.Add(_materials[i].color);
+            }
         }
+
         SetColor(Color.green);
 
-        _rigidbody = _craftedItemPrefab.GetComponent<Rigidbody>();
         _isPrefabActivated = true;
         PrefabPositionUpdate();
     }
@@ -78,27 +84,33 @@ public class PlaceItemController : MonoBehaviour
             {
                 Vector3 _location = hit.point;
                 _craftedItemPrefab.transform.position = _location;
-                _prefabForword = _playerTransform.forward;
-                _prefabRight = _playerTransform.right;
-                _prefabUp = _playerTransform.up;
             }
         }
     }
     private void SetColor(Color color)
     {
-        foreach (Material mat in _materials)
+        foreach (MeshRenderer meshRenderer in _meshRenderers)
         {
-            Debug.Log("칼라 세팅");
-            mat.SetColor("_Color", color);
+            _materials = meshRenderer.materials.ToList();
+            foreach (Material mat in _materials)
+            {
+                Debug.Log("칼라 세팅");
+                mat.SetColor("_Color", color);
+            }
         }
+
     }
 
     private void ReSetColor()
     {
-        for (int i = 0; i < _materials.Count; i++)
+        for (int j = 0; j < _meshRenderers.Length; j++)
         {
-            Debug.Log("칼라 되돌리기");
-            _materials[i].color = _originColors[i];
+            _materials = _meshRenderers[j].materials.ToList();
+            for (int i = 0; i < _materials.Count; i++)
+            {
+                Debug.Log("칼라 되돌리기");
+                _materials[i].color = _originColors[(1 + i) * j];
+            }
         }
     }
 
@@ -124,14 +136,10 @@ public class PlaceItemController : MonoBehaviour
         while (_isItemMoving)
         {
             Debug.Log("무브 코루틴");
-            Vector3 dir = _prefabForword * _curMovementInput.z + _prefabRight * _curMovementInput.x + _prefabUp * _curMovementInput.y;
-            dir *= _moveSpeed;
-            Debug.Log("dir : " + dir);
-            Debug.Log("앞 : " + _prefabForword);
-            Debug.Log("오 : " + _prefabRight);
-            Debug.Log("업 : " + _prefabUp);
-            Debug.Log("컬 : " + _curMovementInput);
-            _rigidbody.velocity = dir;
+            Vector3 dir = _prefabForword * _curMovementInput.z + _prefabRight * _curMovementInput.x + new Vector3(0, 1, 0) * _curMovementInput.y;
+            dir *= _itemMoveSpeed;
+            _craftedItemPrefab.transform.position += dir;
+
             yield return new WaitForFixedUpdate();
         }
     }
@@ -139,7 +147,6 @@ public class PlaceItemController : MonoBehaviour
     public void PlacePrefab()
     {
         ReSetColor();
-        _craftedItemPrefab.GetComponent<Rigidbody>().velocity = Vector3.zero;
         _craftedItemPrefab = null;
         _isPrefabActivated = false;
         _isItemMoving = false;
