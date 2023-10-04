@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.AI.Navigation;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -175,12 +176,15 @@ public class PlaceItemController : MonoBehaviour
     public void PlacePrefab()
     {
         ReSetColor();
+        _craftedItemPrefab.GetComponent<NavMeshSurface>().RemoveData();
         _craftedItemPrefab.GetComponent<NavMeshSurface>().BuildNavMesh();
         _craftedItemPrefab = null;
         _isPrefabActivated = false;
         _isItemMoving = false;
-        if (_coroutine != null)
-            StopCoroutine(_coroutine);
+        if (_coroutineMove != null)
+            StopCoroutine(_coroutineMove);
+        if (_coroutineRotate != null)
+            StopCoroutine(_coroutineRotate);
     }
 
     public void ClearPreview()
