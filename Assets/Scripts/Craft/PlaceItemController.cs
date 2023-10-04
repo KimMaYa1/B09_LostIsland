@@ -118,8 +118,9 @@ public class PlaceItemController : MonoBehaviour
             {
                 _isItemMoving = true;
                 _curMovementInput = context.ReadValue<Vector3>();
-                if (_coroutineMove == null)
-                    _coroutineMove = StartCoroutine(MoveItemCo());
+                if (_coroutineMove != null)
+                    StopCoroutine(_coroutineMove);
+                _coroutineMove = StartCoroutine(MoveItemCo());
             }
             else
             {

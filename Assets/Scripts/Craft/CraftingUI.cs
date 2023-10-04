@@ -120,6 +120,7 @@ public class CraftingUI : MonoBehaviour
         _craftItemImage.sprite = _curItem.itemImage;
         ReSetRequiredItemSlots();
         RequiredItemSlot requiredItemSlot;
+        ReSetSlider();
         for (int i = 0; i < _curRecipe.requiredItems.Length; i++)
         {
             _requiredItemSlots[i].SetActive(true);
@@ -139,7 +140,12 @@ public class CraftingUI : MonoBehaviour
         }
         UpdateSlider();
     }
-
+    private void ReSetSlider()
+    {
+        _maxAmount = int.MaxValue;
+        _slider.maxValue = 0;
+        _craftAmountTxt.text = ((int)_slider.value).ToString();
+    }
     private void ReSetRequiredItemSlots()
     {
         for (int i = 0; i < _requiredItemSlots.Length; i++)
