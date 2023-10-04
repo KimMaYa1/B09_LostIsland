@@ -33,6 +33,24 @@ public class AttackState : IState
         {
             _Animals.attackCollider.enabled = false;
             _Animals.States = AnimalAI.State.Chase;
+
+            Vector3 startPoint = _Animals.transform.position;
+            Vector3 forward = _Animals.transform.forward;
+
+            // 부채꼴 영역에 레이캐스트를 쏩니다.
+            RaycastHit[] hits = Physics.SphereCastAll(startPoint, _AnimalStats.animalSO.range, forward, 0);
+
+            foreach (RaycastHit hit in hits)
+            {
+                if (((1 << hit.collider.gameObject.layer) | _Animals.playerLayerMask) == _Animals.playerLayerMask)
+                {
+                    if (Vector3.Distance(_Animals.transform.position, GameManager.Instance.PlayerObj.transform.position) >= _AnimalStats.animalSO.attackRange)
+                    {
+                        _Animals.States = AnimalAI.State.Chase;
+                    }
+                }
+            }
         }
+
     }
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.AI.Navigation;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -150,6 +151,7 @@ public class PlaceItemController : MonoBehaviour
         _craftedItemPrefab = null;
         _isPrefabActivated = false;
         _isItemMoving = false;
+        _craftedItemPrefab.GetComponent<NavMeshSurface>().BuildNavMesh();
         if (_coroutine != null)
             StopCoroutine(_coroutine);
     }
