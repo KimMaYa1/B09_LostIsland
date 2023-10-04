@@ -23,6 +23,11 @@ public class Inventory : MonoBehaviour
 
     public TextMeshProUGUI itemNameTxt;
     public TextMeshProUGUI itemDescTxt;
+
+
+    //플레이어 능력치
+    public PlayerController playerStat;
+    public TextMeshProUGUI playerStatTxt;
     //[SerializeField]
     //private PlayerController player;
 
@@ -42,7 +47,10 @@ public class Inventory : MonoBehaviour
         //anim = GetComponent<Animator>();
     }
 
-
+    private void Update()
+    {
+        playerStatTxt.text = playerStat.playerStat.Atk + System.Environment.NewLine + playerStat.playerStat.Def;
+    }
 
 
     //★★★인풋 액션 inventory 여기다 연결하세요★★★
